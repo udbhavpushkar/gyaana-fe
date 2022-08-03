@@ -10,7 +10,7 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to Gyaana
+          Welcome to Gyaana Develop
         </h1>
         </main>
     </div>
