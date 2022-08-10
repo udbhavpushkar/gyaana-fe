@@ -6,6 +6,7 @@ export default function Home() {
     <Layout>
       This is main page
       <p>New Changes</p>
+      <p>suraj have added this</p>
     </Layout>
   );
 }
