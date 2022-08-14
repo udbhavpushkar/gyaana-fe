@@ -1,0 +1,36 @@
+.headerWrapper{
+    display: flex;
+    /* justify-content: space-around; */
+    background-color: #f8f8f8;
+    
+}
+.headerLogoImg{
+    /* position: absolute !important;
+    top: 0px !important;
+    left: 5px !important; */
+    object-fit: contain;
+    /* padding: 0px !important;
+    margin: 0px !important; */
+}
+.headerLogoText{
+    /* position: absolute !important;
+    top: 0px !important;
+    left: -285px !important; */
+    object-fit: contain;
+}
+
+.logoWrapper{
+    display: flex;
+}
+.logoContainer{
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.TextContainer{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 100px;
+}
+.headerLinksContainer{
+    margin-top: 12px;
+}
