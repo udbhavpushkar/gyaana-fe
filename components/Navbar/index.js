@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./navbar.module.css";
+import React from "react"
+import styles from "./navbar.module.css"
 
 const Navbar = (props) => {
   return (
@@ -62,7 +62,7 @@ const Navbar = (props) => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

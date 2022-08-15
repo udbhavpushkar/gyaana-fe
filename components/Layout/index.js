@@ -1,7 +1,8 @@
-import Head from "next/head";
-import React from "react";
-import Header from "../Header";
-import Navbar from "../Navbar";
+import Head from "next/head"
+import React from "react"
+import Footer from "../Footer"
+import Header from "../Header"
+import Navbar from "../Navbar"
 
 const Layout = (props) => {
   return (
@@ -12,8 +13,9 @@ const Layout = (props) => {
       <Header />
       {/* <Navbar /> */}
       <div>{props.children}</div>
+      <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

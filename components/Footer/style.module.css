@@ -1,0 +1,32 @@
+.footer{
+    display: flex;
+    width: 100%;
+    padding: 40px 20px 20px 20px;
+    background-color: #232323;
+    font-size: 14px;
+    color: aliceblue !important;
+}
+
+.mr2{
+    margin-right: 10px;
+}
+
+.link{
+    color: aliceblue !important;
+    text-decoration: unset !important;
+}
+
+.link:hover{
+    color: rgb(143, 178, 208) !important;;
+}
+
+.box{
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.socialLinks{
+    margin: 5px 20px !important;
+    
+}

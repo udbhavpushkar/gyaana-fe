@@ -1,5 +1,5 @@
-import React from "react";
-import Layout from "../components/Layout";
+import React from "react"
+import Layout from "../components/Layout"
 
 export default function Home() {
   return (
@@ -8,5 +8,5 @@ export default function Home() {
       <p>New Changes</p>
       <p>suraj have added this</p>
     </Layout>
-  );
+  )
 }
