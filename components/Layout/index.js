@@ -2,7 +2,6 @@ import Head from "next/head"
 import React from "react"
 import Footer from "../Footer"
 import Header from "../Header"
-import Navbar from "../Navbar"
 
 const Layout = (props) => {
   return (
@@ -11,7 +10,6 @@ const Layout = (props) => {
         <title>Gyaana </title>
       </Head>
       <Header />
-      {/* <Navbar /> */}
       <div>{props.children}</div>
       <Footer />
     </div>

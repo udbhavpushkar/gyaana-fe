@@ -1,36 +1,79 @@
 .headerWrapper{
     display: flex;
-    /* justify-content: space-around; */
     background-color: #f8f8f8;
-    
 }
 .headerLogoImg{
-    /* position: absolute !important;
-    top: 0px !important;
-    left: 5px !important; */
-    object-fit: contain;
-    /* padding: 0px !important;
-    margin: 0px !important; */
-}
-.headerLogoText{
-    /* position: absolute !important;
-    top: 0px !important;
-    left: -285px !important; */
     object-fit: contain;
 }
 
 .logoWrapper{
     display: flex;
-}
-.logoContainer{
-    margin-top: 5px;
-    margin-left: 20px;
-}
-.TextContainer{
-    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+    }
+
+.textContainer{
     margin-left: 10px;
-    margin-right: 100px;
+    margin-right: 50px;
 }
-.headerLinksContainer{
-    margin-top: 12px;
+
+.linkss{
+    font-family: cursive !important;
+}
+
+
+.navLinksCon{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    opacity: 1 !important;
+    font-family:  cursive ;
+
+}
+.navLinksCon:hover{
+    color: rgb(145, 23, 145);
+
+}
+.loginPopupWrapper{
+    position: absolute;
+    top: 58px;
+    right: 54px;
+    display: flex;
+    padding: 10px 20px;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.navLinksConLogin{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    opacity: 1 !important;
+    font-family:  cursive ;
+    padding: 2px 10px;
+
+}
+.navLinksConLogin:hover{
+    color: rgb(145, 23, 145);
+    background-color: #dfdfdf;
+
+}
+.navLinksConTainer{
+    margin-right: 30px;
+}
+@media (max-width:991px) {
+    .navLinksCon{
+        padding: 10px 0px;
+        text-align: center;
+        font-size: 24px !important;
+    }
+    .navLinksConTainer{
+        text-align: center;
+        margin-right: 0px;
+        margin-bottom: 10px;
+        border-bottom: 2px dotted orange;
+    }
 }

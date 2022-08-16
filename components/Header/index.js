@@ -1,27 +1,87 @@
-import React from "react"
+import React, { useState } from "react"
 import Image from "next/image"
-// import LogoImg from "../../assets/images/download (1).png";
-// import LogoText from "../../assets/images/download.png";
 import LogoText from "../../assets/images/download-removebg-preview.png"
 import LogoImg from "../../assets/images/download__1_-removebg-preview.png"
 import styles from "./header.module.css"
-import Navbar from "../Navbar"
+import DownArrow from "../../assets/images/chevron-down.svg"
 
 const Header = (props) => {
+  const [toggleOpen, setToggleOpen] = useState(true)
+  const [loginOpen, setLoginOpen] = useState(false)
+
+  const headerItems = [
+    { name: "Home", link: "#" },
+    { name: "About Us", link: "#" },
+    { name: "Downloads", link: "#" },
+    { name: "Gallery", link: "#" },
+    { name: "News", link: "#" },
+    { name: "Carrers", link: "#" },
+    { name: "Admission", link: "#" },
+    { name: "Contact Us", link: "#" },
+  ]
+
+  const handleToggle = () => {
+    setToggleOpen(!toggleOpen)
+    console.log(toggleOpen)
+  }
   return (
-    <div className={styles.headerWrapper}>
-      <div className={styles.logoWrapper}>
-        <div className={styles.logoContainer}>
-          <Image className={styles.headerLogoImg} src={LogoImg} alt="Picture of the author" height={60} width={60} />
-        </div>
-        <div className={styles.TextContainer}>
-          <Image className={styles.headerLogoText} src={LogoText} alt="Picture of the author" height={60} width={150} />
+    <nav className="navbar navbar-expand-lg bg-light">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="#">
+          <div className={styles.logoWrapper}>
+            <div className={styles.logoContainer}>
+              <Image className={styles.headerLogoImg} src={LogoImg} alt="Gyaana" height={50} width={60} />
+            </div>
+            <div className={styles.textContainer}>
+              <Image className={styles.headerLogoText} src={LogoText} alt="Gyaana" height={50} width={150} />
+            </div>
+          </div>
+        </a>
+        <button
+          onClick={handleToggle}
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded={toggleOpen}
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className={`${toggleOpen ? "collapse" : ""} navbar-collapse`} id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            {headerItems.map((item) => (
+              <div className={styles.navLinksConTainer}>
+                <a className={styles.navLinksCon} aria-current="page" href={item.link}>
+                  {item.name}
+                </a>
+              </div>
+            ))}
+            <a onClick={() => setLoginOpen(!loginOpen)} className={styles.navLinksCon} aria-current="page" href="#">
+              Login
+              <span>
+                <Image style={{ marginTop: "4px" }} src={DownArrow} alt="Down" height={20} width={20} />
+              </span>
+            </a>
+            {loginOpen && (
+              <div className={styles.loginPopupWrapper}>
+                <div>
+                  <a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">
+                    Teacher Login
+                  </a>
+                </div>
+                <div>
+                  <a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">
+                    Student Login
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      <div className={styles.headerLinksContainer}>
-        <Navbar />
-      </div>
-    </div>
+    </nav>
   )
 }
 
