@@ -20,7 +20,7 @@ const Footer = (props) => {
   ]
 
   return (
-    <div className={`${Style.footer} row`}>
+    <div className={`${Style.footer} row mx-0`}>
       <div className={`col-sm-12 col-md-4`}>
         <h4 className={`mb-3`}>Have a Question ?</h4>
         <div className={`${Style.box}`}>
