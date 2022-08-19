@@ -2,6 +2,7 @@ import Head from "next/head"
 import React from "react"
 import Footer from "../Footer"
 import Header from "../Header"
+import ImgaeSlider from "../ImgaeSlider"
 
 const Layout = (props) => {
   return (
@@ -10,6 +11,7 @@ const Layout = (props) => {
         <title>Gyaana </title>
       </Head>
       <Header />
+      <ImgaeSlider />
       <div>{props.children}</div>
       <Footer />
     </div>
