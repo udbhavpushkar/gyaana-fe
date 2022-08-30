@@ -11,7 +11,6 @@ const Layout = (props) => {
         <title>Gyaana </title>
       </Head>
       <Header />
-      <ImgaeSlider />
       <div>{props.children}</div>
       <Footer />
     </div>

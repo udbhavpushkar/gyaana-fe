@@ -1,0 +1,16 @@
+.newsContainer{
+    background:  url("../../assets/images/pngtree-back-to-school-background-and-pencils-picture-image_1207868.jpg") no-repeat fixed center;
+    padding: 15px 5px;
+}
+.btn{
+    padding: 10px 20px;
+    background-color: #fda638;
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+    border-radius: 26px;
+
+    
+
+}

@@ -1,0 +1,41 @@
+.counterWrapper{
+    height: 100%;
+    /* background-color: aquamarine; */
+    background: url("../../assets/images/counterPencil.webp") no-repeat fixed center;
+    background-position: 50% -25.0833px;
+    color: white;
+    font-family: cursive;
+    padding: 2% 20%;
+    color: rgb(79, 50, 188);
+    font-size: 18px;
+    /* background-color: rgb(188, 121, 188); */
+}
+.counterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countsContainer{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    /* box-shadow: rgba(12, 100, 172, 0.35) 0px 5px 15px;
+    background-color: rgb(16, 119, 183); */
+    margin: 8px;
+    min-width: 130px;
+    width: 160px;
+    height: 200px;
+    margin-top: 50px;
+    opacity: .8;
+    /* border-radius: 16px; */
+    
+}
+.countNumber{
+    font-weight: 500;
+    font-size: 50px;
+    color: #1eaaf1;
+}

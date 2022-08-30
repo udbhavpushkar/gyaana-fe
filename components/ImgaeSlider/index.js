@@ -13,28 +13,34 @@ const ImgaeSlider = () => {
   const imgaerURL = [
     {
       image: ImageOne,
-      alt: "School",
+      alt: "School one",
       heading: "Gyaana International School",
       description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
     {
       image: ImageTwo,
-      alt: "School",
+      alt: "School two",
       heading: "Gyaana International School",
       description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
     {
       image: ImageThree,
-      alt: "School",
+      alt: "School three",
       heading: "Gyaana International School",
       description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
-    // {
-    //   image: ImageTwo,
-    //   alt: "School",
-    //   heading: "Gyaana International School",
-    //   description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
-    // },
+    {
+      image: ImageTwo,
+      alt: "School four",
+      heading: "Gyaana International School",
+      description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
+    },
+    {
+      image: ImageOne,
+      alt: "School five",
+      heading: "Gyaana International School",
+      description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
+    },
   ]
 
   const handleSelect = (selectedIndex, e) => {
@@ -42,13 +48,15 @@ const ImgaeSlider = () => {
   }
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
+    <Carousel className=" width-100 center" activeIndex={index} onSelect={handleSelect} interval={2000} wrap={true}>
       {imgaerURL.map((item) => (
-        <Carousel.Item>
+        <Carousel.Item key={item.alt}>
           <Image className={styles.sliderImage} src={item.image} alt={item.alt} height={450} width={1400} />
           <Carousel.Caption>
-            <h3 className={styles.sliderHeading}>{item.heading}</h3>
-            <p className={styles.sliderDescription}>{item.description}</p>
+            <div className={styles.textConatiner}>
+              <h2 className={styles.sliderHeading}>{item.heading}</h2>
+              <p className={styles.sliderDescription}>{item.description}</p>
+            </div>
           </Carousel.Caption>
         </Carousel.Item>
       ))}
