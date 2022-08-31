@@ -14,11 +14,11 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (userRole == "Admin") {
-      window.location = "/AdminHome/"
+      window.location = "/Admin/"
     } else if (userRole == "Teachers") {
-      window.location = "/TeacherHome/"
+      window.location = "/Teacher/"
     } else if (userRole == "Student") {
-      window.location = "/StudentHome/"
+      window.location = "/Student/"
     }
   }
 

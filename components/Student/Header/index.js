@@ -3,7 +3,7 @@ import Image from "next/image"
 import GyaanaImage from "../../../assets/images/unnamed.jpg"
 import Link from "next/link"
 
-const StudentHeader = () => {
+const Header = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "purple" }}>
@@ -57,4 +57,4 @@ const StudentHeader = () => {
   )
 }
 
-export default StudentHeader
+export default Header

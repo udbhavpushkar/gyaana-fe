@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 import GyaanaImage from "../../../assets/images/pic1.png"
 
-const StudentProfile = () => {
+const Profile = () => {
   return (
     <div style={{ backgroundColor: "rgb(198, 173, 198)" }}>
       <div className="row w-100 py-4">
@@ -57,4 +57,4 @@ const StudentProfile = () => {
   )
 }
 
-export default StudentProfile
+export default Profile
