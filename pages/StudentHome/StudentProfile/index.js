@@ -17,6 +17,10 @@ const StudentProfile = () => {
               <span>III</span>
             </div>
             <div style={{ borderBottom: "2px dotted purple" }}>
+              <span>Gender :</span>
+              <span>Male</span>
+            </div>
+            <div style={{ borderBottom: "2px dotted purple" }}>
               <span>Contact :</span>
               <span>+91 8090606989</span>
             </div>
