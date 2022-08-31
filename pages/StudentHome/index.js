@@ -1,9 +1,12 @@
 import React from "react"
+import StudentHeader from "./StudentHeader/index"
+import StudentProfile from "./StudentProfile"
 
 const Student = () => {
   return (
     <div>
-      <h2>Student Dashboard</h2>
+      <StudentHeader />
+      <StudentProfile />
     </div>
   )
 }

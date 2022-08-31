@@ -9,6 +9,7 @@
     /* height: 400px;
     width: 100%; */
     color: rgb(198, 173, 198);
+    
 }
 .loginInput{
     border: none;
@@ -23,5 +24,16 @@
 }
 
 .loginInput:focus{
-    border: inherit !important;
+    outline: none;
 }
+.loginForgotLink{
+    text-decoration: none;
+     color: white
+}
+.loginForgotLink:hover{
+    background-color: rgb(37, 23, 23);
+    padding: 10px;
+    border-radius:16px ;
+}
+
+

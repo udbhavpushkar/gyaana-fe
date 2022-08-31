@@ -38,8 +38,8 @@ const Contact = () => {
     <Layout>
       {isLoading ? (
         <div className={styles.spinnerWrapper}>
-          <div class="spinner-border text-secondary" style={{ width: "4rem", height: "4rem" }} role="status">
-            <span class="sr-only">Loading...</span>
+          <div className="spinner-border text-secondary" style={{ width: "4rem", height: "4rem" }} role="status">
+            <span className="sr-only">Loading...</span>
           </div>
         </div>
       ) : (

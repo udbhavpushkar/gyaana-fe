@@ -76,7 +76,7 @@ const Header = (props) => {
                 {headerItems.map((item) => (
                   <div className={styles.navLinksConTainer} key={item.name}>
                     <Link href={item.link}>
-                      <a activeStyle={{ color: "red" }} onClick={() => setToggleOpen(true)} className={styles.navLinksCon} aria-current="page">
+                      <a onClick={() => setToggleOpen(true)} className={styles.navLinksCon} aria-current="page">
                         {item.name}
                       </a>
                     </Link>
@@ -91,7 +91,7 @@ const Header = (props) => {
                     <Link
                       href={{
                         pathname: "/Login",
-                        query: { data: "Admin" },
+                        query: { role: "Admin" },
                       }}
                     >
                       <a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page">
@@ -101,7 +101,7 @@ const Header = (props) => {
                     <Link
                       href={{
                         pathname: "/Login",
-                        query: { data: "Teachers" },
+                        query: { role: "Teachers" },
                       }}
                     >
                       <a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">
@@ -111,7 +111,7 @@ const Header = (props) => {
                     <Link
                       href={{
                         pathname: "/Login",
-                        query: { data: "Student" },
+                        query: { role: "Student" },
                       }}
                     >
                       <a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">

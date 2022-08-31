@@ -12,7 +12,7 @@ const NewsAndEvents = () => {
     "Play School available here.",
     "Proper Guidence is provided to each Child.",
     "Transport is now available.",
-    "Top class results for the past 10 years.",
+    "Top className results for the past 10 years.",
     "Branches in more than 42 cities.",
   ]
   return (

@@ -32,7 +32,7 @@ const News = () => {
       img: NewsImg,
     },
     {
-      heading: "Top class results for the past 10 years.",
+      heading: "Top className results for the past 10 years.",
       desc: "This article discusses the history of education, tracing the evolution of the formal teaching of knowledge and skills from prehistoric and ancient times to the present, and considering the various philosophies that have inspired the resulting systems. Other aspects of education are treated in a number of articles.",
       img: NewsImg,
     },
