@@ -1,24 +1,41 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 import GyaanaImage from "../../assets/images/unnamed.jpg"
 import styles from "./login.module.css"
 import Link from "next/link"
+import Fire from "../../assets/images/hh.gif"
 
 const Login = (props) => {
   const router = useRouter()
+  const [num1, setNum1] = useState("")
+  const [num2, setNum2] = useState("")
+  const [sum, setSum] = useState("")
+  const [sumErr, setSumErr] = useState("")
 
   const userRole = router.query.role
+
+  useEffect(() => {
+    setNum1(Math.floor(Math.random() * 10))
+    setNum2(Math.floor(Math.random() * 10))
+  }, [])
 
   console.log("TEXT", router.query.userRole)
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (userRole == "Admin") {
-      window.location = "/Admin/"
-    } else if (userRole == "Teachers") {
-      window.location = "/Teacher/"
-    } else if (userRole == "Student") {
-      window.location = "/Student/"
+    if (num1 + num2 == sum) {
+      setSumErr("")
+      if (userRole == "Admin") {
+        window.location = "/Admin"
+      } else if (userRole == "Teacher") {
+        window.location = "/Teacher"
+      } else if (userRole == "Student") {
+        window.location = "/Student"
+      }
+    } else if (sum == "") {
+      setSumErr("Please enter sum")
+    } else {
+      setSumErr("Sum is Incorrect")
     }
   }
 
@@ -34,6 +51,7 @@ const Login = (props) => {
           <div className={styles.loginImageContainer}></div>
           <Image style={{ objectFit: "cover" }} src={GyaanaImage} height={490} width={450} />
         </div>
+
         <div
           className="col-sm-5 text-center my-4"
           style={{ display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "16px", backgroundColor: "purple", color: "white" }}
@@ -51,15 +69,20 @@ const Login = (props) => {
 
             <input id="password" className={styles.loginInput} type="password" placeholder="Password" />
             <br></br>
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "20px", position: "relative" }}>
               <span>Enter the Sum:</span>
-              <input defaultValue={4} style={{ maxWidth: "30px", marginLeft: "10px", marginRight: "10px", paddingLeft: "7px" }} />
+              <input value={num1} disabled style={{ maxWidth: "30px", marginLeft: "10px", marginRight: "10px", paddingLeft: "7px" }} />
               <span>+</span>
-              <input defaultValue={7} style={{ maxWidth: "30px", marginLeft: "10px", marginRight: "10px", paddingLeft: "7px" }} />
+              <input value={num2} disabled style={{ maxWidth: "30px", marginLeft: "10px", marginRight: "10px", paddingLeft: "7px" }} />
               <span>=</span>
-              <input style={{ maxWidth: "30px", marginLeft: "10px", marginRight: "10px", paddingLeft: "7px" }} />
+              <input
+                value={sum}
+                onChange={(e) => setSum(e.target.value)}
+                style={{ maxWidth: "30px", marginLeft: "10px", marginRight: "10px", paddingLeft: "7px" }}
+              />
+              <span className={styles.summErrMsg}>{sumErr}</span>
             </div>
-            <div>
+            <div style={{ marginTop: "40px" }}>
               <Link href="#">
                 <a className={styles.loginForgotLink}>Forgot Password</a>
               </Link>

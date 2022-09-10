@@ -2,8 +2,7 @@ import React, { useState } from "react"
 import Image from "next/image"
 import ImageOne from "../../assets/images/Draw-a-School.jpg.webp"
 import ImageTwo from "../../assets/images/librarypic.jpg"
-import ImageThree from "../../assets/images/imageFour.avif"
-// import LogoImg33 from "../../assets/images/Draw-a-School.jpg.webp"
+// import ImageThree from "../../assets/images/imageFour.avif"
 import Carousel from "react-bootstrap/Carousel"
 import styles from "./imageSlider.module.css"
 
@@ -24,7 +23,7 @@ const ImgaeSlider = () => {
       description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
     {
-      image: ImageThree,
+      image: ImageTwo,
       alt: "School three",
       heading: "Gyaana International School",
       description: "Nulla vitae elit libero, a pharetra augue mollis interdum.",

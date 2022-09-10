@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import Layout from "./../../components/Layout/index"
 import styles from "./contact.module.css"
 import Image from "next/image"
+import LoadingSpinner from "./../../components/LoadingSpinner/index"
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -37,11 +38,7 @@ const Contact = () => {
   return (
     <Layout>
       {isLoading ? (
-        <div className={styles.spinnerWrapper}>
-          <div className="spinner-border text-secondary" style={{ width: "4rem", height: "4rem" }} role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
+        <LoadingSpinner />
       ) : (
         <div className={styles.newsWrapper}>
           <div className={styles.newsHeading}>

@@ -28,12 +28,20 @@
 }
 .loginForgotLink{
     text-decoration: none;
-     color: white
+     background-color: rgb(198, 173, 198);
+     color: purple;
+     padding: 10px;
+    border-radius:16px ;
 }
 .loginForgotLink:hover{
-    background-color: rgb(37, 23, 23);
-    padding: 10px;
-    border-radius:16px ;
+    color: white;
+
+}
+.summErrMsg{
+    color: red;
+    position: absolute;
+    top: 32px;
+    left: 173px;
 }
 
 

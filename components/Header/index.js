@@ -101,7 +101,7 @@ const Header = (props) => {
                     <Link
                       href={{
                         pathname: "/Login",
-                        query: { role: "Teachers" },
+                        query: { role: "Teacher" },
                       }}
                     >
                       <a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">

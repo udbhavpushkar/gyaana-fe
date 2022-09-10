@@ -4,6 +4,7 @@ import ImgaeSlider from "../components/ImgaeSlider"
 import Layout from "../components/Layout"
 import NewsAndEvents from "../components/NewsAndEvent"
 import Counters from "../components/Counters"
+import LoadingSpinner from "../components/LoadingSpinner"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false)
@@ -17,11 +18,7 @@ export default function Home() {
   return (
     <>
       {isLoading ? (
-        <div style={{ display: "flex", height: "100vh", justifyContent: "center", alignItems: "center" }}>
-          <div className="spinner-border text-secondary" style={{ width: "4rem", height: "4rem" }} role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
+        <LoadingSpinner />
       ) : (
         <Layout>
           <ImgaeSlider />

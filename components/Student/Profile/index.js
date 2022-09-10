@@ -3,15 +3,58 @@ import Image from "next/image"
 import GyaanaImage from "../../../assets/images/pic1.png"
 
 const Profile = () => {
+  const studentData = [
+    {
+      title: "Student Name :",
+      value: "Akash Gupta",
+    },
+    {
+      title: "Class :",
+      value: "III",
+    },
+    {
+      title: "House :",
+      value: "xyz",
+    },
+    {
+      title: "Contact :",
+      value: "+91 8899776655",
+    },
+    {
+      title: "Father's Name :",
+      value: "Mr. Shailesh Gupta",
+    },
+    {
+      title: "Mother's Name :",
+      value: "Mrs. Savita Gupta",
+    },
+    {
+      title: "Student Name :",
+      value: "Akash Gupta",
+    },
+    {
+      title: "Student Name :",
+      value: "Akash Gupta",
+    },
+    {
+      title: "Student Name :",
+      value: "Akash Gupta",
+    },
+  ]
   return (
     <div style={{ backgroundColor: "rgb(198, 173, 198)" }}>
       <div className="row w-100 py-4">
         <div className="col-sm-7 mx-5" style={{ fontSize: "22px", fontFamily: "cursive", color: "purple" }}>
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Student Name :</span>
-              <span>Akash Gupta</span>
-            </div>
+            {studentData.map((item, index) => (
+              <div key={`${item.title}${index}`}>
+                <div style={{ borderBottom: "2px dotted purple" }}>
+                  <span style={{ color: "black" }}>{item.title}</span>
+                  <span>{item.value}</span>
+                </div>
+              </div>
+            ))}
+            {/*             
             <div style={{ borderBottom: "2px dotted purple" }}>
               <span>Class :</span>
               <span>III</span>
@@ -43,7 +86,7 @@ const Profile = () => {
             <div style={{ borderBottom: "2px dotted purple" }}>
               <span>Email :</span>
               <span>gupta@gmail.com</span>
-            </div>
+            </div> */}
           </div>
         </div>
         <div
