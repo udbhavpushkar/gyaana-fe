@@ -5,6 +5,7 @@ import GyaanaImage from "../../assets/images/unnamed.jpg"
 import styles from "./login.module.css"
 import Link from "next/link"
 import Fire from "../../assets/images/hh.gif"
+import { postRequest } from "../../utilities/rest_service"
 
 const Login = (props) => {
   const router = useRouter()
@@ -12,26 +13,57 @@ const Login = (props) => {
   const [num2, setNum2] = useState("")
   const [sum, setSum] = useState("")
   const [sumErr, setSumErr] = useState("")
+  const [formData, setFormData] = useState({})
 
   const userRole = router.query.role
 
   useEffect(() => {
     setNum1(Math.floor(Math.random() * 10))
     setNum2(Math.floor(Math.random() * 10))
+
+    if(localStorage.getItem("auth_token")){
+      let role = localStorage.getItem("role")
+      redirectToDashboard(role)
+    }
+
   }, [])
+
+  const redirectToDashboard = (role)=>{
+    if (role) {
+      window.location = "/"+role
+    }
+  }
+
+
+  const login = async ()=>{
+    try{
+      let res = await postRequest("user/login/", formData)
+      if (res.isSuccess) {
+        localStorage.setItem("auth_token", res.data.token)
+        localStorage.setItem("name", res.data.name)
+        localStorage.setItem("email", res.data.email)
+        localStorage.setItem("user_id", res.data._id)
+        localStorage.setItem("role", res.data.role)
+        redirectToDashboard(res.data.role)
+      }
+      
+    }catch(error){
+      console.log(error);
+    }
+  }
+
+  const handleFormChange = (e)=>{
+    let data = {...formData}
+    data[e.target.name] = e.target.value
+    setFormData(data)
+  }
 
   console.log("TEXT", router.query.userRole)
   const handleSubmit = (e) => {
     e.preventDefault()
     if (num1 + num2 == sum) {
       setSumErr("")
-      if (userRole == "Admin") {
-        window.location = "/Admin"
-      } else if (userRole == "Teacher") {
-        window.location = "/Teacher"
-      } else if (userRole == "Student") {
-        window.location = "/Student"
-      }
+      login()
     } else if (sum == "") {
       setSumErr("Please enter sum")
     } else {
@@ -61,13 +93,13 @@ const Login = (props) => {
             <label htmlFor="username" className={styles.loginLabels}>
               Username :
             </label>
-            <input id="username" autoFocus className={styles.loginInput} type="text" placeholder={`${userRole} Username`} />
+            <input id="username" autoFocus className={styles.loginInput} type="text" placeholder={`${userRole} Username`} onChange={handleFormChange} name="email"/>
             <br></br>
             <label htmlFor="password" className={styles.loginLabels}>
               Password :
             </label>
 
-            <input id="password" className={styles.loginInput} type="password" placeholder="Password" />
+            <input id="password" className={styles.loginInput} type="password" placeholder="Password" onChange={handleFormChange} name="password"/>
             <br></br>
             <div style={{ marginBottom: "20px", position: "relative" }}>
               <span>Enter the Sum:</span>

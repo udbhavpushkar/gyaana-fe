@@ -1,8 +1,18 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { isLoggedIn } from "../../utilities/auth_services"
+import { getRequest } from "../../utilities/rest_service"
 import styles from "./styles.module.css"
 
 const Admin = () => {
   const [isToggle, setIsToggle] = useState(true)
+
+  useEffect(()=>{
+    if (!isLoggedIn()) {
+      window.location ="/"
+    }
+    
+  },[])
+
   return (
     <div className={styles.adminWrapper}>
       <div className={styles.adminContanier}>
