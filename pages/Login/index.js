@@ -21,22 +21,20 @@ const Login = (props) => {
     setNum1(Math.floor(Math.random() * 10))
     setNum2(Math.floor(Math.random() * 10))
 
-    if(localStorage.getItem("auth_token")){
+    if (localStorage.getItem("auth_token")) {
       let role = localStorage.getItem("role")
       redirectToDashboard(role)
     }
-
   }, [])
 
-  const redirectToDashboard = (role)=>{
+  const redirectToDashboard = (role) => {
     if (role) {
-      window.location = "/"+role
+      window.location = "/" + role
     }
   }
 
-
-  const login = async ()=>{
-    try{
+  const login = async () => {
+    try {
       let res = await postRequest("user/login/", formData)
       if (res.isSuccess) {
         localStorage.setItem("auth_token", res.data.token)
@@ -46,14 +44,13 @@ const Login = (props) => {
         localStorage.setItem("role", res.data.role)
         redirectToDashboard(res.data.role)
       }
-      
-    }catch(error){
-      console.log(error);
+    } catch (error) {
+      console.log(error)
     }
   }
 
-  const handleFormChange = (e)=>{
-    let data = {...formData}
+  const handleFormChange = (e) => {
+    let data = { ...formData }
     data[e.target.name] = e.target.value
     setFormData(data)
   }
@@ -93,13 +90,21 @@ const Login = (props) => {
             <label htmlFor="username" className={styles.loginLabels}>
               Username :
             </label>
-            <input id="username" autoFocus className={styles.loginInput} type="text" placeholder={`${userRole} Username`} onChange={handleFormChange} name="email"/>
+            <input
+              id="username"
+              autoFocus
+              className={styles.loginInput}
+              type="text"
+              placeholder={`${userRole} Username`}
+              onChange={handleFormChange}
+              name="email"
+            />
             <br></br>
             <label htmlFor="password" className={styles.loginLabels}>
               Password :
             </label>
 
-            <input id="password" className={styles.loginInput} type="password" placeholder="Password" onChange={handleFormChange} name="password"/>
+            <input id="password" className={styles.loginInput} type="password" placeholder="Password" onChange={handleFormChange} name="password" />
             <br></br>
             <div style={{ marginBottom: "20px", position: "relative" }}>
               <span>Enter the Sum:</span>
