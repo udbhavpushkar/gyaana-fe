@@ -59,7 +59,6 @@ const ClassList = (props) => {
 		if (dataList[index]) {
 			dataList[index] = data
 			setClassData(dataList)
-			setEditData(null)
 		}
 	}
 
