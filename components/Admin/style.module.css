@@ -46,13 +46,9 @@
 }
 
 .sidebarOpen{
-    display: block;
-    
-    
+    display: block;    
 }
+
 .sidebarClose{
     display: none;
-    
-
-
 }
