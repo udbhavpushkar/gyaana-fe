@@ -59,6 +59,7 @@ const TeacherList = (props) => {
 		if (dataList[index]) {
 			dataList[index] = data
 			setTeacherData(dataList)
+			setEditData(null)
 		}
 	}
 

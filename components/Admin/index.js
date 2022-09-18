@@ -11,7 +11,7 @@ const AdminLayout = (props) => {
 	const headersData = [
 		{
 			name: "Home",
-			link: "#",
+			link: "/admin",
 		},
 		{
 			name: "Teacher",
