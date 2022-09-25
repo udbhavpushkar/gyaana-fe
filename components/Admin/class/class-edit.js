@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getRequest, postRequest, patchRequest } from "../../../utilities/rest_service"
+import { getRequest, patchRequest } from "../../../utilities/rest_service"
 
 const ClassEdit = (props) => {
 	const [formData, setFormData] = useState({ ...props.data.data })

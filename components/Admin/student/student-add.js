@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { postRequest } from "../../../utilities/rest_service"
+import { postRequest, getRequest } from "../../../utilities/rest_service"
 
 const StudentAdd = (props) => {
 	const [formData, setFormData] = useState({ password: "12345678" })
+	const [classData, setClassData] = useState([])
+
+	useEffect(() => {
+		handleGetClassList()
+	}, [])
 
 	const handleAddStudent = async (e) => {
 		e.preventDefault()
@@ -14,6 +19,17 @@ const StudentAdd = (props) => {
 			}
 		} catch (e) {
 			console.log("Error: ", e)
+		}
+	}
+
+	const handleGetClassList = async () => {
+		try {
+			let response = await getRequest("grade/")
+			if (response.isSuccess) {
+				setClassData(response.data)
+			}
+		} catch (e) {
+			console.log("Error", e)
 		}
 	}
 
@@ -34,6 +50,13 @@ const StudentAdd = (props) => {
 					<input type="text" name="name" onChange={handleFormChange} placeholder="Enter Name" />
 					<label>Enrollment Number :</label>
 					<input type="text" name="enroll" onChange={handleFormChange} placeholder="Enter Enrollment Number" />
+					<label>Gender :</label>
+					<select required id="gender" name="gender" onChange={handleFormChange}>
+						<option value="">----</option>
+						<option value="female">Female</option>
+						<option value="male">Male</option>
+						<option value="others">Others</option>
+					</select>
 					<label>Email :</label>
 					<input type="email" name="email" onChange={handleFormChange} placeholder="Enter Email" />
 					<label>Phone :</label>
@@ -45,6 +68,18 @@ const StudentAdd = (props) => {
 					<label>Aadhaar Number :</label>
 					<input type="text" name="aadhaar" onChange={handleFormChange} placeholder="Enter Aadhaar Number" />
 					<label>House :</label>
+					<input type="text" name="house" onChange={handleFormChange} placeholder="Enter House" />
+					<label>Select Class : </label>
+					<select id="grade" name="grade" onChange={handleFormChange}>
+						<option>----</option>
+						{classData.map((grade, index) => {
+							return (
+								<option key={`teacher-option-${index}`} value={grade._id}>
+									{`${grade.name}, ${grade.section}`}
+								</option>
+							)
+						})}
+					</select>
 					<div>
 						<button className="btn btn-success my-4">Add Student</button>
 					</div>
