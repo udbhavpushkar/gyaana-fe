@@ -29,6 +29,14 @@ const AdminLayout = (props) => {
 			name: "Staff",
 			link: "#",
 		},
+		{
+			name: "Enquiry Form",
+			link: "#",
+		},
+		{
+			name: "Admission",
+			link: "#",
+		},
 	]
 
 	useEffect(() => {
@@ -46,13 +54,13 @@ const AdminLayout = (props) => {
 			<div className={styles.adminContanier}>
 				<div className={isToggle ? styles.adminLeftContanier : styles.sidebarClose}>
 					<p className={styles.closeButton} onClick={() => setIsToggle(!isToggle)}>
-						Close X
+						<span style={{ fontSize: "20px" }}>X</span>
 					</p>
 					<div>
-						<div style={{ marginLeft: "20px" }}>
-							<Image src={imageLogo} height={70} width={100} />
+						<div style={{ display: "flex", justifyContent: "center" }}>
+							<Image src={imageLogo} height={100} width={200} />
 						</div>
-						<div style={{ textAlign: "center", marginTop: "20px" }}>
+						<div className={styles.linkContainer} style={{ textAlign: "center", marginTop: "20px" }}>
 							{headersData.map((item, index) => (
 								<Link href={item.link} key={`nav_${index}`}>
 									<p className={styles.adminHeaderLinks}>{item.name}</p>
@@ -62,11 +70,13 @@ const AdminLayout = (props) => {
 					</div>
 				</div>
 				<div className={styles.adminRightContanier}>
-					<div className={styles.menuButtonContainer} style={{ textAlign: "right", padding: "20px" }}>
+					<div className={styles.menuButtonContainer}>
 						<button onClick={handleToggle} className={isToggle ? styles.sidebarClose : styles.sidebarOpen}>
 							&#9776;
 						</button>
-						<button onClick={logout}>Logout</button>
+						<button className={styles.logoutBtn} onClick={logout}>
+							Logout
+						</button>
 					</div>
 					<div>{props.children}</div>
 				</div>
