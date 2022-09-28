@@ -13,31 +13,31 @@ const Enquiry = () => {
 				<h2 className="styles.heading">Enquiry Form</h2>
 				<form>
 					<div className="mb-3">
-						<label for="name" className="form-label">
+						<label htmlFor="name" className="form-label">
 							Full Name
 						</label>
 						<input type="text" className="form-control" id="name" aria-describedby="emailHelp" />
 					</div>
 					<div className="mb-3">
-						<label for="email" className="form-label">
+						<label htmlFor="email" className="form-label">
 							Email address
 						</label>
 						<input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
 					</div>
 					<div className="mb-3">
-						<label for="contact" className="form-label">
+						<label htmlFor="contact" className="form-label">
 							Contant
 						</label>
 						<input type="text" className="form-control" id="contact" aria-describedby="emailHelp" />
 					</div>
 					<div className="mb-3">
-						<label for="address" className="form-label">
+						<label htmlFor="address" className="form-label">
 							Address
 						</label>
 						<input type="text" className="form-control" id="address" aria-describedby="emailHelp" />
 					</div>
 					<div className="mb-3">
-						<label for="message" className="form-label">
+						<label htmlFor="message" className="form-label">
 							Message
 						</label>
 						<textarea type="text" className="form-control" id="message" aria-describedby="emailHelp" />
