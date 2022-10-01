@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8005/"
+const BASE_URL = process.env.NEXT_PUBLIC_API_ORIGIN
 
 import axios from "axios"
 import { logout } from "./auth_services"
@@ -26,6 +26,7 @@ const set_response = (data, isSuccess = true) => {
 
 export const getRequest = async (url) => {
 	try {
+		console.log(BASE_URL)
 		set_authorization_header()
 		const response = await axios.get(BASE_URL + url, { headers: header })
 		return set_response(response)
