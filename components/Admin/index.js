@@ -26,8 +26,8 @@ const AdminLayout = (props) => {
 			link: "/admin/class-list",
 		},
 		{
-			name: "Staff",
-			link: "#",
+			name: "Feedback",
+			link: "/admin/feedback-list",
 		},
 		{
 			name: "Enquiry Form",
