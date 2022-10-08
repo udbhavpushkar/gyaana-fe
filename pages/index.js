@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react"
 import GallerySection from "../components/Gallery/gallery-section"
 import ImgaeSlider from "../components/ImgaeSlider"
 import Layout from "../components/Layout"
-import NewsAndEvents from "../components/NewsAndEvent"
 import Counters from "../components/Counters"
 import LoadingSpinner from "../components/LoadingSpinner"
 import Enquiry from "../components/Enquiry"
+import NotificationHome from "../components/NotificationHome"
 
 export default function Home() {
 	const [isLoading, setIsLoading] = useState(false)
@@ -25,7 +25,7 @@ export default function Home() {
 					<ImgaeSlider />
 					<GallerySection />
 					<Enquiry />
-					<NewsAndEvents />
+					<NotificationHome />
 					<Counters />
 				</Layout>
 			)}

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import AdminLayout from "../../components/Admin/index"
 import StudentList from "../../components/Admin/student/student-list"
 
-const AdminClassList = (props) => {
+const AdminStudentList = (props) => {
 	return (
 		<AdminLayout>
 			<StudentList />
@@ -10,4 +10,4 @@ const AdminClassList = (props) => {
 	)
 }
 
-export default AdminClassList
+export default AdminStudentList

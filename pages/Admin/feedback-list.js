@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import FeedbackList from "../../components/Admin/feedback/feedback-list"
-// import ClassList from "../../components/Admin/class/class-list"
 import AdminLayout from "../../components/Admin/index"
 
-const AdminClassList = (props) => {
+const AdminFeedbackList = (props) => {
 	return (
 		<AdminLayout>
 			<FeedbackList />
@@ -11,4 +10,4 @@ const AdminClassList = (props) => {
 	)
 }
 
-export default AdminClassList
+export default AdminFeedbackList

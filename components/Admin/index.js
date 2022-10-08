@@ -30,8 +30,8 @@ const AdminLayout = (props) => {
 			link: "/admin/feedback-list",
 		},
 		{
-			name: "Enquiry Form",
-			link: "#",
+			name: "Notification",
+			link: "/admin/notification-list",
 		},
 		{
 			name: "Admission",

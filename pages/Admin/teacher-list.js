@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import AdminLayout from "../../components/Admin/index"
 import TeacherList from "../../components/Admin/teacher/teacher-list"
 

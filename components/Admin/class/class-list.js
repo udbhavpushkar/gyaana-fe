@@ -50,7 +50,7 @@ const ClassList = (props) => {
 
 	const handleAppendClassList = (data) => {
 		let dataList = [...classData]
-		dataList.push(data)
+		dataList.unshift(data)
 		setClassData(dataList)
 	}
 

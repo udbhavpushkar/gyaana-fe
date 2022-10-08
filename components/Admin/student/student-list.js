@@ -51,7 +51,7 @@ const StudentList = (props) => {
 
 	const handleAppendStudentList = (data) => {
 		let dataList = [...studentData]
-		dataList.push(data)
+		dataList.unshift(data)
 		setStudentData(dataList)
 	}
 
