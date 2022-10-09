@@ -33,7 +33,7 @@ const Header = (props) => {
 		{ name: "About Us", link: "About" },
 		{ name: "Downloads", link: "#" },
 		{ name: "Gallery", link: "gallery" },
-		{ name: "Notifications", link: "notifications" },
+		{ name: "Notices", link: "notices" },
 		{ name: "Admission", link: "#" },
 		{ name: "Contact Us", link: "Contact" },
 	]

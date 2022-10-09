@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { postRequest } from "../../../utilities/rest_service"
 
-const NotificationAdd = (props) => {
+const NoticeAdd = (props) => {
 	const [formData, setFormData] = useState({})
 
-	const handleAddNotification = async (e) => {
+	const handleAddNotice = async (e) => {
 		e.preventDefault()
 		try {
-			let response = await postRequest("notification/", formData)
+			let response = await postRequest("notice/", formData)
 			if (response.isSuccess) {
 				props.addToList(response.data)
 				props.setMode("list")
@@ -26,16 +26,16 @@ const NotificationAdd = (props) => {
 	return (
 		<div>
 			<div>
-				<h4 className="text-center">Add New Notification</h4>
+				<h4 className="text-center">Add New Notice</h4>
 			</div>
 			<div style={{ display: "flex", justifyContent: "center", padding: "10px" }}>
-				<form onSubmit={handleAddNotification} style={{ display: "flex", flexDirection: "column", width: "30%" }}>
+				<form onSubmit={handleAddNotice} style={{ display: "flex", flexDirection: "column", width: "30%" }}>
 					<label>Title :</label>
 					<input type="text" name="title" onChange={handleFormChange} placeholder="Enter Title" />
 					<label>Description :</label>
 					<textarea rows="6" placeholder="Enter Description" name="description" onChange={handleFormChange}></textarea>
 					<div>
-						<button className="btn btn-success my-4">Add Notification</button>
+						<button className="btn btn-success my-4">Add Notice</button>
 					</div>
 				</form>
 			</div>
@@ -43,4 +43,4 @@ const NotificationAdd = (props) => {
 	)
 }
 
-export default NotificationAdd
+export default NoticeAdd

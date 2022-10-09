@@ -5,18 +5,18 @@ import Image from "next/image"
 import Layout from "../../components/Layout/index"
 import { getRequest } from "../../utilities/rest_service"
 
-const Notification = () => {
-	const [notificationData, setNotificationData] = useState([])
+const Notice = () => {
+	const [noticeData, setNoticeData] = useState([])
 
 	useEffect(() => {
-		handleGetNotificationList()
+		handleGetNoticeList()
 	}, [])
 
-	const handleGetNotificationList = async () => {
+	const handleGetNoticeList = async () => {
 		try {
-			let response = await getRequest("notification/?limit=6")
+			let response = await getRequest("notice/?limit=6")
 			if (response.isSuccess) {
-				setNotificationData(response.data)
+				setNoticeData(response.data)
 			}
 		} catch (e) {
 			console.log("Error", e)
@@ -27,12 +27,12 @@ const Notification = () => {
 		<Layout>
 			<div className={styles.newsWrapper}>
 				<div className={styles.newsHeading}>
-					<p>Notifications</p>
+					<p>Notices</p>
 				</div>
 				<div className="row">
 					<div>
 						<ul className="list-group">
-							{notificationData.map((item) => (
+							{noticeData.map((item) => (
 								<li className={`list-group-item ${styles.listContainer}`} style={{ borderBottom: "2px dotted rgb(170, 224, 123)" }}>
 									<div className={`row ${styles.newsContentContainer}`}>
 										<div className="col-md-4">
@@ -53,4 +53,4 @@ const Notification = () => {
 	)
 }
 
-export default Notification
+export default Notice

@@ -15,31 +15,31 @@ const AdminLayout = (props) => {
 		},
 		{
 			name: "Teacher",
-			link: "/admin/teacher-list",
+			link: "/admin/teacher",
 		},
 		{
 			name: "Student",
-			link: "/admin/student-list",
+			link: "/admin/student",
 		},
 		{
 			name: "Class",
-			link: "/admin/class-list",
+			link: "/admin/class",
 		},
 		{
 			name: "Enquiry",
-			link: "/admin/feedback-list",
+			link: "/admin/feedback",
 		},
 		{
-			name: "Notification",
-			link: "/admin/notification-list",
+			name: "Notice",
+			link: "/admin/notice",
 		},
 		{
 			name: "Downloads",
-			link: "/admin/download-list",
+			link: "/admin/download",
 		},
 		{
 			name: "Gallery",
-			link: "/admin/gallery-list",
+			link: "/admin/gallery",
 		},
 	]
 

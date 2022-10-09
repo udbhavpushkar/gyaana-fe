@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 import Counters from "../components/Counters"
 import LoadingSpinner from "../components/LoadingSpinner"
 import Enquiry from "../components/Enquiry"
-import NotificationHome from "../components/NotificationHome"
+import NoticeHome from "../components/NoticeHome"
 
 export default function Home() {
 	const [isLoading, setIsLoading] = useState(false)
@@ -25,7 +25,7 @@ export default function Home() {
 					<ImgaeSlider />
 					<GallerySection />
 					<Enquiry />
-					<NotificationHome />
+					<NoticeHome />
 					<Counters />
 				</Layout>
 			)}

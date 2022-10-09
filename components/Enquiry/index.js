@@ -12,7 +12,7 @@ const Enquiry = () => {
 		try {
 			let response = await postRequest("feedback/", formData)
 			if (response.isSuccess) {
-				// Show notification
+				// Show toast message
 				document.getElementById("add-feedback-form").reset()
 			}
 		} catch (e) {

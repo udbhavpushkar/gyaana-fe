@@ -2,46 +2,46 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useEffect, useState } from "react"
 import { deleteRequest, getRequest } from "../../../utilities/rest_service"
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
-import NotificationAdd from "./notification-add"
+import NoticeAdd from "./notice-add"
 import { formatDate } from "../../../utilities/date_services"
 
-const NotificationList = (props) => {
+const NoticeList = (props) => {
 	const [mode, setMode] = useState("list")
-	const [notificationData, setNotificationData] = useState([])
+	const [noticeData, setNoticeData] = useState([])
 
 	useEffect(() => {
-		handleGetNotificationList()
+		handleGetNoticeList()
 	}, [])
 
-	const handleAddnotificationClick = (e) => {
+	const handleAddnoticeClick = (e) => {
 		e.preventDefault()
 		setMode("add")
 	}
 
-	const handleGetNotificationList = async () => {
+	const handleGetNoticeList = async () => {
 		try {
-			let response = await getRequest("notification/")
+			let response = await getRequest("notice/")
 			if (response.isSuccess) {
-				setNotificationData(response.data)
+				setNoticeData(response.data)
 			}
 		} catch (e) {
 			console.log("Error", e)
 		}
 	}
 
-	const handleAppendNotificationList = (data) => {
-		let dataList = [...notificationData]
+	const handleAppendNoticeList = (data) => {
+		let dataList = [...noticeData]
 		dataList.unshift(data)
-		setNotificationData(dataList)
+		setNoticeData(dataList)
 	}
 
-	const handleDeleteNotification = async (id, index) => {
+	const handleDeleteNotice = async (id, index) => {
 		try {
-			let response = await deleteRequest(`notification/${id}`)
+			let response = await deleteRequest(`notice/${id}`)
 			if (response.isSuccess) {
-				let dataList = [...notificationData]
+				let dataList = [...noticeData]
 				dataList.splice(index, 1)
-				setNotificationData(dataList)
+				setNoticeData(dataList)
 			}
 		} catch (e) {
 			console.log("Error", e)
@@ -53,9 +53,9 @@ const NotificationList = (props) => {
 			{mode === "list" && (
 				<>
 					<div className={`d-flex justify-content-between`} style={{ padding: "10px 20px" }}>
-						<p>Notification List</p>
+						<p>Notice List</p>
 						<div>
-							<button onClick={handleAddnotificationClick}>+Add Notification</button>
+							<button onClick={handleAddnoticeClick}>+Add Notice</button>
 						</div>
 					</div>
 					<div>
@@ -70,17 +70,17 @@ const NotificationList = (props) => {
 								</tr>
 							</thead>
 							<tbody>
-								{notificationData.map((notification, index) => {
+								{noticeData.map((notice, index) => {
 									return (
-										<tr key={`notification-list-${notification._id}`}>
+										<tr key={`notice-list-${notice._id}`}>
 											<th scope="row">{index + 1}</th>
-											<td>{notification.title}</td>
-											<td>{notification.description}</td>
-											<td>{formatDate(notification.createdAt)}</td>
+											<td>{notice.title}</td>
+											<td>{notice.description}</td>
+											<td>{formatDate(notice.createdAt)}</td>
 											<td>
 												<FontAwesomeIcon
 													onClick={(e) => {
-														handleDeleteNotification(notification._id, index)
+														handleDeleteNotice(notice._id, index)
 													}}
 													className={`pointer text-danger`}
 													icon={faTrashAlt}
@@ -94,9 +94,9 @@ const NotificationList = (props) => {
 					</div>
 				</>
 			)}
-			{mode === "add" && <NotificationAdd addToList={handleAppendNotificationList} setMode={setMode} />}
+			{mode === "add" && <NoticeAdd addToList={handleAppendNoticeList} setMode={setMode} />}
 		</div>
 	)
 }
 
-export default NotificationList
+export default NoticeList
