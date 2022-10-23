@@ -1,11 +1,13 @@
 import React from "react"
+import TeacherLayout from "../../components/Teacher"
 
-const Teacher = () => {
+const Teacher = (props) => {
   return (
-    <div>
-      <h3>Teacher Dashboard</h3>
-    </div>
+    <TeacherLayout>
+      This is teacher dashboard
+    </TeacherLayout>
   )
+
 }
 
 export default Teacher

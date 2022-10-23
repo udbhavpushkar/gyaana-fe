@@ -1,14 +1,13 @@
-import Image from "next/image"
-import React, { useEffect, useState } from "react"
+import React from "react"
 import AdminLayout from "../../components/Admin/index"
 
 const Admin = (props) => {
-  return(
+  return (
     <AdminLayout>
       This is Admin Dashboard
     </AdminLayout>
   )
-  
+
 }
 
 export default Admin

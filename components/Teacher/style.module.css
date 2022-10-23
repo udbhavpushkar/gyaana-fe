@@ -1,0 +1,91 @@
+/* .adminWrapper{
+
+} */
+.adminContanier{
+    display: flex;
+    
+}
+.adminLeftContanier{
+    /* background-color: rgb(225, 221, 221); */
+    height: 100vh;
+    min-width: 200px;
+    width: 20%;
+    transition: opacity 1s ease-out;
+    /* border: 2px solid red; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.menuButtonContainer{
+    background:url("../../assets/images/backSection.jpg");
+    opacity: 0.5;
+    /* display: flex;
+    
+    justify-content: space-between; */
+    /* style={{ textAlign: "right", padding: "20px" }} */
+    text-align: right;
+    padding: 20px;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+}
+
+.closeButton{
+    /* style={{ textAlign: "right", marginRight: "5px", padding: "5px" }} */
+    text-align: right;
+    margin-right: 10px;
+    color: black;
+    cursor: pointer;
+}
+.closeButton:hover{
+    font-weight: 600;
+    color: purple;
+    
+}
+.adminHeaderLinks{
+    font-size: 20px;
+    cursor: pointer;
+    font-family: cursive;
+}
+.adminHeaderLinks:hover{
+    color: purple;
+}
+.adminRightContanier{
+    height: 100vh;
+    /* background-color: green; */
+    width: 100%;
+}
+
+.sidebarOpen{
+    display: block;
+    font-size: 24px;
+    width: 50px;
+    color: white;
+    background-color: rgb(13, 13, 13);
+}
+.sidebarOpen:hover{
+    color: rgb(53, 119, 173);
+}
+
+
+.sidebarClose{
+    display: none;
+}
+.logoutBtn{
+    border: none;
+    padding: 5px 20px;
+    background-color: rgb(7, 7, 7);
+    border-radius: 16px;
+    font-weight: 500;
+    color: white;
+    border: 1px solid white;
+    
+}
+.logoutBtn:hover{
+    /* background-color: rgb(196, 210, 205); */
+    color: rgb(53, 119, 173);
+}
+
+.linkContainer{
+    /* background-color: white;
+    height: 400px; */
+    height: 1000px;
+}
