@@ -4,48 +4,30 @@ import { isLoggedIn, logout } from "../../utilities/auth_services"
 import styles from "./style.module.css"
 import imageLogo from "../../assets/images/unnamed.jpg"
 import Link from "next/link"
+import { useRouter } from 'next/router'
 
 const TeacherLayout = (props) => {
+    const router = useRouter()
     const [isToggle, setIsToggle] = useState(true)
 
     const headersData = [
         {
             name: "Home",
-            link: "/admin",
+            link: "/teacher",
         },
         {
-            name: "Teacher",
-            link: "/admin/teacher",
-        },
-        {
-            name: "Student",
-            link: "/admin/student",
-        },
-        {
-            name: "Class",
-            link: "/admin/class",
-        },
-        {
-            name: "Enquiry",
-            link: "/admin/feedback",
+            name: "Time Table",
+            link: "/teacher/timetable",
         },
         {
             name: "Notice",
-            link: "/admin/notice",
-        },
-        {
-            name: "Downloads",
-            link: "/admin/download",
-        },
-        {
-            name: "Gallery",
-            link: "/admin/gallery",
+            link: "/teacher/notice",
         },
     ]
 
     useEffect(() => {
-        if (!isLoggedIn()) {
-            window.location = "/"
+        if (!isLoggedIn() || localStorage.getItem("role") !== "teacher") {
+            router.push("/")
         }
     }, [])
 
@@ -84,7 +66,7 @@ const TeacherLayout = (props) => {
                     </div>
                     <div>{props.children}</div>
                 </div>
-            </div>
+            </div>q
         </div>
     )
 }

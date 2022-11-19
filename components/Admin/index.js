@@ -4,8 +4,10 @@ import { isLoggedIn, logout } from "../../utilities/auth_services"
 import styles from "./style.module.css"
 import imageLogo from "../../assets/images/unnamed.jpg"
 import Link from "next/link"
+import { useRouter } from 'next/router'
 
 const AdminLayout = (props) => {
+	const router = useRouter()
 	const [isToggle, setIsToggle] = useState(true)
 
 	const headersData = [
@@ -44,8 +46,8 @@ const AdminLayout = (props) => {
 	]
 
 	useEffect(() => {
-		if (!isLoggedIn()) {
-			window.location = "/"
+		if (!isLoggedIn() || localStorage.getItem("role") !== "admin") {
+			router.push("/")
 		}
 	}, [])
 
