@@ -53,7 +53,7 @@ const Timetable = () => {
 													item.period
 												) : (
 													<div>
-														<input placeholder="Subject" style={{ width: "80px", height: "80px", fontSize: "12px", textAlign: "center", fontWeight: "600" }} />
+														<input placeholder="Subject" style={{ height: "80px", width: "100%", fontSize: "12px", textAlign: "center", fontWeight: "600" }} />
 													</div>
 												)}
 											</div>
@@ -63,7 +63,9 @@ const Timetable = () => {
 							</div>
 						))}
 						<div style={{ marginTop: "20px", textAlign: "right", padding: "20px" }}>
-							<button style={{ marginRight: "20px" }}>Save</button>
+							<button className="btn btn-primary" style={{ marginRight: "20px" }}>
+								Save
+							</button>
 						</div>
 					</div>
 				)}
