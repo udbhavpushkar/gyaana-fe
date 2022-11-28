@@ -1,0 +1,18 @@
+.tabButton{
+    border: none;
+    padding: 10px 30px;
+    background-color: white;
+  
+  }
+  
+  .activeTab{
+    border: none;
+    padding: 10px 30px;
+    background-color: blueviolet;
+    color: white;
+  }
+  .noticeTitle{
+    font-family: cursive;
+  
+  
+  }
