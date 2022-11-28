@@ -16,7 +16,7 @@ const TeacherLayout = (props) => {
 			link: "/teacher",
 		},
 		{
-			name: "Time Table",
+			name: "Timetable",
 			link: "/teacher/timetable",
 		},
 		{

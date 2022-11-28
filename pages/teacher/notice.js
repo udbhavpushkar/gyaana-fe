@@ -3,7 +3,6 @@ import TeacherLayout from "../../components/Teacher"
 import Notice from "../../components/Teacher/Notice"
 
 const NoticeTeacher = () => {
-
 	return (
 		<TeacherLayout>
 			<Notice />

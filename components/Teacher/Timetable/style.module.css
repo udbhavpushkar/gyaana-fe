@@ -8,11 +8,24 @@
 
 }
 .tableBox{
+    
     height: 100px;
     width: 100px;
     background-color: purple;
     border: 1px solid white;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.tableBox3{
+    
+    height: 100px;
+    width: 100px;
+    background-color: rgb(174, 174, 104);
+    border: 1px solid white;
+    color: purple;
     display: flex;
     justify-content: center;
     align-items: center;
