@@ -1,0 +1,47 @@
+.loginWrapper{
+    background-color: rgb(198, 173, 198);
+     color: white;
+      height: 100vh;
+      font-family: cursive;
+}
+.loginImageContainer{
+    /* background: url("../../assets/images/loginImg.jpg") no-repeat fixed; */
+    /* height: 400px;
+    width: 100%; */
+    color: rgb(198, 173, 198);
+    
+}
+.loginInput{
+    border: none;
+    padding: 10px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    border-radius: 16px;
+    
+}
+.loginLabels{
+    font-size: 18px;
+}
+
+.loginInput:focus{
+    outline: none;
+}
+.loginForgotLink{
+    text-decoration: none;
+     background-color: rgb(198, 173, 198);
+     color: purple;
+     padding: 10px;
+    border-radius:16px ;
+}
+.loginForgotLink:hover{
+    color: white;
+
+}
+.summErrMsg{
+    color: red;
+    position: absolute;
+    top: 32px;
+    left: 173px;
+}
+
+

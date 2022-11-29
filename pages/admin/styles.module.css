@@ -1,0 +1,59 @@
+/* .adminWrapper{
+
+} */
+.adminContanier{
+    display: flex;
+    
+}
+.adminLeftContanier{
+    background-color: rgb(225, 221, 221);
+    
+    height: 100vh;
+    min-width: 200px;
+    width: 20%;
+    transition: opacity 1s ease-out;
+    /* border: 2px solid red; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.menuButtonContainer{
+    
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+}
+
+.closeButton{
+    /* style={{ textAlign: "right", marginRight: "5px", padding: "5px" }} */
+    text-align: right;
+    margin-right: 10px;
+    color: black;
+    cursor: pointer;
+}
+.closeButton:hover{
+    font-weight: 600;
+    color: purple;
+}
+.adminHeaderLinks{
+    font-size: 20px;
+    cursor: pointer;
+    font-family: cursive;
+}
+.adminHeaderLinks:hover{
+    color: purple;
+}
+.adminRightContanier{
+    height: 100vh;
+    /* background-color: green; */
+    width: 100%;
+}
+
+.sidebarOpen{
+    display: block;
+    
+    
+}
+.sidebarClose{
+    display: none;
+    
+
+
+}

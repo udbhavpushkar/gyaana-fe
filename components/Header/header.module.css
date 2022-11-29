@@ -1,0 +1,174 @@
+.headerWrapper{
+    position: sticky !important;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    border-bottom: 1px solid black;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+}
+.headerLogoImg{
+    object-fit: contain;
+}
+
+.logoWrapper{
+    /* animation-name: example; */
+    animation-duration: 4s;
+    animation-delay: 2s;
+    display: flex;
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    /* border: 2px solid rgb(51, 185, 60); */
+    /* background-color: rgb(167, 174, 179); */
+    /* border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
+    /* border-top-right-radius: 20px; */
+    border-radius: 12px;
+    padding: 10px 5px;
+    padding-left: 20px;
+    /* padding-right: -30px; */
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;     */
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.headerLogoText{
+    font-weight: 600 !important;
+    object-fit: fill;
+}
+
+
+/* div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    
+  } */
+  
+  @keyframes example {
+    0%   {background-color:yellow; left:0px; top:0px;}
+    25%  {background-color:red; left:200px; top:0px;}
+    50%  {background-color:blue; left:500px; top:0px;}
+    75%  {background-color:rgb(31, 163, 186); left:800px; top:0px;}
+    100% {background-color:orange; left:0px; top:0px;}
+  }
+
+.textContainer{
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.linkss{
+    font-family: cursive !important;
+}
+
+
+.navLinksCon{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    opacity: 1 !important;
+    font-family:  cursive ;
+
+}
+.navLinksCon:hover{
+    color: rgb(145, 23, 145);
+
+}
+
+.loginPopupWrapper{
+    position: absolute;
+    top: 58px;
+    right: 54px;
+    display: flex;
+    background-color: rgb(255, 252, 252);
+    padding: 10px 20px;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+
+
+.navLinksConLogin{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    opacity: 1 !important;
+    font-family:  cursive ;
+    padding: 2px 10px;
+
+}
+.navLinksConLogin:hover{
+    border-radius: 16px;
+    color: rgb(145, 23, 145);
+    background-color: #dfdfdf;
+
+}
+.navLinksConTainer{
+    margin-right: 30px;
+}
+
+.scrollToTopWrapper{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgb(70, 146, 70);
+    padding: 8px 10px;
+    border-radius: 24px;
+    z-index: 999;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.scrollToTopIcon{
+    font-size: 24px;
+    color: white;
+    
+}
+
+@media (max-width:991px) {
+    @keyframes example {
+        0%   {background-color:yellow ; left:0px; top:0px;}
+        25%  {background-color:red; left:100px; top:0px;}
+        50%  {background-color:blue; left:300px; top:0px;}
+        75%  {background-color:rgb(37, 147, 194); left:450px; top:0px;}
+        100% {background-color:orangered; left:0px; top:0px;}
+      }
+    .navLinksCon{
+        padding: 10px 0px;
+        text-align: center;
+        font-size: 24px !important;
+    }
+    .navLinksConTainer{
+        padding: 5px;
+        text-align: center;
+        margin-right: 0px;
+        margin-bottom: 10px;
+        border-bottom: 2px dotted orange;
+
+    }
+    .loginPopupWrapper{
+        top: 520px;
+        right: 50px;
+    }
+    .headerWrapper{
+        position: relative !important;
+
+    }
+    .logoWrapper{
+        max-width: 250px;
+    }
+
+}
+@media (max-width:480px) {
+    @keyframes example {
+        0%   {background-color:red; left:0px; top:0px;}
+        25%  {background-color:yellow; left:20%; top:0px;}
+        50%  {background-color:blue; left:30%; top:0px;}
+        75%  {background-color:green; left:5%; top:0px;}
+        100% {background-color:red; left:0px; top:0px;}
+      }
+    }

@@ -1,0 +1,78 @@
+/* .adminWrapper{
+
+} */
+.adminContanier{
+    display: flex;
+    
+}
+.adminLeftContanier{
+    height: 100%;
+    min-width: 200px;
+    width: 20%;
+    transition: opacity 1s ease-out;
+}
+.menuButtonContainer{
+    background:url("../../assets/images/backSection.jpg");
+    opacity: 0.5;
+
+    text-align: right;
+    padding: 20px;
+
+
+}
+
+.closeButton{
+    /* style={{ textAlign: "right", marginRight: "5px", padding: "5px" }} */
+    text-align: right;
+    margin-right: 10px;
+    color: black;
+    cursor: pointer;
+}
+.closeButton:hover{
+    font-weight: 600;
+    color: purple;
+    
+}
+.adminHeaderLinks{
+    font-size: 20px;
+    cursor: pointer;
+    font-family: cursive;
+}
+.adminHeaderLinks:hover{
+    color: purple;
+}
+.adminRightContanier{
+    height: 100vh;
+    /* background-color: green; */
+    width: 100%;
+}
+
+.sidebarOpen{
+    display: block;
+    font-size: 24px;
+    width: 50px;
+    color: white;
+    background-color: rgb(13, 13, 13);
+}
+.sidebarOpen:hover{
+    color: rgb(53, 119, 173);
+}
+
+
+.sidebarClose{
+    display: none;
+}
+.logoutBtn{
+    border: none;
+    padding: 5px 20px;
+    background-color: rgb(7, 7, 7);
+    border-radius: 16px;
+    font-weight: 500;
+    color: white;
+    border: 1px solid white;
+    
+}
+.logoutBtn:hover{
+    color: rgb(53, 119, 173);
+}
+

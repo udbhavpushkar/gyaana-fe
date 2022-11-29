@@ -1,0 +1,45 @@
+/* .newsWrapper{
+} */
+.newsHeading{
+    /* background:  url("../../assets/images/kelli-tungay-2LJ4rqK2qfU-unsplash.jpg") no-repeat fixed center; */
+    background: rgb(205, 100, 205) url("../../assets/images/librarypic.jpg") no-repeat fixed center ;
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    font-family: cursive;
+    opacity: .8;
+    letter-spacing: 3px;
+    color: black;
+
+}
+.newsContentContainer{
+    border-radius: 20px;
+    /* background-color: rgb(138, 85, 85); */
+    padding: 5px 35px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.newsImage{
+
+    object-fit: contain;
+    /* border-radius: 20px !important; */
+    
+}
+.newsHeadingText{
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 23px;
+    font-weight: 600;
+    /* color: rgb(170, 224, 123); */
+    color: black;
+
+}
+.listContainer{
+    background-color: rgb(255, 255, 255);
+
+    
+}
+    
+    

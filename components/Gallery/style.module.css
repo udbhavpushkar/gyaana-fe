@@ -1,0 +1,25 @@
+.img{
+    border-radius: 50%;
+    border: 2px solid rgb(221, 216, 216);
+}
+
+.img:hover{
+    border-color: antiquewhite;
+}
+
+.title{
+    font-family: cursive !important;
+    font-size: 24px;
+    font-weight: 600;
+    color: #5d50c6;
+}
+
+.btn{
+    padding: 10px 20px;
+    background-color: #fda638;
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+    margin: auto;
+    border-radius: 26px;
+}
