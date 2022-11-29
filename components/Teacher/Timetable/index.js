@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import styles from "./style.module.css"
 import LoadingSpinner from "../../LoadingSpinner"
+import { getRequest, patchRequest } from "../../../utilities/rest_service"
 
 const DAY_NAME = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const PERIOD = ["Days/Class", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
@@ -18,6 +19,7 @@ const Timetable = () => {
 	]
 
 	const [data, setData] = useState(arr)
+	const [gradeData, setGradeData] = useState(null)
 
 	const [isLoading, setIsloading] = useState(false)
 
@@ -25,15 +27,45 @@ const Timetable = () => {
 		let subArr = [...data]
 		subArr[i][ind] = e.target.value
 		setData(subArr)
-		console.log(data)
 	}
 
 	useEffect(() => {
-		setIsloading(true)
-		setTimeout(() => {
-			setIsloading(false)
-		}, 800)
+		fetchGradeDetails()
 	}, [])
+
+	const handleTimeTableUpdate = async (e) => {
+		e.preventDefault();
+		try {
+			let formdata = { timetable: JSON.stringify(data) }
+			let response = await patchRequest(`grade/${gradeData._id}/timetable/`, formdata)
+			if (response.isSuccess) {
+				setGradeData(response.data)
+				if (response.data.timetable) {
+					let myData = JSON.parse(response.data.timetable)
+					setData(myData)
+				}
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	const fetchGradeDetails = async () => {
+		setIsloading(true)
+		try {
+			let response = await getRequest(`grade/my-grade/`)
+			if (response.isSuccess) {
+				setGradeData(response.data)
+				if (response.data.timetable) {
+					let myData = JSON.parse(response.data.timetable)
+					setData(myData)
+				}
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		setIsloading(false)
+	}
 
 	return (
 		<>
@@ -65,6 +97,7 @@ const Timetable = () => {
 									<div key={`sub+${ind}`} className={styles.tableBox}>
 										<p>
 											<input
+												value={data[i][ind]}
 												onChange={(e) => handleSubject(e, i, ind)}
 												placeholder="Subject"
 												style={{ height: "30px", width: "100%", fontSize: "12px", textAlign: "center", fontWeight: "600" }}
@@ -91,7 +124,7 @@ const Timetable = () => {
                         </div>
                     ))} */}
 					<div style={{ marginTop: "2px", textAlign: "right", padding: "20px" }}>
-						<button className="btn btn-primary" style={{ marginRight: "44px" }}>
+						<button onClick={handleTimeTableUpdate} className="btn btn-primary" style={{ marginRight: "44px" }}>
 							Save Timetable
 						</button>
 					</div>

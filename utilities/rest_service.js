@@ -12,6 +12,7 @@ const set_authorization_header = (authorize = true) => {
 			header["Authorization"] = `Bearer ${token}`
 		} else {
 			//logout
+			logout()
 		}
 	}
 }
@@ -26,7 +27,6 @@ const set_response = (data, isSuccess = true) => {
 
 export const getRequest = async (url) => {
 	try {
-		console.log(BASE_URL)
 		set_authorization_header()
 		const response = await axios.get(BASE_URL + url, { headers: header })
 		return set_response(response)
