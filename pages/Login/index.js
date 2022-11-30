@@ -35,20 +35,21 @@ const Login = (props) => {
 
   const login = async () => {
     try {
-      let myData = { name: "Admin", role: "admin", password: "12345678", email: "admin@gmail.com", mobile: "8574563835" }
+      //Code to add admin => On first deployment
+      /* let myData = { name: "Admin", role: "admin", password: "12345678", email: "admin@gmail.com", mobile: "8574563835" }
       let response = await postRequest("user/register/", myData)
       if (response.isSuccess) {
         console.log(response.data);
+      } */
+      let res = await postRequest("user/login/", formData)
+      if (res.isSuccess) {
+        localStorage.setItem("auth_token", res.data.token)
+        localStorage.setItem("name", res.data.name)
+        localStorage.setItem("email", res.data.email)
+        localStorage.setItem("user_id", res.data._id)
+        localStorage.setItem("role", res.data.role)
+        redirectToDashboard(res.data.role)
       }
-      // let res = await postRequest("user/login/", formData)
-      // if (res.isSuccess) {
-      //   localStorage.setItem("auth_token", res.data.token)
-      //   localStorage.setItem("name", res.data.name)
-      //   localStorage.setItem("email", res.data.email)
-      //   localStorage.setItem("user_id", res.data._id)
-      //   localStorage.setItem("role", res.data.role)
-      //   redirectToDashboard(res.data.role)
-      // }
     } catch (error) {
       console.log(error)
     }
