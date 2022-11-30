@@ -10,9 +10,6 @@ const set_authorization_header = (authorize = true) => {
 		const token = localStorage.getItem("auth_token")
 		if (token) {
 			header["Authorization"] = `Bearer ${token}`
-		} else {
-			//logout
-			logout()
 		}
 	}
 }
