@@ -35,6 +35,12 @@ const Login = (props) => {
 
   const login = async () => {
     try {
+      //Code to add admin => On first deployment
+      /* let myData = { name: "Admin", role: "admin", password: "12345678", email: "admin@gmail.com", mobile: "8574563835" }
+      let response = await postRequest("user/register/", myData)
+      if (response.isSuccess) {
+        console.log(response.data);
+      } */
       let res = await postRequest("user/login/", formData)
       if (res.isSuccess) {
         localStorage.setItem("auth_token", res.data.token)
@@ -55,7 +61,6 @@ const Login = (props) => {
     setFormData(data)
   }
 
-  console.log("TEXT", router.query.userRole)
   const handleSubmit = (e) => {
     e.preventDefault()
     if (num1 + num2 == sum) {
