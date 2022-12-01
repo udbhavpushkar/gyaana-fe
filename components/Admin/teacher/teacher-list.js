@@ -5,7 +5,7 @@ import TeacherAdd from "./teacher-add"
 import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons"
 import TeacherEdit from "./teacher-edit"
 import style from "./teacherList.module.css"
-import { faMapMarker, faPhone, faChevronRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faMapMarker, faPhone, faChevronRight, faMagnifyingGlass, faCircleDown } from "@fortawesome/free-solid-svg-icons"
 import { faTwitter, faInstagram, faGooglePlus, faFacebook } from "@fortawesome/free-brands-svg-icons"
 import Footer from "../../../components/Footer"
 
@@ -284,6 +284,11 @@ const TeacherList = (props) => {
 													<li className={`${style.listIcons} ${style.ftcoAnimate} ${style.fadeInUp} ${style.ftcoAnimated}`}>
 														<a className={style.listLinks} href="#">
 															<FontAwesomeIcon icon={faFacebook} />
+														</a>
+													</li>
+													<li className={`${style.listIcons} ${style.ftcoAnimate} ${style.fadeInUp} ${style.ftcoAnimated}`}>
+														<a className={style.listLinks} href="#">
+															<FontAwesomeIcon icon={faCircleDown} />
 														</a>
 													</li>
 												</ul>
