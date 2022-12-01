@@ -8,6 +8,8 @@ import style from "./teacherList.module.css"
 import { faMapMarker, faPhone, faChevronRight, faMagnifyingGlass, faCircleDown } from "@fortawesome/free-solid-svg-icons"
 import { faTwitter, faInstagram, faGooglePlus, faFacebook } from "@fortawesome/free-brands-svg-icons"
 import Footer from "../../../components/Footer"
+import TeacherOne from "../../../assets/images/teacherone.jpg.webp"
+import TeacherTwo from "../../../assets/images/teacher-3.jpg.webp"
 
 const TeacherList = (props) => {
 	const [mode, setMode] = useState("list")
@@ -72,42 +74,42 @@ const TeacherList = (props) => {
 	const techaerDetails = [
 		{
 			name: "Bianca Wilson",
-			img: "../../../assets/images/teacher-1.jpg.webp",
+			img: TeacherOne,
 			role: "Teacher",
 		},
 		{
 			name: "Teacher Two",
-			img: "../../../assets/images/teacher-1.jpg.webp",
+			img: TeacherTwo,
 			role: "ENGLISH TEACHER",
 		},
 		{
 			name: "Teacher Three",
-			img: "../../../assets/images/teacher-1.jpg.webp",
+			img: TeacherOne,
 			role: "MATHS TEACHER",
 		},
 		{
 			name: "Teacher Four",
-			img: "../../../assets/images/teacher-1.jpg.webp",
+			img: TeacherTwo,
 			role: "ART TEACHER",
 		},
 		{
 			name: "Teacher Five",
-			img: "../../../assets/images/teacher-1.jpg.webp",
+			img: TeacherTwo,
 			role: "ENGLISH TEACHER",
 		},
 		{
 			name: "Teacher Six",
-			img: "../../../assets/images/teacher-1.jpg.webp",
+			img: TeacherOne,
 			role: "ART TEACHER",
 		},
 		{
 			name: "Teacher Seven",
-			img: "../../../assets/images/teacher-1.jpg.webp",
+			img: TeacherTwo,
 			role: "SCIENCE TEACHER",
 		},
 		{
 			name: "Teacher Eight",
-			img: "../../../assets/images/teacher-1.jpg.webp",
+			img: TeacherOne,
 			role: "MUSIC TEACHER",
 		},
 	]
@@ -258,7 +260,7 @@ const TeacherList = (props) => {
 								<div className={`col-md-6 col-lg-3 ${style.ftcoAnimate} ${style.fadeInUp} ${style.ftcoAnimated}`}>
 									<div class={style.staff}>
 										<div class={`${style.imgWrap} d-flex align-items-stretch`}>
-											<div className={`align-self-stretch ${style.teacherImage} ${style.imgProfile}`}></div>
+											<div className={`align-self-stretch ${style.teacherImage} ${style.imgProfile}`} style={{ backgroundImage: `url(${item.img.src})` }}></div>
 										</div>
 										<div class="text pt-3 text-center" style={{ position: "relative" }}>
 											<h3 className={style.teacherName}>{item.name}</h3>

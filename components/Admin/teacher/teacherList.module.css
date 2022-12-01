@@ -148,7 +148,7 @@
     transition: all 0.3s ease;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('../../../assets/images/teacher-1.jpg.webp');
+    /* background-image: url('../../../assets/images/teacher-1.jpg.webp'); */
 }
 .imgProfile{
     background-size: cover;
