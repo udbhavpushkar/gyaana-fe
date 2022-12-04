@@ -70,7 +70,9 @@ const StudentList = (props) => {
 					<div className={`d-flex justify-content-between`} style={{ padding: "10px 20px" }}>
 						<p>Student List</p>
 						<div>
-							<button onClick={handleAddStudentClick}>+Add Student</button>
+							<button className="btn btn-primary" onClick={handleAddStudentClick}>
+								+Add Student
+							</button>
 						</div>
 					</div>
 					<div>

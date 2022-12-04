@@ -69,7 +69,9 @@ const ClassList = (props) => {
 					<div className={`d-flex justify-content-between`} style={{ padding: "10px 20px" }}>
 						<p>Class List</p>
 						<div>
-							<button onClick={handleAddClassClick}>+Add Class</button>
+							<button className="btn btn-primary" onClick={handleAddClassClick}>
+								+Add Class
+							</button>
 						</div>
 					</div>
 					<div>

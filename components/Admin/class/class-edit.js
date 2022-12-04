@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { getRequest, patchRequest } from "../../../utilities/rest_service"
+import { toast } from "react-toastify"
 
 const ClassEdit = (props) => {
 	const [formData, setFormData] = useState({ ...props.data.data })
@@ -29,6 +30,9 @@ const ClassEdit = (props) => {
 				console.log(response.data)
 				props.updateList(response.data, props.data.index)
 				props.setMode("list")
+				toast.success("Class Updated Successfully")
+			} else {
+				toast.error("Request Failed")
 			}
 		} catch (e) {
 			console.log("Error: ", e)

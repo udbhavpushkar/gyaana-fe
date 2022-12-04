@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { postRequest, getRequest } from "../../../utilities/rest_service"
+import { toast } from "react-toastify"
 
 const StudentAdd = (props) => {
 	const [formData, setFormData] = useState({ password: "12345678" })
@@ -16,6 +17,9 @@ const StudentAdd = (props) => {
 			if (response.isSuccess) {
 				props.addToList(response.data)
 				props.setMode("list")
+				toast.success("Student Added Successfully")
+			} else {
+				toast.error("Request Failed")
 			}
 		} catch (e) {
 			console.log("Error: ", e)

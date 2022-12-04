@@ -3,6 +3,7 @@ import styles from "./styles.module.css"
 import Image from "next/image"
 import Logo from "../../assets/images/unnamed.jpg"
 import { postRequest } from "../../utilities/rest_service"
+import { toast } from "react-toastify"
 
 const Enquiry = () => {
 	const [formData, setFormData] = useState({})
@@ -12,8 +13,11 @@ const Enquiry = () => {
 		try {
 			let response = await postRequest("feedback/", formData)
 			if (response.isSuccess) {
-				// Show toast message
+				toast.success("Enqiry Submitted Successfully")
 				document.getElementById("add-feedback-form").reset()
+				setFormData({})
+			} else {
+				toast.error("Request Failed")
 			}
 		} catch (e) {
 			console.log("Error: ", e)

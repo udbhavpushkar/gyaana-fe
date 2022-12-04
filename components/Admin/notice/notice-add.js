@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { postRequest } from "../../../utilities/rest_service"
+import { toast } from "react-toastify"
 
 const NoticeAdd = (props) => {
 	const [formData, setFormData] = useState({})
@@ -11,6 +12,9 @@ const NoticeAdd = (props) => {
 			if (response.isSuccess) {
 				props.addToList(response.data)
 				props.setMode("list")
+				toast.success("Notice Added Successfully")
+			} else {
+				toast.error("Request Failed")
 			}
 		} catch (e) {
 			console.log("Error: ", e)

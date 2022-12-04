@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { getRequest, patchRequest } from "../../../utilities/rest_service"
+import { toast } from "react-toastify"
 
 const StudentEdit = (props) => {
 	const [formData, setFormData] = useState({ ...props.data.data })
@@ -29,6 +30,9 @@ const StudentEdit = (props) => {
 				console.log(response.data)
 				props.updateList(response.data, props.data.index)
 				props.setMode("list")
+				toast.success("Student Updated Successfully")
+			} else {
+				toast.error("Request Failed")
 			}
 		} catch (e) {
 			console.log("Error: ", e)
@@ -56,13 +60,13 @@ const StudentEdit = (props) => {
 					<label>Gender :</label>
 					<select required id="gender" name="gender" onChange={handleFormChange}>
 						<option value="">----</option>
-						<option selected={formData.gender == "female"} value="female">
+						<option defaultValue={formData.gender == "female"} value="female">
 							Female
 						</option>
-						<option selected={formData.gender == "male"} value="male">
+						<option defaultValue={formData.gender == "male"} value="male">
 							Male
 						</option>
-						<option selected={formData.gender == "others"} value="others">
+						<option defaultValue={formData.gender == "others"} value="others">
 							Others
 						</option>
 					</select>
@@ -83,7 +87,7 @@ const StudentEdit = (props) => {
 						<option>----</option>
 						{classData.map((grade, index) => {
 							return (
-								<option selected={formData?.grade?._id == grade._id} key={`teacher-option-${index}`} value={grade._id}>
+								<option defaultValue={formData?.grade?._id == grade._id} key={`teacher-option-${index}`} value={grade._id}>
 									{`${grade.name}, ${grade.section}`}
 								</option>
 							)
