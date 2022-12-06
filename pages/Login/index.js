@@ -8,6 +8,7 @@ import Fire from "../../assets/images/hh.gif"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleDown } from "@fortawesome/free-solid-svg-icons"
 import { postRequest } from "../../utilities/rest_service"
+import { toast } from "react-toastify"
 
 const Login = (props) => {
 	const router = useRouter()
@@ -51,6 +52,9 @@ const Login = (props) => {
 				localStorage.setItem("user_id", res.data._id)
 				localStorage.setItem("role", res.data.role)
 				redirectToDashboard(res.data.role)
+				toast.success(`Login Successfully`)
+			} else {
+				toast.error("Login Failed")
 			}
 		} catch (error) {
 			console.log(error)
@@ -81,7 +85,7 @@ const Login = (props) => {
 	return (
 		<div className={styles.loginWrapper}>
 			<div style={{ backgroundColor: "purple", padding: "10px" }}>
-				<h4 className="text-center">Welcome {userRole?.toUpperCase()}</h4>
+				<h4 className="text-center">Welcome</h4>
 			</div>
 			<div className="row w-100 my-4">
 				<div className="col-sm-6 text-center">
@@ -98,15 +102,7 @@ const Login = (props) => {
 						<label htmlFor="username" className={styles.loginLabels}>
 							Username :
 						</label>
-						<input
-							id="username"
-							autoFocus
-							className={styles.loginInput}
-							type="text"
-							placeholder={`${userRole} Username`}
-							onChange={handleFormChange}
-							name="email"
-						/>
+						<input id="username" autoFocus className={styles.loginInput} type="text" placeholder={`Enter Username`} onChange={handleFormChange} name="email" />
 						<br></br>
 						<label htmlFor="password" className={styles.loginLabels}>
 							Password :

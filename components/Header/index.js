@@ -81,11 +81,16 @@ const Header = (props) => {
 										</Link>
 									</div>
 								))}
-								<a onClick={() => setLoginOpen(!loginOpen)} className={styles.navLinksCon} aria-current="page" href="#">
-									Login
-									<FontAwesomeIcon style={{ marginLeft: "3px" }} icon={faAngleDown} />
-								</a>
-								{loginOpen && (
+								<Link
+									href={{
+										pathname: "/Login",
+									}}
+								>
+									<a className={styles.navLinksCon} aria-current="page" href="#">
+										Login
+									</a>
+								</Link>
+								{/* {loginOpen && (
 									<div className={styles.loginPopupWrapper}>
 										<Link
 											href={{
@@ -118,7 +123,7 @@ const Header = (props) => {
 											</a>
 										</Link>
 									</div>
-								)}
+								)} */}
 							</div>
 						</div>
 					</div>

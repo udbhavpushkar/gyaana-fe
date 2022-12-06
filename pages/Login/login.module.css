@@ -31,10 +31,11 @@
      background-color: rgb(198, 173, 198);
      color: purple;
      padding: 10px;
-    border-radius:16px ;
-}
-.loginForgotLink:hover{
-    color: white;
+     border-radius:16px ;
+    }
+    .loginForgotLink:hover{
+    background-color: rgb(228, 208, 228);
+    color: purple;
 
 }
 .summErrMsg{

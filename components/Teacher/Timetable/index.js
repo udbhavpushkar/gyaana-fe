@@ -4,6 +4,7 @@ import { useState } from "react"
 import styles from "./style.module.css"
 import LoadingSpinner from "../../LoadingSpinner"
 import { getRequest, patchRequest } from "../../../utilities/rest_service"
+import { toast } from "react-toastify"
 
 const DAY_NAME = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const PERIOD = ["Days/Class", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
@@ -34,7 +35,7 @@ const Timetable = () => {
 	}, [])
 
 	const handleTimeTableUpdate = async (e) => {
-		e.preventDefault();
+		e.preventDefault()
 		try {
 			let formdata = { timetable: JSON.stringify(data) }
 			let response = await patchRequest(`grade/${gradeData._id}/timetable/`, formdata)
@@ -44,9 +45,12 @@ const Timetable = () => {
 					let myData = JSON.parse(response.data.timetable)
 					setData(myData)
 				}
+				toast.success("Timetable Updated Successfully")
+			} else {
+				toast.error("Request Failed")
 			}
 		} catch (error) {
-			console.log(error);
+			console.log(error)
 		}
 	}
 
@@ -62,7 +66,7 @@ const Timetable = () => {
 				}
 			}
 		} catch (error) {
-			console.log(error);
+			console.log(error)
 		}
 		setIsloading(false)
 	}

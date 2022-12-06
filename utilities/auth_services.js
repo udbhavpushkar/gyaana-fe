@@ -7,11 +7,7 @@ export const logout = () => {
 	localStorage.removeItem("user_id")
 	localStorage.removeItem("role")
 	console.log("role", roletype)
-	if (roletype == "admin") {
-		window.location = "/Login?role=Admin"
-	} else if (roletype == "teacher") {
-		window.location = "/Login?role=Teacher"
-	}
+	window.location = "/Login"
 }
 
 export const isLoggedIn = () => {
