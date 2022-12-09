@@ -84,8 +84,16 @@ const Login = (props) => {
 
 	return (
 		<div className={styles.loginWrapper}>
-			<div style={{ backgroundColor: "purple", padding: "10px" }}>
-				<h4 className="text-center">Welcome</h4>
+			<div style={{ backgroundColor: "rgb(199, 142, 199)", padding: "10px" }}>
+				<h4 className="text-center">
+					Welcome To
+					<b style={{ marginLeft: "10px", color: "purple" }}>G</b>
+					<b style={{ color: "yellow" }}>Y</b>
+					<b style={{ color: "red" }}>A</b>
+					<b style={{ color: "blue" }}>A</b>
+					<b style={{ color: "rgb(86, 86, 194)" }}>N</b>
+					<b style={{ color: "orange" }}>A</b>
+				</h4>
 			</div>
 			<div className="row w-100 my-4">
 				<div className="col-sm-6 text-center">
@@ -108,7 +116,7 @@ const Login = (props) => {
 							Password :
 						</label>
 
-						<input id="password" className={styles.loginInput} type="password" placeholder="Password" onChange={handleFormChange} name="password" />
+						<input id="password" className={styles.loginInput} type="password" placeholder="Enter Password" onChange={handleFormChange} name="password" />
 						<br></br>
 						<div style={{ marginBottom: "20px", position: "relative" }}>
 							<span>Enter the Sum:</span>
@@ -124,8 +132,8 @@ const Login = (props) => {
 							<span className={styles.summErrMsg}>{sumErr}</span>
 						</div>
 						<div style={{ marginTop: "40px" }}>
-							<Link href="#">
-								<a className={styles.loginForgotLink}>Forgot Password</a>
+							<Link href="/ForgotPassword">
+								<a className={styles.loginForgotLink}>Forgot Password?</a>
 							</Link>
 						</div>
 						<button className="btn btn-success my-4" type="submit">
