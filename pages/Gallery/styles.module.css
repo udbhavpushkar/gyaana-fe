@@ -1,0 +1,14 @@
+.img{
+    border-radius: 16px;
+    border: 2px solid black;
+}
+.imgDesc{
+    color: rgb(172, 214, 74);
+}
+.imgWrapper:hover {
+    background-color: rgb(172, 82, 172);
+    border-radius: 16px;
+}
+.imgWrapper:hover .imgDesc {
+    color: white;
+}

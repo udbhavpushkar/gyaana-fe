@@ -26,13 +26,13 @@ const ForgotPassword = () => {
 				<div className={styles.forgotContent}>
 					<p>Forgot Password?</p>
 					<div className={`my-2 ${styles.emailWrapper}`}>
-						<input onChange={(e) => setEmail(e.target.value)} autoFocus placeholder="Enter Email" />{" "}
+						<input className="p-2 rounded" onChange={(e) => setEmail(e.target.value)} autoFocus placeholder="Enter Email" />{" "}
 						<button disabled={email ? false : true} className={`btn-sm btn btn-warning mx-2 ${styles.getOptBtn}`}>
 							Get OTP
 						</button>
 					</div>
 					<div className={`my-2 ${styles.emailWrapper}`}>
-						<input onChange={(e) => setOtp(e.target.value)} disabled={email ? false : true} className="my-2" placeholder="Enter OTP" />
+						<input className="p-2 rounded" onChange={(e) => setOtp(e.target.value)} disabled={email ? false : true} placeholder="Enter OTP" />
 						<a className={styles.notGotOtpBtn}>Resend OTP?</a>
 					</div>
 					<Link href="/SetPassword">

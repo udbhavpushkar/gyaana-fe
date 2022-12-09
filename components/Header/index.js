@@ -32,7 +32,7 @@ const Header = (props) => {
 		{ name: "Home", link: "/" },
 		{ name: "About Us", link: "About" },
 		{ name: "Downloads", link: "#" },
-		{ name: "Gallery", link: "gallery" },
+		{ name: "Gallery", link: "Gallery" },
 		{ name: "Notices", link: "notices" },
 		{ name: "Admission", link: "#" },
 		{ name: "Contact Us", link: "Contact" },
