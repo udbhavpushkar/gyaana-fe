@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import styles from "./style.module.css"
+import styles from "../ForgotPassword/style.module.css"
 import Link from "next/link"
 
-const ForgotPassword = () => {
+const SetPassword = () => {
 	const [email, setEmail] = useState("")
 	const [otp, setOtp] = useState("")
 	return (
@@ -24,26 +24,21 @@ const ForgotPassword = () => {
 			</div>
 			<div className={styles.forgotContentWrapper}>
 				<div className={styles.forgotContent}>
-					<p>Forgot Password?</p>
-					<div className={`my-2 ${styles.emailWrapper}`}>
-						<input onChange={(e) => setEmail(e.target.value)} autoFocus placeholder="Enter Email" />{" "}
-						<button disabled={email ? false : true} className={`btn-sm btn btn-warning mx-2 ${styles.getOptBtn}`}>
-							Get OTP
-						</button>
+					<b style={{ color: "rgb(17, 175, 23)" }}>OTP Varification Successful</b>
+					<h3 className="mt-3">Reset Your Password</h3>
+					<div className="my-2">
+						<label className="mx-4">New Password</label>
+						<input className="p-2 rounded" autoFocus placeholder="Enter Password" />
 					</div>
-					<div className={`my-2 ${styles.emailWrapper}`}>
-						<input onChange={(e) => setOtp(e.target.value)} disabled={email ? false : true} className="my-2" placeholder="Enter OTP" />
-						<a className={styles.notGotOtpBtn}>Resend OTP?</a>
+					<div className="my-3">
+						<label className="mx-2">Confirm Password</label>
+						<input className="p-2 rounded" placeholder="Re-enter Password" />
 					</div>
-					<Link href="/SetPassword">
-						<button disabled={otp ? false : true} className="btn btn-success my-4">
-							Proceed
-						</button>
-					</Link>
+					<button className="btn btn-success my-4">Save Password</button>
 				</div>
 			</div>
 		</div>
 	)
 }
 
-export default ForgotPassword
+export default SetPassword

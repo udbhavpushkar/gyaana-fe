@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     border-radius: 16px;
 }
 .emailWrapper{
@@ -29,13 +28,4 @@
 .getOptBtn{
     position: absolute;
     right: -100px;
-}
-.notGotOtpBtn{
-    position: absolute;
-    right: -120px;
-    top: 8px;
-    text-decoration: none;
-}
-.gyaanaLogo{
-    cursor: pointer;
 }
