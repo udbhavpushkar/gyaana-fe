@@ -16,7 +16,9 @@ const Login = (props) => {
 	const [num2, setNum2] = useState("")
 	const [sum, setSum] = useState("")
 	const [sumErr, setSumErr] = useState("")
-	const [formData, setFormData] = useState({})
+	const initialValues = { email: "", password: "" }
+	const [formData, setFormData] = useState(initialValues)
+	const [errorData, setErrorData] = useState({})
 
 	const userRole = router.query.role
 
@@ -62,9 +64,11 @@ const Login = (props) => {
 	}
 
 	const handleFormChange = (e) => {
-		let data = { ...formData }
-		data[e.target.name] = e.target.value
-		setFormData(data)
+		// let data = { ...formData }
+		// data[e.target.name] = e.target.value
+		// setFormData(data)
+		const { name, value } = e.target
+		setFormData({ ...formData, [name]: value })
 	}
 	const handleImageLogo = () => {
 		window.location = "/"
@@ -72,14 +76,27 @@ const Login = (props) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		if (num1 + num2 == sum) {
-			setSumErr("")
-			login()
-		} else if (sum == "") {
-			setSumErr("Please enter sum")
-		} else {
-			setSumErr("Sum is Incorrect")
+		setErrorData(validate(formData))
+		if (Object.keys(errorData).length !== null) {
+			if (num1 + num2 == sum) {
+				setSumErr("")
+				login()
+			} else if (sum == "") {
+				setSumErr("Please enter sum")
+			} else {
+				setSumErr("Sum is Incorrect")
+			}
 		}
+	}
+	const validate = (val) => {
+		const errors = {}
+		if (!val.email) {
+			errors.email = "Email is Required"
+		}
+		if (!val.password) {
+			errors.password = "Password is Required"
+		}
+		return errors
 	}
 
 	return (
@@ -106,17 +123,19 @@ const Login = (props) => {
 					style={{ display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "16px", backgroundColor: "purple", color: "white" }}
 				>
 					{/* <h4 className="mb-4">Enter the details to Login</h4> */}
-					<form onSubmit={(e) => handleSubmit(e)} style={{ margin: "20px" }}>
+					<form onSubmit={(e) => handleSubmit(e)} style={{ margin: "20px", position: "relative" }}>
 						<label htmlFor="username" className={styles.loginLabels}>
 							Username :
 						</label>
-						<input id="username" autoFocus className={styles.loginInput} type="text" placeholder={`Enter Username`} onChange={handleFormChange} name="email" />
+						<input id="email" autoFocus className={styles.loginInput} type="text" placeholder={`Enter Username`} onChange={handleFormChange} name="email" />
+						<p style={{ color: "red", position: "absolute", top: "44px", right: "130px", fontSize: "14px" }}>{errorData.email}</p>
 						<br></br>
 						<label htmlFor="password" className={styles.loginLabels}>
 							Password :
 						</label>
 
 						<input id="password" className={styles.loginInput} type="password" placeholder="Enter Password" onChange={handleFormChange} name="password" />
+						<p style={{ color: "red", position: "absolute", top: "118px", right: "105px", fontSize: "14px" }}>{errorData.password}</p>
 						<br></br>
 						<div style={{ marginBottom: "20px", position: "relative" }}>
 							<span>Enter the Sum:</span>

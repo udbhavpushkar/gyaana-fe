@@ -5,11 +5,17 @@ import { getRequest, deleteRequest } from "../../../utilities/rest_service"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrashAlt, faUserEdit, faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import StudentEdit from "./student-edit"
+import { Modal } from "react-bootstrap"
+import { toast } from "react-toastify"
 
 const StudentList = (props) => {
 	const [mode, setMode] = useState("list")
 	const [studentData, setStudentData] = useState([])
-	const [editData, setEditData] = useState(null)
+	const [editData, setEditData] = useState("")
+	const [ind, setInd] = useState("")
+	const [currentData, setCurrentData] = useState("")
+
+	const [isPopUp, setIsPopUp] = useState(false)
 
 	useEffect(() => {
 		handleGetStudentsList()
@@ -30,18 +36,26 @@ const StudentList = (props) => {
 			console.log("Error", e)
 		}
 	}
-
-	const handleDeleteStudent = async (id, index) => {
+	const handlePopUp = async (val, index) => {
 		try {
-			let response = await deleteRequest(`student/${id}`)
+			let response = await deleteRequest(`student/${val._id}`)
 			if (response.isSuccess) {
 				let dataList = [...studentData]
 				dataList.splice(index, 1)
 				setStudentData(dataList)
+				setIsPopUp(false)
+				toast.success("Student Deleted Successfully")
+			} else {
+				toast.error("Request Failed")
 			}
 		} catch (e) {
 			console.log("Error", e)
 		}
+	}
+
+	const handleDeleteStudent = (data, index) => {
+		setCurrentData(data)
+		setInd(index)
 	}
 
 	const handleEditStudentClick = (data, index) => {
@@ -87,6 +101,7 @@ const StudentList = (props) => {
 									<th scope="col">Delete</th>
 								</tr>
 							</thead>
+
 							<tbody>
 								{studentData.map((data, index) => {
 									return (
@@ -107,7 +122,8 @@ const StudentList = (props) => {
 											<td>
 												<FontAwesomeIcon
 													onClick={(e) => {
-														handleDeleteStudent(data._id, index)
+														handleDeleteStudent(data, index)
+														setIsPopUp(true)
 													}}
 													className={`pointer text-danger`}
 													icon={faTrashAlt}
@@ -118,6 +134,7 @@ const StudentList = (props) => {
 								})}
 							</tbody>
 						</table>
+						{studentData?.length === 0 && <p className="text-center">No Student to show</p>}
 					</div>
 				</>
 			) : (
@@ -132,6 +149,22 @@ const StudentList = (props) => {
 			)}
 			{mode === "add" && <StudentAdd addToList={handleAppendStudentList} setMode={setMode} />}
 			{mode === "edit" && <StudentEdit updateList={handleUpdateStudentList} data={editData} setMode={setMode} />}
+			<Modal show={isPopUp} onHide={() => setIsPopUp(false)}>
+				<Modal.Header closeButton>
+					<h4>Delete Student</h4>
+				</Modal.Header>
+				<Modal.Body>
+					Are You Sure? You want to Delete <b style={{ color: "purple" }}>{currentData?.userId?.name.toUpperCase()}</b> .
+				</Modal.Body>
+				<Modal.Footer>
+					<button className="btn btn-primary" onClick={() => setIsPopUp(false)}>
+						Cancel
+					</button>
+					<button onClick={() => handlePopUp(currentData, ind)} className="btn btn-danger">
+						Delete
+					</button>
+				</Modal.Footer>
+			</Modal>
 		</div>
 	)
 }
