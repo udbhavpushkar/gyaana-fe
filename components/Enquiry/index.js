@@ -49,7 +49,7 @@ const Enquiry = () => {
 			errors.mobile = "Contact is Required"
 		}
 		if (!val.address) {
-			errors.address = "Address is Address"
+			errors.address = "Address is Required"
 		}
 		if (!val.message) {
 			errors.message = "Message is Required"

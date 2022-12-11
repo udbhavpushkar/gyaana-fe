@@ -31,7 +31,7 @@ const GallerySection = (props) => {
 				})}
 			</div>
 			<div className={`${Style.btn}`}>
-				<Link href={`/gallery`}>
+				<Link href={`/Gallery`}>
 					<div className={`align-items-center d-flex justify-content-center`}>
 						<div style={{ marginRight: "10px" }}>View all</div>
 						<FontAwesomeIcon icon={faArrowRight} />

@@ -82,7 +82,7 @@ const Login = (props) => {
 				setSumErr("")
 				login()
 			} else if (sum == "") {
-				setSumErr("Please enter sum")
+				setSumErr("Sum is Required")
 			} else {
 				setSumErr("Sum is Incorrect")
 			}
@@ -90,8 +90,13 @@ const Login = (props) => {
 	}
 	const validate = (val) => {
 		const errors = {}
+		const checkEmail =
+			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+		const isEmail = checkEmail.test(val.email)
 		if (!val.email) {
 			errors.email = "Email is Required"
+		} else if (!isEmail) {
+			errors.email = "Invalid Email"
 		}
 		if (!val.password) {
 			errors.password = "Password is Required"
@@ -128,14 +133,14 @@ const Login = (props) => {
 							Username :
 						</label>
 						<input id="email" autoFocus className={styles.loginInput} type="text" placeholder={`Enter Username`} onChange={handleFormChange} name="email" />
-						<p style={{ color: "red", position: "absolute", top: "44px", right: "130px", fontSize: "14px" }}>{errorData.email}</p>
+						<p style={{ color: "red", position: "absolute", top: "44px", left: "124px", fontSize: "14px" }}>{errorData.email}</p>
 						<br></br>
 						<label htmlFor="password" className={styles.loginLabels}>
 							Password :
 						</label>
 
 						<input id="password" className={styles.loginInput} type="password" placeholder="Enter Password" onChange={handleFormChange} name="password" />
-						<p style={{ color: "red", position: "absolute", top: "118px", right: "105px", fontSize: "14px" }}>{errorData.password}</p>
+						<p style={{ color: "red", position: "absolute", top: "118px", left: "122px", fontSize: "14px" }}>{errorData.password}</p>
 						<br></br>
 						<div style={{ marginBottom: "20px", position: "relative" }}>
 							<span>Enter the Sum:</span>
