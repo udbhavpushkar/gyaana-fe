@@ -5,6 +5,7 @@ import styles from "./style.module.css"
 import imageLogo from "../../assets/images/unnamed.jpg"
 import Link from "next/link"
 import { useRouter } from 'next/router'
+import Sidebar from "./Sidebar"
 
 const AdminLayout = (props) => {
 	const router = useRouter()
@@ -66,13 +67,7 @@ const AdminLayout = (props) => {
 						<div style={{ display: "flex", justifyContent: "center" }}>
 							<Image src={imageLogo} height={100} width={200} />
 						</div>
-						<div className={styles.linkContainer} style={{ textAlign: "center", marginTop: "20px" }}>
-							{headersData.map((item, index) => (
-								<Link href={item.link} key={`nav_${index}`}>
-									<p className={styles.adminHeaderLinks}>{item.name}</p>
-								</Link>
-							))}
-						</div>
+						<Sidebar role="admin" />
 					</div>
 				</div>
 				<div className={styles.adminRightContanier}>
