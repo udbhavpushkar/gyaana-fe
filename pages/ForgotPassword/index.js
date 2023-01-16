@@ -35,7 +35,14 @@ const ForgotPassword = () => {
 						<input className="p-2 rounded" onChange={(e) => setOtp(e.target.value)} disabled={email ? false : true} placeholder="Enter OTP" />
 						<a className={styles.notGotOtpBtn}>Resend OTP?</a>
 					</div>
-					<Link href="/SetPassword">
+					<Link
+						href={{
+							pathname: `/SetPassword`,
+							query: {
+								email: email,
+							},
+						}}
+					>
 						<button disabled={otp ? false : true} className="btn btn-success my-4">
 							Proceed
 						</button>

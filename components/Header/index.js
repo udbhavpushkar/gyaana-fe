@@ -36,6 +36,7 @@ const Header = (props) => {
 		{ name: "Notices", link: "notices" },
 		{ name: "Admission", link: "#" },
 		{ name: "Contact Us", link: "Contact" },
+		{ name: "Login", link: "Login" },
 	]
 
 	const handleToggle = () => {
@@ -81,49 +82,6 @@ const Header = (props) => {
 										</Link>
 									</div>
 								))}
-								<Link
-									href={{
-										pathname: "/Login",
-									}}
-								>
-									<a className={styles.navLinksCon} aria-current="page" href="#">
-										Login
-									</a>
-								</Link>
-								{/* {loginOpen && (
-									<div className={styles.loginPopupWrapper}>
-										<Link
-											href={{
-												pathname: "/Login",
-												query: { role: "Admin" },
-											}}
-										>
-											<a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page">
-												Admin Login
-											</a>
-										</Link>
-										<Link
-											href={{
-												pathname: "/Login",
-												query: { role: "Teacher" },
-											}}
-										>
-											<a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">
-												Teacher Login
-											</a>
-										</Link>
-										<Link
-											href={{
-												pathname: "/Login",
-												query: { role: "Student" },
-											}}
-										>
-											<a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">
-												Student Login
-											</a>
-										</Link>
-									</div>
-								)} */}
 							</div>
 						</div>
 					</div>
