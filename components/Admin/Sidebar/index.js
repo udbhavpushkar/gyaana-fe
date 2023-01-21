@@ -36,7 +36,7 @@ export default function Sidebar(props) {
 					</Link>
 					{item.childs && (
 						<FontAwesomeIcon
-							style={{ marginLeft: "40px", cursor: "pointer" }}
+							style={{ marginLeft: "10px", cursor: "pointer" }}
 							onClick={() => hanldeChilds(i)}
 							icon={isChildOpen == i ? faCaretRight : faCaretDown}
 						/>
@@ -51,14 +51,14 @@ export default function Sidebar(props) {
 								{child.childs && (
 									<FontAwesomeIcon
 										onClick={() => hanldeSubChilds(index)}
-										style={{ marginLeft: "40px", cursor: "pointer" }}
+										style={{ marginLeft: "10px", cursor: "pointer" }}
 										icon={isSubChildOpen == index ? faCaretRight : faCaretDown}
 									/>
 								)}
 								{child.childs &&
 									isSubChildOpen == index &&
 									child.childs.map((subChild) => (
-										<div style={{ marginLeft: "40px" }}>
+										<div style={{ marginLeft: "20px" }}>
 											<Link href={subChild.link}>
 												<p>{subChild.name}</p>
 											</Link>
