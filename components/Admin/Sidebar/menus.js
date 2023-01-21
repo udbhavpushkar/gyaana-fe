@@ -1,72 +1,146 @@
-const dashboard = { name: "Dashboard", link: "/admin" }
-const initialSetup = {
-    name: "Initial Setup",
-    list: [
-        { name: "Setup Institution", link: "#" },
-        {
-            name: "Academic Settings",
-            list: [
-                { name: "Create Academic years", link: "#" },
-                { name: "Create Class", link: "/admin/class" },
-                { name: "Create Section", link: "#" },
-                { name: "Create Subjects", link: "#" },
-                { name: "Upload Details", link: "#" },
+// const dashboard = { name: "Dashboard", link: "/admin" }
+// const initialSetup = {
+//     name: "Initial Setup",
+//     list: [
+//         { name: "Setup Institution", link: "#" },
+//         {
+//             name: "Academic Settings",
+//             list: [
+//                 { name: "Create Academic years", link: "#" },
+//                 { name: "Create Class", link: "/admin/class" },
+//                 { name: "Create Section", link: "#" },
+//                 { name: "Create Subjects", link: "#" },
+//                 { name: "Upload Details", link: "#" },
 
-            ]
-        }]
-}
-const enquiry = {
-    name: "Enquiry",
-    list: [
-        { name: "Student Admission Enquiry", link: "#" },
-        { name: "Enquiry Report", link: "#" },
-    ]
-}
-const admission = {
-    name: "Admission Management",
-    list: [
-        { name: "Students", link: "/admin/student" },
-        { name: "Employees", link: "/admin/teacher" },
-    ]
-}
+//             ]
+//         }]
+// }
+// const enquiry = {
+//     name: "Enquiry",
+//     list: [
+//         { name: "Student Admission Enquiry", link: "#" },
+//         { name: "Enquiry Report", link: "#" },
+//     ]
+// }
+// const admission = {
+//     name: "Admission Management",
+//     list: [
+//         { name: "Students", link: "/admin/student" },
+//         { name: "Employees", link: "/admin/teacher" },
+//     ]
+// }
 
-const search = { name: "Seach", link: "#" }
+// const search = { name: "Seach", link: "#" }
 
-const menu = { admin: [dashboard, initialSetup, enquiry, admission, search] }
+// const menu = { admin: [dashboard, initialSetup, enquiry, admission, search] }
 
-export default menu
+// export default menu
 
-// const headersData = [
-//     {
-//         name: "Home",
-//         link: "/admin",
-//     },
-//     {
-//         name: "Teacher",
-//         link: "/admin/teacher",
-//     },
-//     {
-//         name: "Student",
-//         link: "/admin/student",
-//     },
-//     {
-//         name: "Class",
-//         link: "/admin/class",
-//     },
-//     {
-//         name: "Enquiry",
-//         link: "/admin/feedback",
-//     },
-//     {
-//         name: "Notice",
-//         link: "/admin/notice",
-//     },
-//     {
-//         name: "Downloads",
-//         link: "/admin/download",
-//     },
-//     {
-//         name: "Gallery",
-//         link: "/admin/gallery",
-//     },
-// ]
+const headersData = [
+	{
+		name: "Dashboard",
+		link: "/admin",
+	},
+	{
+		name: "Initial Settings",
+		link: "/admin/teacher",
+		childs: [
+			{
+				name: "Setup Institution",
+				link: "/admin/teacher",
+			},
+			{
+				name: "Academic Settings",
+				link: "/admin/teacher",
+				childs: [
+					{
+						name: "Create Academic Year",
+						link: "/admin/teacher",
+					},
+					{
+						name: "Create Class",
+						link: "/admin/teacher",
+					},
+					{
+						name: "Create Section",
+						link: "/admin/teacher",
+					},
+					{
+						name: "Create Subjects",
+						link: "/admin/teacher",
+					},
+					{
+						name: "Upload Details",
+						link: "/admin/teacher",
+					},
+					{
+						name: "Employee Settings",
+						link: "/admin/teacher",
+					},
+				],
+			},
+		],
+	},
+	{
+		name: "Enquiry",
+		link: "/admin/student",
+	},
+	{
+		name: "Admission Management",
+		link: "/admin/class",
+	},
+	{
+		name: "Search",
+		link: "/admin/feedback",
+	},
+	{
+		name: "Class/Section Management",
+		link: "/admin/notice",
+	},
+	{
+		name: "Subject Management",
+		link: "/admin/download",
+	},
+	{
+		name: "Syllabus Management",
+		link: "/admin/download",
+	},
+	{
+		name: "Student Management",
+		link: "/admin/download",
+	},
+	{
+		name: "Employee Management",
+		link: "/admin/download",
+	},
+	{
+		name: "Attendence Management",
+		link: "/admin/download",
+	},
+	{
+		name: "Exam Management",
+		link: "/admin/download",
+	},
+	{
+		name: "Result Management",
+		link: "/admin/download",
+	},
+	{
+		name: "Alumni Details",
+		link: "/admin/download",
+	},
+	{
+		name: "Gallery/Events",
+		link: "/admin/download",
+	},
+	{
+		name: "Noticeboard",
+		link: "/admin/download",
+	},
+	{
+		name: "Achievements",
+		link: "/admin/download",
+	},
+]
+
+export default headersData
