@@ -5,6 +5,7 @@ import AdminLayout from "../../components/Admin/index"
 const AdminClassList = (props) => {
 	return (
 		<AdminLayout>
+			<h1>Create new class form</h1>
 			<ClassList />
 		</AdminLayout>
 	)

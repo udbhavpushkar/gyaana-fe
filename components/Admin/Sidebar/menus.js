@@ -47,7 +47,7 @@ const headersData = [
 		childs: [
 			{
 				name: "Setup Institution",
-				link: "/admin/teacher",
+				link: "/admin/institute",
 			},
 			{
 				name: "Academic Settings",
@@ -55,27 +55,27 @@ const headersData = [
 				childs: [
 					{
 						name: "Create Academic Year",
-						link: "/admin/teacher",
+						link: "/admin/academic-year",
 					},
 					{
 						name: "Create Class",
-						link: "/admin/teacher",
+						link: "/admin/class",
 					},
 					{
 						name: "Create Section",
-						link: "/admin/teacher",
+						link: "/admin/section",
 					},
 					{
 						name: "Create Subjects",
-						link: "/admin/teacher",
+						link: "/admin/subject",
 					},
 					{
 						name: "Upload Details",
-						link: "/admin/teacher",
+						link: "/admin",
 					},
 					{
 						name: "Employee Settings",
-						link: "/admin/teacher",
+						link: "/admin",
 					},
 				],
 			},
