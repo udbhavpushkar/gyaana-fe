@@ -92,4 +92,20 @@
     margin-top: 20px;
 }
 
+.sidebarContainer{
+    height: 100vh;
+     min-width: 250px;
+      overflow-y:auto;
+}
+.sidebarContainer::-webkit-scrollbar{
+    width: 8px;
+}
+.sidebarContainer::-webkit-scrollbar-track{
+    background-color: #fff
+}
+.sidebarContainer::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 8px;
+    background-clip: content-box;
 
+}

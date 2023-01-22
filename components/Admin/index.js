@@ -59,7 +59,7 @@ const AdminLayout = (props) => {
 	return (
 		<div className={styles.adminWrapper}>
 			<div className={styles.adminContanier}>
-				<div style={{ height: "100vh", minWidth: "250px", overflowY: "auto" }}>
+				<div className={styles.sidebarContainer}>
 					<div>
 						<div style={{ display: "flex", justifyContent: "center" }}>
 							<Image src={imageLogo} height={100} width={200} />

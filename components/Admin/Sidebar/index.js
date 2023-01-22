@@ -12,6 +12,7 @@ import menu from "./menus"
 export default function Sidebar(props) {
 	const [isChildOpen, setIsChildOpen] = useState("")
 	const [isSubChildOpen, setIsSubChildOpen] = useState("")
+	const [currentTab, setCurrentTab] = useState("Dashboard")
 
 	const hanldeChilds = (i) => {
 		if (isChildOpen == i) {
@@ -32,7 +33,12 @@ export default function Sidebar(props) {
 			{menu.map((item, i) => (
 				<div style={{ marginLeft: "5px" }}>
 					<Link href={item.link}>
-						<span>{item.name}</span>
+						<span
+							onClick={() => setCurrentTab(item.name)}
+							style={{ color: currentTab == item.name ? "purple" : "" }}
+						>
+							{item.name}
+						</span>
 					</Link>
 					{item.childs && (
 						<FontAwesomeIcon
@@ -46,7 +52,12 @@ export default function Sidebar(props) {
 						item.childs.map((child, index) => (
 							<div style={{ marginLeft: "20px", fontStyle: "italic" }}>
 								<Link href={child.link}>
-									<span>{child.name}</span>
+									<span
+										onClick={() => setCurrentTab(child.name)}
+										style={{ color: currentTab == child.name ? "purple" : "" }}
+									>
+										{child.name}
+									</span>
 								</Link>
 								{child.childs && (
 									<FontAwesomeIcon
