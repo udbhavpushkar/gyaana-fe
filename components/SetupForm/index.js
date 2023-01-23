@@ -1,5 +1,7 @@
 import React from "react"
 import styles from "../Admin/institute/styles.module.css"
+import { faPen } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const SetupForm = (props) => {
 	return (
@@ -12,6 +14,7 @@ const SetupForm = (props) => {
 				<div className={styles.header}>
 					<p className={styles.headerText}>{props.pageHeading}:</p>
 					<button className={`${styles.editBtn} btn btn-sm btn-primary`}>
+						<FontAwesomeIcon style={{ marginRight: "5px" }} icon={faPen} />
 						Edit Details
 					</button>
 				</div>
@@ -25,7 +28,7 @@ const SetupForm = (props) => {
 										for="exampleInputEmail1"
 										className={`${styles.labelInput} form-label`}
 									>
-										{item.label}
+										{item.label}:
 									</label>
 									<input
 										type="email"
@@ -37,7 +40,7 @@ const SetupForm = (props) => {
 							))}
 							<div className={styles.inputWrapper}>
 								<label className={`${styles.labelInput} form-label`}>
-									Institution Logo
+									Institution Logo:
 								</label>
 								<input
 									type="file"

@@ -2,7 +2,7 @@ import { faCaretDown, faCaretRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import React, { useState } from "react"
-import styles from "../style.module.css"
+import styles from "./style.module.css"
 import menu from "./menus"
 
 // function MenuItem (props){
@@ -31,11 +31,11 @@ export default function Sidebar(props) {
 	return (
 		<div>
 			{menu.map((item, i) => (
-				<div style={{ marginLeft: "5px" }}>
+				<div style={{ marginLeft: "10px" }}>
 					<Link href={item.link}>
 						<span
 							onClick={() => setCurrentTab(item.name)}
-							style={{ color: currentTab == item.name ? "purple" : "" }}
+							className={styles.headerTitle}
 						>
 							{item.name}
 						</span>
@@ -50,11 +50,18 @@ export default function Sidebar(props) {
 					{item.childs &&
 						isChildOpen == i &&
 						item.childs.map((child, index) => (
-							<div style={{ marginLeft: "20px", fontStyle: "italic" }}>
+							<div
+								style={{
+									marginLeft: "20px",
+									fontStyle: "italic",
+									marginTop: "-0px",
+								}}
+							>
 								<Link href={child.link}>
 									<span
+										className={styles.headerTitle}
+										style={{ marginTop: "-5px" }}
 										onClick={() => setCurrentTab(child.name)}
-										style={{ color: currentTab == child.name ? "purple" : "" }}
 									>
 										{child.name}
 									</span>
@@ -69,9 +76,14 @@ export default function Sidebar(props) {
 								{child.childs &&
 									isSubChildOpen == index &&
 									child.childs.map((subChild) => (
-										<div style={{ marginLeft: "20px" }}>
+										<div
+											style={{
+												marginLeft: "20px",
+												cursor: "pointer",
+											}}
+										>
 											<Link href={subChild.link}>
-												<p>{subChild.name}</p>
+												<p style={{ marginTop: "-5px" }}>{subChild.name}</p>
 											</Link>
 										</div>
 									))}
