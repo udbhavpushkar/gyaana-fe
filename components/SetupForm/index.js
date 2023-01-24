@@ -1,42 +1,55 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styles from "../Admin/institute/styles.module.css"
 import { faPen } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
 
-const SetupForm = (props) => {
+const SetupForm = ({ pageName, pageHeading, data, existingData, setExistingData, handleSubmitForm, btnName }) => {
+
+	const handleInputChange = (e) => {
+		let data = { ...existingData }
+		data[e.target.name] = e.target.value
+		setExistingData(data)
+	}
+
+	const handleFormSubmit = (e) => {
+		e.preventDefault()
+		handleSubmitForm()
+	}
+
 	return (
-		<div class="container py-2">
+		<div className="container py-2">
 			<div>
 				<div className="text-center mb-3">
-					<h3>{props.pageName}</h3>
+					<h3>{pageName}</h3>
 					<hr />
 				</div>
 				<div className={styles.header}>
-					<p className={styles.headerText}>{props.pageHeading}:</p>
-					<button className={`${styles.editBtn} btn btn-sm btn-primary`}>
+					<p className={styles.headerText}>{pageHeading}:</p>
+					{/* <button className={`${styles.editBtn} btn btn-sm btn-primary`}>
 						<FontAwesomeIcon style={{ marginRight: "5px" }} icon={faPen} />
 						Edit Details
-					</button>
+					</button> */}
 				</div>
 
 				<div>
-					<form>
+					<form onSubmit={handleFormSubmit}>
 						<div className={styles.inputContainer}>
-							{props.data.map((item) => (
-								<div className={styles.inputWrapper}>
+							{data.map((item) => (
+								<div key={item.name} className={styles.inputWrapper}>
 									<label
-										for="exampleInputEmail1"
+										htmlFor={item.name}
 										className={`${styles.labelInput} form-label`}
 									>
 										{item.label}:
 									</label>
 									{item.type === "dropdown" && (
 										<div style={{ position: "relative" }}>
-											<select className={`${styles.input} form-control`}>
-												{item.list.map((opt, index) => {
+											<select id={item.name} className={`${styles.input} form-control`} name={item.name} onChange={handleInputChange}>
+												{item.list.map((opt) => {
 													return (
-														<option className={`${styles.input} form-control`}>
+														<option key={opt} className={`${styles.input} form-control`}>
 															{opt}
 														</option>
 													)
@@ -51,11 +64,12 @@ const SetupForm = (props) => {
 									)}
 									{item.type !== "dropdown" && (
 										<input
+											id={item.name}
+											name={item.name}
 											type={item.type}
 											className={`${styles.input} form-control`}
-											id="exampleInputEmail1"
-											aria-describedby="emailHelp"
-											placeholder="Enter.."
+											onChange={handleInputChange}
+											value={existingData ? existingData[item.name] : ""}
 										/>
 									)}
 								</div>
@@ -71,14 +85,22 @@ const SetupForm = (props) => {
 								/>
 							</div> */}
 						</div>
+						<div className="text-center py-3">
+							<button type="submit" className={`${styles.saveBtn} btn btn-success`}>{btnName}</button>
+						</div>
 					</form>
 				</div>
 			</div>
-			<div className="text-center py-3">
-				<button className={`${styles.saveBtn} btn btn-success`}>Create</button>
-			</div>
 		</div>
 	)
+}
+
+SetupForm.propTypes = {
+	btnName: PropTypes.string.isRequired
+}
+
+SetupForm.defaultProps = {
+	btnName: "Create"
 }
 
 export default SetupForm
