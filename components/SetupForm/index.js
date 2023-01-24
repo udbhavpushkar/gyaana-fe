@@ -2,6 +2,7 @@ import React from "react"
 import styles from "../Admin/institute/styles.module.css"
 import { faPen } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
 
 const SetupForm = (props) => {
 	return (
@@ -30,15 +31,36 @@ const SetupForm = (props) => {
 									>
 										{item.label}:
 									</label>
-									<input
-										type="email"
-										className={`${styles.input} form-control`}
-										id="exampleInputEmail1"
-										aria-describedby="emailHelp"
-									/>
+									{item.type === "dropdown" && (
+										<div style={{ position: "relative" }}>
+											<select className={`${styles.input} form-control`}>
+												{item.list.map((opt, index) => {
+													return (
+														<option className={`${styles.input} form-control`}>
+															{opt}
+														</option>
+													)
+												})}
+											</select>
+											<FontAwesomeIcon
+												className={styles.selectIcon}
+												style={{ marginLeft: "10px", cursor: "pointer" }}
+												icon={faCaretDown}
+											/>
+										</div>
+									)}
+									{item.type !== "dropdown" && (
+										<input
+											type={item.type}
+											className={`${styles.input} form-control`}
+											id="exampleInputEmail1"
+											aria-describedby="emailHelp"
+											placeholder="Enter.."
+										/>
+									)}
 								</div>
 							))}
-							<div className={styles.inputWrapper}>
+							{/* <div className={styles.inputWrapper}>
 								<label className={`${styles.labelInput} form-label`}>
 									Institution Logo:
 								</label>
@@ -47,7 +69,7 @@ const SetupForm = (props) => {
 									placeholder="Choose file"
 									className={`${styles.input} form-control`}
 								/>
-							</div>
+							</div> */}
 						</div>
 					</form>
 				</div>

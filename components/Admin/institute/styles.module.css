@@ -37,8 +37,15 @@
 }
 .input{
     width: 350px;
-    height: 30px;
+    /* height: 30px; */
 }
 .saveBtn{
     width: 200px;
+}
+.selectIcon{
+    position: absolute;
+    top: 4px;
+    right: 19px;
+    font-size: 26px;
+
 }
