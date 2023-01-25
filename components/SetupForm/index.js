@@ -21,18 +21,6 @@ const SetupForm = ({ pageName, pageHeading, data, existingData, setExistingData,
 	return (
 		<div className="container py-2">
 			<div>
-				<div className="text-center mb-3">
-					<h3>{pageName}</h3>
-					<hr />
-				</div>
-				<div className={styles.header}>
-					<p className={styles.headerText}>{pageHeading}:</p>
-					{/* <button className={`${styles.editBtn} btn btn-sm btn-primary`}>
-						<FontAwesomeIcon style={{ marginRight: "5px" }} icon={faPen} />
-						Edit Details
-					</button> */}
-				</div>
-
 				<div>
 					<form onSubmit={handleFormSubmit}>
 						<div className={styles.inputContainer}>

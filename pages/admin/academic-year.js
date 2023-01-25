@@ -1,13 +1,13 @@
 import React from "react"
 import AdminLayout from "../../components/Admin/index"
-import AcademicYearCom from "../../components/Admin/academicYear"
+import AcademicYear from "../../components/Admin/academicYear"
 
-const AcademicYear = (props) => {
+const AcademicYearPage = (props) => {
 	return (
 		<AdminLayout>
-			<AcademicYearCom />
+			<AcademicYear />
 		</AdminLayout>
 	)
 }
 
-export default AcademicYear
+export default AcademicYearPage
