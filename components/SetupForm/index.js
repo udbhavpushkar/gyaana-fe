@@ -1,11 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styles from "../Admin/institute/styles.module.css"
-import { faPen } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
 
-const SetupForm = ({ pageName, pageHeading, data, existingData, setExistingData, handleSubmitForm, btnName }) => {
+const SetupForm = ({ data, existingData, setExistingData, handleSubmitForm, btnName }) => {
 
 	const handleInputChange = (e) => {
 		let data = { ...existingData }
@@ -37,8 +36,8 @@ const SetupForm = ({ pageName, pageHeading, data, existingData, setExistingData,
 											<select id={item.name} className={`${styles.input} form-control`} name={item.name} onChange={handleInputChange}>
 												{item.list.map((opt) => {
 													return (
-														<option key={opt} className={`${styles.input} form-control`}>
-															{opt}
+														<option key={opt._id} value={opt._id} className={`${styles.input} form-control`}>
+															{opt.name}
 														</option>
 													)
 												})}
