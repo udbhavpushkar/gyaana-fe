@@ -1,0 +1,9 @@
+.header{    
+    padding: 15px;
+    background-color: rgb(235, 235, 234);
+}
+
+.box{
+    margin: 10px 0px;
+    box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.636);
+}
