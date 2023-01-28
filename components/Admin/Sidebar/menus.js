@@ -16,16 +16,12 @@ const headersData = [
 				link: "/admin/teacher",
 				childs: [
 					{
-						name: "Create Academic Year",
+						name: "Academic Year",
 						link: "/admin/academic-year",
 					},
 					{
-						name: "Create Class",
+						name: "Class",
 						link: "/admin/class",
-					},
-					{
-						name: "Create Section",
-						link: "/admin/section",
 					},
 					{
 						name: "Create Subjects",

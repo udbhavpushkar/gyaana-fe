@@ -1,12 +1,13 @@
 import React from "react"
 import AdminLayout from "../../components/Admin/index"
+import Subject from "../../components/Admin/Subject"
 
-const Subject = (props) => {
+const SubjectPage = (props) => {
     return (
         <AdminLayout>
-            Create Subject and sub subject form here
+            <Subject />
         </AdminLayout>
     )
 }
 
-export default Subject
+export default SubjectPage
