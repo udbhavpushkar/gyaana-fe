@@ -28,6 +28,14 @@ const headersData = [
 						link: "/admin/subject",
 					},
 					{
+						name: "Category",
+						link: "/admin/category",
+					},
+					{
+						name: "Position",
+						link: "/admin/position",
+					},
+					{
 						name: "Upload Details",
 						link: "/admin",
 					},
