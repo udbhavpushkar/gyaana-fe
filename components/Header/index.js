@@ -32,10 +32,11 @@ const Header = (props) => {
 		{ name: "Home", link: "/" },
 		{ name: "About Us", link: "About" },
 		{ name: "Downloads", link: "#" },
-		{ name: "Gallery", link: "gallery" },
+		{ name: "Gallery", link: "Gallery" },
 		{ name: "Notices", link: "notices" },
 		{ name: "Admission", link: "#" },
 		{ name: "Contact Us", link: "Contact" },
+		{ name: "Login", link: "Login" },
 	]
 
 	const handleToggle = () => {
@@ -81,44 +82,6 @@ const Header = (props) => {
 										</Link>
 									</div>
 								))}
-								<a onClick={() => setLoginOpen(!loginOpen)} className={styles.navLinksCon} aria-current="page" href="#">
-									Login
-									<FontAwesomeIcon style={{ marginLeft: "3px" }} icon={faAngleDown} />
-								</a>
-								{loginOpen && (
-									<div className={styles.loginPopupWrapper}>
-										<Link
-											href={{
-												pathname: "/Login",
-												query: { role: "Admin" },
-											}}
-										>
-											<a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page">
-												Admin Login
-											</a>
-										</Link>
-										<Link
-											href={{
-												pathname: "/Login",
-												query: { role: "Teacher" },
-											}}
-										>
-											<a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">
-												Teacher Login
-											</a>
-										</Link>
-										<Link
-											href={{
-												pathname: "/Login",
-												query: { role: "Student" },
-											}}
-										>
-											<a onClick={() => setLoginOpen(false)} className={styles.navLinksConLogin} aria-current="page" href="#">
-												Student Login
-											</a>
-										</Link>
-									</div>
-								)}
 							</div>
 						</div>
 					</div>

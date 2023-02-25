@@ -1,0 +1,9 @@
+.headerTitle{
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: sans-serif;
+}
+.headerTitle:hover{
+    color: rgb(116, 106, 106);
+}

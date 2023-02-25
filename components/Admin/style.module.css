@@ -6,13 +6,10 @@
     
 }
 .adminLeftContanier{
-    /* background-color: rgb(225, 221, 221); */
-    height: 100vh;
+    /* height: 100%;
     min-width: 200px;
     width: 20%;
-    transition: opacity 1s ease-out;
-    /* border: 2px solid red; */
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    transition: opacity 1s ease-out; */
 }
 .menuButtonContainer{
     background:url("../../assets/images/backSection.jpg");
@@ -44,6 +41,9 @@
     font-size: 20px;
     cursor: pointer;
     font-family: cursive;
+}
+.mb10{
+    margin-bottom: 10px !important;
 }
 .adminHeaderLinks:hover{
     color: purple;
@@ -88,4 +88,26 @@
     /* background-color: white;
     height: 400px; */
     height: 1000px;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+.sidebarContainer{
+    height: 100vh;
+     min-width: 250px;
+      overflow-y:auto;
+}
+.sidebarContainer::-webkit-scrollbar{
+    width: 8px;
+}
+.sidebarContainer::-webkit-scrollbar-track{
+    background-color: #fff;
+    height: 200px !important;
+}
+.sidebarContainer::-webkit-scrollbar-thumb{
+    background: grey;
+    border-radius: 8px;
+    background-clip: content-box;
+    
+
 }

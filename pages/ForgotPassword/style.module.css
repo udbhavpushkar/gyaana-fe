@@ -1,0 +1,41 @@
+
+.loginWrapper{
+    background-color: rgb(198, 173, 198);
+     color: white;
+      height: 100vh;
+      font-family: cursive;
+      padding-bottom:  20px;
+}
+.forgotContentWrapper{
+    display: flex;
+    justify-content: center;
+    
+
+}
+.forgotContent{
+    margin-top: 2rem;
+    background-color: purple;
+    width: 80%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+}
+.emailWrapper{
+    position: relative;
+}
+.getOptBtn{
+    position: absolute;
+    right: -100px;
+}
+.notGotOtpBtn{
+    position: absolute;
+    right: -120px;
+    top: 8px;
+    text-decoration: none;
+}
+.gyaanaLogo{
+    cursor: pointer;
+}

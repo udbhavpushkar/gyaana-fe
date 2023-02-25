@@ -4,11 +4,18 @@ import { deleteRequest, getRequest } from "../../../utilities/rest_service"
 import TeacherAdd from "./teacher-add"
 import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons"
 import TeacherEdit from "./teacher-edit"
+import style from "./teacherList.module.css"
+import { faMapMarker, faPhone, faChevronRight, faMagnifyingGlass, faCircleDown } from "@fortawesome/free-solid-svg-icons"
+import { faTwitter, faInstagram, faGooglePlus, faFacebook } from "@fortawesome/free-brands-svg-icons"
+import Footer from "../../../components/Footer"
+import TeacherOne from "../../../assets/images/teacherone.jpg.webp"
+import TeacherTwo from "../../../assets/images/teacher-3.jpg.webp"
 
 const TeacherList = (props) => {
 	const [mode, setMode] = useState("list")
 	const [teachersData, setTeacherData] = useState([])
 	const [editData, setEditData] = useState(null)
+	const [toggleOpen, setToggleOpen] = useState(true)
 
 	useEffect(() => {
 		handleGetTeachersList()
@@ -53,6 +60,9 @@ const TeacherList = (props) => {
 		setEditData({ data, index })
 		setMode("edit")
 	}
+	const handleToggle = () => {
+		setToggleOpen(!toggleOpen)
+	}
 
 	const handleUpdateTeacherList = (data, index) => {
 		let dataList = [...teachersData]
@@ -61,66 +71,51 @@ const TeacherList = (props) => {
 			setTeacherData(dataList)
 		}
 	}
+	const techaerDetails = [
+		{
+			name: "Bianca Wilson",
+			img: TeacherOne,
+			role: "Teacher",
+		},
+		{
+			name: "Teacher Two",
+			img: TeacherTwo,
+			role: "ENGLISH TEACHER",
+		},
+		{
+			name: "Teacher Three",
+			img: TeacherOne,
+			role: "MATHS TEACHER",
+		},
+		{
+			name: "Teacher Four",
+			img: TeacherTwo,
+			role: "ART TEACHER",
+		},
+		{
+			name: "Teacher Five",
+			img: TeacherTwo,
+			role: "ENGLISH TEACHER",
+		},
+		{
+			name: "Teacher Six",
+			img: TeacherOne,
+			role: "ART TEACHER",
+		},
+		{
+			name: "Teacher Seven",
+			img: TeacherTwo,
+			role: "SCIENCE TEACHER",
+		},
+		{
+			name: "Teacher Eight",
+			img: TeacherOne,
+			role: "MUSIC TEACHER",
+		},
+	]
 
 	return (
-		<div>
-			{mode === "list" && (
-				<>
-					<div className={`d-flex justify-content-between`} style={{ padding: "10px 20px" }}>
-						<p>Teacher List</p>
-						<div>
-							<button onClick={handleAddTeacherClick}>+Add Teacher</button>
-						</div>
-					</div>
-					<div>
-						<table className="table">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">Teacher Name</th>
-									<th scope="col">Email</th>
-									<th scope="col">Contact</th>
-									<th scope="col">Edit</th>
-									<th scope="col">Delete</th>
-								</tr>
-							</thead>
-							<tbody>
-								{teachersData.map((teacher, index) => {
-									return (
-										<tr key={`teacher-list-${index}`}>
-											<th scope="row">{index + 1}</th>
-											<td>{teacher.name}</td>
-											<td>{teacher.email}</td>
-											<td>{teacher.mobile}</td>
-											<td>
-												<FontAwesomeIcon
-													onClick={(e) => {
-														handleEditTeacherClick(teacher, index)
-													}}
-													className={`pointer text-info`}
-													icon={faUserEdit}
-												/>
-											</td>
-											<td>
-												<FontAwesomeIcon
-													onClick={(e) => {
-														handleDeleteTeacher(teacher._id, index)
-													}}
-													className={`pointer text-danger`}
-													icon={faTrashAlt}
-												/>
-											</td>
-										</tr>
-									)
-								})}
-							</tbody>
-						</table>
-					</div>
-				</>
-			)}
-			{mode === "add" && <TeacherAdd addToList={handleAppendTeacherList} setMode={setMode} />}
-			{mode === "edit" && <TeacherEdit updateList={handleUpdateTeacherList} data={editData} setMode={setMode} />}
-		</div>
+		<div>Teachers</div>
 	)
 }
 

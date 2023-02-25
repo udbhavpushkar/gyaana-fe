@@ -1,0 +1,51 @@
+.header{
+    
+    padding: 15px 0px;
+    font-weight: 600px;
+    font-size: 18px;
+    /* color: blue; */
+    position: relative;
+    background-color: rgb(235, 235, 234);
+    /* color: white; */
+    
+}
+.headerText{
+    padding: 0px 10px;
+    margin: 0px 20px;
+    font-weight: 600;
+    
+
+}
+.editBtn{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+.inputContainer{
+    padding: 30px;
+    
+}
+.inputWrapper{
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+   
+    padding: 0px 100px;
+}
+.labelInput{
+    width: 300px;
+}
+.input{
+    width: 350px;
+    /* height: 30px; */
+}
+.saveBtn{
+    width: 200px;
+}
+.selectIcon{
+    position: absolute;
+    top: 4px;
+    right: 19px;
+    font-size: 26px;
+
+}
