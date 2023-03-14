@@ -53,7 +53,17 @@ const headersData = [
 	},
 	{
 		name: "Admission Management",
-		link: "/admin/class",
+		link: "#",
+		childs: [
+			{
+				name: "Student",
+				link: "/admin/admission/student-admission",
+			},
+			{
+				name: "Employees",
+				link: "/admin/admission/employee-admission",
+			},
+		],
 	},
 	{
 		name: "Search",
