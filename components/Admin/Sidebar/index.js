@@ -31,7 +31,7 @@ export default function Sidebar(props) {
 	return (
 		<div>
 			{menu.map((item, i) => (
-				<div style={{ marginLeft: "10px" }}>
+				<div key={item + i} style={{ marginLeft: "10px" }}>
 					<Link href={item.link}>
 						<span className={styles.headerTitle}>{item.name}</span>
 					</Link>
@@ -46,6 +46,7 @@ export default function Sidebar(props) {
 						isChildOpen == i &&
 						item.childs.map((child, index) => (
 							<div
+								key={child + index}
 								style={{
 									marginLeft: "20px",
 									fontStyle: "italic",
@@ -70,8 +71,9 @@ export default function Sidebar(props) {
 								)}
 								{child.childs &&
 									isSubChildOpen == index &&
-									child.childs.map((subChild) => (
+									child.childs.map((subChild, i) => (
 										<div
+											key={subChild + i}
 											style={{
 												marginLeft: "20px",
 												cursor: "pointer",
