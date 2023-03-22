@@ -68,7 +68,7 @@ const EmployeeAdmission = () => {
 
 	return (
 		<AdminLayout>
-			<div>
+			<div style={{ boxShadow: "0px 3px 6px rgba(128, 128, 128, 0.636)" }}>
 				<div className="text-center mb-3">
 					<h3>Employee Admission</h3>
 					<hr />
@@ -76,14 +76,14 @@ const EmployeeAdmission = () => {
 				<div>
 					<form style={{ padding: "30px" }}>
 						<h4>Official Details-</h4>
-						<div class="form-group row">
+						<div className="form-group row">
 							<label
-								for="exampleFormControlSelect1"
-								class="col-sm-2 col-form-label"
+								htmlFor="exampleFormControlSelect1"
+								className="col-sm-2 col-form-label"
 							>
 								Academic Year
 							</label>
-							<div class="col-sm-8 my-2">
+							<div className="col-sm-8 my-2">
 								<select
 									className={` form-control`}
 									id="year-list"
@@ -94,33 +94,33 @@ const EmployeeAdmission = () => {
 								</select>
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="staticEmail" class="col-sm-2 col-form-label">
+						<div className="form-group row">
+							<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
 								Employee Number
 							</label>
-							<div class="col-sm-8 my-2">
-								<input type="text" class="form-control" />
+							<div className="col-sm-8 my-2">
+								<input type="text" className="form-control" />
 							</div>
 						</div>
-						<div class="form-group row">
+						<div className="form-group row">
 							<label
-								for="exampleFormControlSelect1"
-								class="col-sm-2 col-form-label"
+								htmlFor="exampleFormControlSelect1"
+								className="col-sm-2 col-form-label"
 							>
 								Joining Date
 							</label>
-							<div class="col-sm-8 my-2">
-								<input type="date" class="form-control" />
+							<div className="col-sm-8 my-2">
+								<input type="date" className="form-control" />
 							</div>
 						</div>
-						<div class="form-group row">
+						<div className="form-group row">
 							<label
-								for="exampleFormControlSelect1"
-								class="col-sm-2 col-form-label"
+								htmlFor="exampleFormControlSelect1"
+								className="col-sm-2 col-form-label"
 							>
 								Subject
 							</label>
-							<div class="col-sm-8 my-2">
+							<div className="col-sm-8 my-2">
 								<select
 									className={` form-control`}
 									id="subject-list"
@@ -132,14 +132,14 @@ const EmployeeAdmission = () => {
 								</select>
 							</div>
 						</div>
-						<div class="form-group row">
+						<div className="form-group row">
 							<label
-								for="exampleFormControlSelect1"
-								class="col-sm-2 col-form-label"
+								htmlFor="exampleFormControlSelect1"
+								className="col-sm-2 col-form-label"
 							>
 								Category
 							</label>
-							<div class="col-sm-8 my-2">
+							<div className="col-sm-8 my-2">
 								<select
 									onChange={(e) => {
 										setActiveCategory(e.target.value)
@@ -153,14 +153,14 @@ const EmployeeAdmission = () => {
 								</select>
 							</div>
 						</div>
-						<div class="form-group row">
+						<div className="form-group row">
 							<label
-								for="exampleFormControlSelect1"
-								class="col-sm-2 col-form-label"
+								htmlFor="exampleFormControlSelect1"
+								className="col-sm-2 col-form-label"
 							>
 								Position
 							</label>
-							<div class="col-sm-8 my-2">
+							<div className="col-sm-8 my-2">
 								<select
 									className={` form-control`}
 									id="position-list"
@@ -172,38 +172,38 @@ const EmployeeAdmission = () => {
 							</div>
 						</div>
 						<h4>Personal Details-</h4>
-						<div class="form-group row">
-							<label for="staticEmail" class="col-sm-2 col-form-label">
+						<div className="form-group row">
+							<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
 								First Name
 							</label>
-							<div class="col-sm-8 my-2">
-								<input type="text" class="form-control" />
+							<div className="col-sm-8 my-2">
+								<input type="text" className="form-control" />
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="staticEmail" class="col-sm-2 col-form-label">
+						<div className="form-group row">
+							<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
 								Last Name
 							</label>
-							<div class="col-sm-8 my-2">
-								<input type="text" class="form-control" />
+							<div className="col-sm-8 my-2">
+								<input type="text" className="form-control" />
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="staticEmail" class="col-sm-2 col-form-label">
+						<div className="form-group row">
+							<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
 								Date of Birth
 							</label>
-							<div class="col-sm-8 my-2">
-								<input type="date" class="form-control" />
+							<div className="col-sm-8 my-2">
+								<input type="date" className="form-control" />
 							</div>
 						</div>
-						<div class="form-group row">
+						<div className="form-group row">
 							<label
-								for="exampleFormControlSelect1"
-								class="col-sm-2 col-form-label"
+								htmlFor="exampleFormControlSelect1"
+								className="col-sm-2 col-form-label"
 							>
 								Gender
 							</label>
-							<div class="col-sm-8 my-2">
+							<div className="col-sm-8 my-2">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -214,22 +214,22 @@ const EmployeeAdmission = () => {
 								</select>
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="staticEmail" class="col-sm-2 col-form-label">
+						<div className="form-group row">
+							<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
 								Aadhar Number
 							</label>
-							<div class="col-sm-8 my-2">
-								<input type="number" class="form-control" />
+							<div className="col-sm-8 my-2">
+								<input type="number" className="form-control" />
 							</div>
 						</div>
-						<div class="form-group row">
+						<div className="form-group row">
 							<label
-								for="exampleFormControlSelect1"
-								class="col-sm-2 col-form-label0"
+								htmlFor="exampleFormControlSelect1"
+								className="col-sm-2 col-form-label0"
 							>
 								Marital Status
 							</label>
-							<div class="col-sm-8 my-2">
+							<div className="col-sm-8 my-2">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect10"
@@ -239,12 +239,16 @@ const EmployeeAdmission = () => {
 								</select>
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="staticEmail" class="col-sm-2 col-form-label">
+						<div className="form-group row">
+							<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
 								Nationality
 							</label>
-							<div class="col-sm-8 my-2">
-								<input type="text" class="form-control" placeholder="India" />
+							<div className="col-sm-8 my-2">
+								<input
+									type="text"
+									className="form-control"
+									placeholder="India"
+								/>
 							</div>
 						</div>
 						<div className="text-center my-4">
