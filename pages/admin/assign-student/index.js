@@ -1,6 +1,8 @@
 import React from "react"
 import AdminLayout from "../../../components/Admin"
 import style from "./style.module.css"
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const AssignStudent = () => {
 	return (
@@ -19,7 +21,7 @@ const AssignStudent = () => {
 							>
 								Academic Year
 							</label>
-							<div className="col-sm-8 my-2">
+							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -31,6 +33,10 @@ const AssignStudent = () => {
 									<option className={` form-control`}>4</option>
 									<option className={` form-control`}>5</option>
 								</select>
+								<FontAwesomeIcon
+									className={style.selectDownArrow}
+									icon={faCaretDown}
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -40,7 +46,7 @@ const AssignStudent = () => {
 							>
 								Select Class
 							</label>
-							<div className="col-sm-8 my-2">
+							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -52,6 +58,10 @@ const AssignStudent = () => {
 									<option className={` form-control`}>4</option>
 									<option className={` form-control`}>5</option>
 								</select>
+								<FontAwesomeIcon
+									className={style.selectDownArrow}
+									icon={faCaretDown}
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -61,7 +71,7 @@ const AssignStudent = () => {
 							>
 								Select Section
 							</label>
-							<div className="col-sm-8 my-2">
+							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -73,6 +83,10 @@ const AssignStudent = () => {
 									<option className={` form-control`}>4</option>
 									<option className={` form-control`}>5</option>
 								</select>
+								<FontAwesomeIcon
+									className={style.selectDownArrow}
+									icon={faCaretDown}
+								/>
 							</div>
 						</div>
 						<h3>Select Students</h3>
@@ -82,7 +96,7 @@ const AssignStudent = () => {
 								<tr>
 									<th scope="col">
 										<span className="mx-2"> Select All</span>
-										<input type="checkbox" />
+										<input className={style.inputCheckbox} type="checkbox" />
 									</th>
 									<th scope="col">Name</th>
 									<th scope="col">Prev Marks(%)</th>
@@ -92,7 +106,7 @@ const AssignStudent = () => {
 							<tbody>
 								<tr>
 									<td>
-										<input type="checkbox" />
+										<input className={style.inputCheckbox} type="checkbox" />
 									</td>
 
 									<td>Mark</td>
@@ -101,7 +115,7 @@ const AssignStudent = () => {
 								</tr>
 								<tr>
 									<td>
-										<input type="checkbox" />
+										<input className={style.inputCheckbox} type="checkbox" />
 									</td>
 									<td>Mark</td>
 									<td>85</td>
@@ -109,7 +123,7 @@ const AssignStudent = () => {
 								</tr>
 								<tr>
 									<td>
-										<input type="checkbox" />
+										<input className={style.inputCheckbox} type="checkbox" />
 									</td>
 									<td>Mark</td>
 									<td>85</td>
