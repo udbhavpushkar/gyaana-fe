@@ -1,0 +1,9 @@
+.selectStudent > thead > tr > th {
+    background-color: rgb(212, 124, 212);
+    border: 1px solid purple;
+    text-align: center;
+}
+.selectStudent > tbody > tr > td {
+    border: 1px solid purple;
+    text-align: center;
+}

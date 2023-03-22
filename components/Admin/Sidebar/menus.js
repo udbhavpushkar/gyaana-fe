@@ -83,7 +83,13 @@ const headersData = [
 	},
 	{
 		name: "Student Management",
-		link: "/admin/download",
+		link: "#",
+		childs: [
+			{
+				name: "Assign students to Section",
+				link: "/admin/assign-student",
+			},
+		],
 	},
 	{
 		name: "Employee Management",

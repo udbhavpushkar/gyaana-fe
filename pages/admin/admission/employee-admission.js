@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import AdminLayout from "../../../components/Admin"
-import { getRequest } from "../../../utilities/rest_service"
+import { getRequest, postRequest } from "../../../utilities/rest_service"
 
 const EmployeeAdmission = () => {
 	const [academicYear, setAcademicYear] = useState([])
@@ -9,13 +9,11 @@ const EmployeeAdmission = () => {
 	const [position, setPosition] = useState([])
 	const [activeCategory, setActiveCategory] = useState([])
 
-
 	useEffect(() => {
 		getAcademicYearList()
 		getSubjects()
 		getCategory()
 	}, [])
-
 
 	useEffect(() => {
 		getPosition(activeCategory)
@@ -28,7 +26,7 @@ const EmployeeAdmission = () => {
 				setAcademicYear(response.data)
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 	}
 
@@ -39,7 +37,7 @@ const EmployeeAdmission = () => {
 				setSubjects(response.data)
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 	}
 
@@ -50,7 +48,7 @@ const EmployeeAdmission = () => {
 				setCategory(response.data)
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 	}
 
@@ -61,10 +59,51 @@ const EmployeeAdmission = () => {
 				setPosition(response.data)
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 	}
+	const d = {
+		userId: "3434",
+		academicYear: ["2020-21"],
+		category: ["category"],
+		position: ["position"],
+		joiningDate: "05/05/2023",
+		employeeNo: "1234",
+		gender: "male",
+		aadhaar: "1234456787",
+		dob: "05/05/2023",
+		maritalStatus: "single",
+		address: "HN 155 faizbad",
+		pincode: "232423",
+		religion: "xyz",
+		caste: "xyz",
+		nationality: "xyz",
+		blood_group: "xyz",
+		identification_mark: "xyz",
+		fatherName: "xyz",
+		motherName: "xyz",
+		spouseName: "xyz",
+		fatherOccupation: "xyz",
+		parentMobile: "xyz",
+		parentEmail: "xyz",
+		previousCompany: "xyz",
+		totalExperience: "xyz",
+	}
 
+	const createEmployee = async (e) => {
+		e.preventDefault()
+		try {
+			let response = await postRequest(`employee/register`, d)
+			if (response.isSuccess) {
+				console.log("response", response)
+				// toast.success("Created Successfully")
+			} else {
+				// toast.error("Something went Wrong")
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
 
 	return (
 		<AdminLayout>
@@ -74,7 +113,7 @@ const EmployeeAdmission = () => {
 					<hr />
 				</div>
 				<div>
-					<form style={{ padding: "30px" }}>
+					<form onSubmit={createEmployee} style={{ padding: "30px" }}>
 						<h4>Official Details-</h4>
 						<div className="form-group row">
 							<label
@@ -84,12 +123,13 @@ const EmployeeAdmission = () => {
 								Academic Year
 							</label>
 							<div className="col-sm-8 my-2">
-								<select
-									className={` form-control`}
-									id="year-list"
-								>
+								<select className={` form-control`} id="year-list">
 									{academicYear.map((data) => {
-										return <option value={data._id} className={` form-control`}>{data.name}</option>
+										return (
+											<option value={data._id} className={` form-control`}>
+												{data.name}
+											</option>
+										)
 									})}
 								</select>
 							</div>
@@ -121,14 +161,14 @@ const EmployeeAdmission = () => {
 								Subject
 							</label>
 							<div className="col-sm-8 my-2">
-								<select
-									className={` form-control`}
-									id="subject-list"
-								>
+								<select className={` form-control`} id="subject-list">
 									{subjects.map((data) => {
-										return <option value={data._id} className={` form-control`}>{data.name}</option>
+										return (
+											<option value={data._id} className={` form-control`}>
+												{data.name}
+											</option>
+										)
 									})}
-
 								</select>
 							</div>
 						</div>
@@ -148,7 +188,11 @@ const EmployeeAdmission = () => {
 									id="category-list"
 								>
 									{category.map((data) => {
-										return <option value={data._id} className={` form-control`}>{data.name}</option>
+										return (
+											<option value={data._id} className={` form-control`}>
+												{data.name}
+											</option>
+										)
 									})}
 								</select>
 							</div>
@@ -161,12 +205,13 @@ const EmployeeAdmission = () => {
 								Position
 							</label>
 							<div className="col-sm-8 my-2">
-								<select
-									className={` form-control`}
-									id="position-list"
-								>
+								<select className={` form-control`} id="position-list">
 									{position.map((data) => {
-										return <option value={data._id} className={` form-control`}>{data.name}</option>
+										return (
+											<option value={data._id} className={` form-control`}>
+												{data.name}
+											</option>
+										)
 									})}
 								</select>
 							</div>
@@ -252,7 +297,12 @@ const EmployeeAdmission = () => {
 							</div>
 						</div>
 						<div className="text-center my-4">
-							<button style={{ width: "150px" }} className="btn btn-success">
+							<button
+								onClick={createEmployee}
+								type="submit"
+								style={{ width: "150px" }}
+								className="btn btn-success"
+							>
 								Save
 							</button>
 						</div>
