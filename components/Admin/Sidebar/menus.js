@@ -66,8 +66,8 @@ const headersData = [
 		],
 	},
 	{
-		name: "Search",
-		link: "/admin/feedback",
+		name: "Search Employee",
+		link: "/admin/search/employee",
 	},
 	{
 		name: "Class/Section Management",

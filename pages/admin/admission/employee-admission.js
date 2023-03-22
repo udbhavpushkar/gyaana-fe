@@ -1,7 +1,71 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import AdminLayout from "../../../components/Admin"
+import { getRequest } from "../../../utilities/rest_service"
 
 const EmployeeAdmission = () => {
+	const [academicYear, setAcademicYear] = useState([])
+	const [subjects, setSubjects] = useState([])
+	const [category, setCategory] = useState([])
+	const [position, setPosition] = useState([])
+	const [activeCategory, setActiveCategory] = useState([])
+
+
+	useEffect(() => {
+		getAcademicYearList()
+		getSubjects()
+		getCategory()
+	}, [])
+
+
+	useEffect(() => {
+		getPosition(activeCategory)
+	}, [activeCategory])
+
+	const getAcademicYearList = async () => {
+		try {
+			let response = await getRequest(`academic-year`)
+			if (response.isSuccess) {
+				setAcademicYear(response.data)
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	const getSubjects = async () => {
+		try {
+			let response = await getRequest(`subject`)
+			if (response.isSuccess) {
+				setSubjects(response.data)
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	const getCategory = async () => {
+		try {
+			let response = await getRequest(`category`)
+			if (response.isSuccess) {
+				setCategory(response.data)
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	const getPosition = async (categoryId) => {
+		try {
+			let response = await getRequest(`position/?category=${categoryId}`)
+			if (response.isSuccess) {
+				setPosition(response.data)
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+
 	return (
 		<AdminLayout>
 			<div>
@@ -22,14 +86,11 @@ const EmployeeAdmission = () => {
 							<div class="col-sm-8 my-2">
 								<select
 									className={` form-control`}
-									id="exampleFormControlSelect1"
+									id="year-list"
 								>
-									<option className={` form-control`}>0</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									{academicYear.map((data) => {
+										return <option value={data._id} className={` form-control`}>{data.name}</option>
+									})}
 								</select>
 							</div>
 						</div>
@@ -62,14 +123,12 @@ const EmployeeAdmission = () => {
 							<div class="col-sm-8 my-2">
 								<select
 									className={` form-control`}
-									id="exampleFormControlSelect1"
+									id="subject-list"
 								>
-									<option className={` form-control`}>Maths</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									{subjects.map((data) => {
+										return <option value={data._id} className={` form-control`}>{data.name}</option>
+									})}
+
 								</select>
 							</div>
 						</div>
@@ -82,15 +141,15 @@ const EmployeeAdmission = () => {
 							</label>
 							<div class="col-sm-8 my-2">
 								<select
+									onChange={(e) => {
+										setActiveCategory(e.target.value)
+									}}
 									className={` form-control`}
-									id="exampleFormControlSelect1"
+									id="category-list"
 								>
-									<option className={` form-control`}>0</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									{category.map((data) => {
+										return <option value={data._id} className={` form-control`}>{data.name}</option>
+									})}
 								</select>
 							</div>
 						</div>
@@ -104,14 +163,11 @@ const EmployeeAdmission = () => {
 							<div class="col-sm-8 my-2">
 								<select
 									className={` form-control`}
-									id="exampleFormControlSelect1"
+									id="position-list"
 								>
-									<option className={` form-control`}>0</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									{position.map((data) => {
+										return <option value={data._id} className={` form-control`}>{data.name}</option>
+									})}
 								</select>
 							</div>
 						</div>
