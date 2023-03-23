@@ -1,5 +1,8 @@
 import React from "react"
 import AdminLayout from "../../../components/Admin"
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import style from "./style.module.css"
 
 const StudentAdmission = () => {
 	return (
@@ -19,7 +22,7 @@ const StudentAdmission = () => {
 							>
 								Academic Year
 							</label>
-							<div className="col-sm-8 my-2">
+							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -31,6 +34,10 @@ const StudentAdmission = () => {
 									<option className={` form-control`}>4</option>
 									<option className={` form-control`}>5</option>
 								</select>
+								<FontAwesomeIcon
+									className={style.selectDownArrow}
+									icon={faCaretDown}
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -67,7 +74,7 @@ const StudentAdmission = () => {
 							>
 								Class
 							</label>
-							<div className="col-sm-8 my-2">
+							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -78,6 +85,10 @@ const StudentAdmission = () => {
 									<option className={` form-control`}>4</option>
 									<option className={` form-control`}>5</option>
 								</select>
+								<FontAwesomeIcon
+									className={style.selectDownArrow}
+									icon={faCaretDown}
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -135,7 +146,7 @@ const StudentAdmission = () => {
 							>
 								Gender
 							</label>
-							<div className="col-sm-8 my-2">
+							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -144,6 +155,10 @@ const StudentAdmission = () => {
 									<option className={` form-control`}>Female</option>
 									<option className={` form-control`}>other</option>
 								</select>
+								<FontAwesomeIcon
+									className={style.selectDownArrow}
+									icon={faCaretDown}
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -161,7 +176,7 @@ const StudentAdmission = () => {
 							>
 								Caste
 							</label>
-							<div className="col-sm-8 my-2">
+							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -170,6 +185,10 @@ const StudentAdmission = () => {
 									<option className={` form-control`}>Cast2</option>
 									<option className={` form-control`}>Cast3</option>
 								</select>
+								<FontAwesomeIcon
+									className={style.selectDownArrow}
+									icon={faCaretDown}
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -179,7 +198,7 @@ const StudentAdmission = () => {
 							>
 								Religion
 							</label>
-							<div className="col-sm-8 my-2">
+							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
 									id="exampleFormControlSelect1"
@@ -188,6 +207,10 @@ const StudentAdmission = () => {
 									<option className={` form-control`}>Religion2</option>
 									<option className={` form-control`}>Religion3</option>
 								</select>
+								<FontAwesomeIcon
+									className={style.selectDownArrow}
+									icon={faCaretDown}
+								/>
 							</div>
 						</div>
 						<div className="form-group row">

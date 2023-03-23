@@ -32,16 +32,20 @@ export default function Sidebar(props) {
 		<div>
 			{menu.map((item, i) => (
 				<div key={item + i} style={{ marginLeft: "10px" }}>
-					<Link href={item.link}>
-						<span className={styles.headerTitle}>{item.name}</span>
-					</Link>
-					{item.childs && (
-						<FontAwesomeIcon
-							style={{ marginLeft: "10px", cursor: "pointer" }}
-							onClick={() => hanldeChilds(i)}
-							icon={isChildOpen == i ? faCaretRight : faCaretDown}
-						/>
+					{item.childs ? (
+						<div style={{ cursor: "pointer" }} onClick={() => hanldeChilds(i)}>
+							<span>{item.name}</span>
+							<FontAwesomeIcon
+								style={{ marginLeft: "10px" }}
+								icon={isChildOpen == i ? faCaretRight : faCaretDown}
+							/>
+						</div>
+					) : (
+						<Link href={item.link}>
+							<span className={styles.headerTitle}>{item.name}</span>
+						</Link>
 					)}
+
 					{item.childs &&
 						isChildOpen == i &&
 						item.childs.map((child, index) => (
