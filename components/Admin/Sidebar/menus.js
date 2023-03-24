@@ -70,6 +70,10 @@ const headersData = [
 		link: "/admin/search/employee",
 	},
 	{
+		name: "Search Student",
+		link: "/admin/search/student",
+	},
+	{
 		name: "Class/Section Management",
 		link: "/admin/notice",
 	},

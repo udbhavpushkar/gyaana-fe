@@ -34,7 +34,7 @@ export default function Sidebar(props) {
 				<div key={item + i} style={{ marginLeft: "10px" }}>
 					{item.childs ? (
 						<div style={{ cursor: "pointer" }} onClick={() => hanldeChilds(i)}>
-							<span>{item.name}</span>
+							<span className={styles.headerTitle}>{item.name}</span>
 							<FontAwesomeIcon
 								style={{ marginLeft: "10px" }}
 								icon={isChildOpen == i ? faCaretRight : faCaretDown}
@@ -57,22 +57,31 @@ export default function Sidebar(props) {
 									marginTop: "-0px",
 								}}
 							>
-								<Link href={child.link}>
-									<span
-										className={styles.headerTitle}
-										style={{ marginTop: "-5px" }}
-										// onClick={() => setCurrentTab(child.name)}
-									>
-										{child.name}
-									</span>
-								</Link>
-								{child.childs && (
-									<FontAwesomeIcon
+								{child.childs ? (
+									<div
+										style={{ cursor: "pointer" }}
 										onClick={() => hanldeSubChilds(index)}
-										style={{ marginLeft: "10px", cursor: "pointer" }}
-										icon={isSubChildOpen == index ? faCaretRight : faCaretDown}
-									/>
+									>
+										<span className={styles.headerTitle}>{child.name}</span>
+										<FontAwesomeIcon
+											style={{ marginLeft: "10px", cursor: "pointer" }}
+											icon={
+												isSubChildOpen == index ? faCaretRight : faCaretDown
+											}
+										/>
+									</div>
+								) : (
+									<Link href={child.link}>
+										<span
+											className={styles.headerTitle}
+											style={{ marginTop: "-5px" }}
+											// onClick={() => setCurrentTab(child.name)}
+										>
+											{child.name}
+										</span>
+									</Link>
 								)}
+
 								{child.childs &&
 									isSubChildOpen == index &&
 									child.childs.map((subChild, i) => (
@@ -84,7 +93,12 @@ export default function Sidebar(props) {
 											}}
 										>
 											<Link href={subChild.link}>
-												<p style={{ marginTop: "-5px" }}>{subChild.name}</p>
+												<p
+													style={{ marginTop: "-5px" }}
+													className={styles.headerTitle}
+												>
+													{subChild.name}
+												</p>
 											</Link>
 										</div>
 									))}
