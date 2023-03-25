@@ -33,7 +33,7 @@ const StudentAdmission = () => {
 							</label>
 							<div className="col-sm-8 col-md-6  my-2 position-relative">
 								<select className={` form-control`} id="academic_year_01">
-									<option disabled className={` form-control`}>
+									<option className={` form-control`}>
 										Select Academic Year
 									</option>
 									<option className={` form-control`}>0</option>
@@ -91,9 +91,7 @@ const StudentAdmission = () => {
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
 								<select className={` form-control`} id="admission_date_02">
-									<option disabled className={` form-control`}>
-										Select Class
-									</option>
+									<option className={` form-control`}>Select Class</option>
 									<option className={` form-control`}>1</option>
 									<option className={` form-control`}>2</option>
 									<option className={` form-control`}>3</option>
@@ -172,9 +170,7 @@ const StudentAdmission = () => {
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
 								<select className={` form-control`} id="gender_student_03">
-									<option disabled className={` form-control`}>
-										Select Gender
-									</option>
+									<option className={` form-control`}>Select Gender</option>
 									<option className={` form-control`}>Male</option>
 									<option className={` form-control`}>Female</option>
 									<option className={` form-control`}>other</option>
@@ -205,9 +201,7 @@ const StudentAdmission = () => {
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
 								<select className={` form-control`} id="cast_student_04">
-									<option disabled className={` form-control`}>
-										Select Caste
-									</option>
+									<option className={` form-control`}>Select Caste</option>
 									<option className={` form-control`}>Cast1</option>
 									<option className={` form-control`}>Cast2</option>
 									<option className={` form-control`}>Cast3</option>
@@ -227,9 +221,7 @@ const StudentAdmission = () => {
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
 								<select className={` form-control`} id="religion_student_05">
-									<option disabled className={` form-control`}>
-										Select Religion
-									</option>
+									<option className={` form-control`}>Select Religion</option>
 									<option className={` form-control`}>Religion1</option>
 									<option className={` form-control`}>Religion2</option>
 									<option className={` form-control`}>Religion3</option>
