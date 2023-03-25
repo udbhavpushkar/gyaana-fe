@@ -1,28 +1,49 @@
 import React, { useEffect, useState } from "react"
 import AdminLayout from "../../../components/Admin"
-import { getRequest } from "../../../utilities/rest_service"
+import Collapsable from "../../../components/Custom/Collapsable"
+import { getRequest, patchRequest } from "../../../utilities/rest_service"
 
-const FILTER_FIELDS = ["firstName", "email", "employeeNo", "category"]
 
 const EmployeeAdmission = () => {
-    const [academicYear, setAcademicYear] = useState([])
-    const [subjects, setSubjects] = useState([])
-    const [category, setCategory] = useState([])
-    const [position, setPosition] = useState([])
-    const [activeCategory, setActiveCategory] = useState([])
+    const [searchText, setSearchText] = useState("")
+    const [employeeList, setEmployeeList] = useState([])
 
     useEffect(() => {
-        getAcademicYearList()
+        fetchEmployee()
     }, [])
 
-    const getAcademicYearList = async () => {
+    const fetchEmployee = async (e) => {
         try {
-            let response = await getRequest(`academic-year`)
+            let response = await getRequest(`employee/`)
             if (response.isSuccess) {
-                setAcademicYear(response.data)
+                setEmployeeList(response.data)
             }
         } catch (error) {
-            console.error(error);
+            console.log(error);
+        }
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        //handle search function 
+        //filter employeeList all data based on serachText
+    }
+
+    const handleToggleActive = async (e, id, active) => {
+        debugger
+        try {
+            let response = await patchRequest(`employee/${id}`, { disabled: active })
+            if (response.isSuccess) {
+                let data = [...employeeList]
+                let index = data.findIndex(d => d._id == id)
+                if (data[index]) {
+                    data[index] = response.data
+                    setEmployeeList(data)
+                }
+            }
+            console.log(e.target.value);
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -35,207 +56,59 @@ const EmployeeAdmission = () => {
                 </div>
                 <div>
                     <div>
-                        <div class="form-group row">
+                        <div className="form-group row">
                             <label
-                                for="exampleFormControlSelect1"
-                                class="col-sm-2 col-form-label"
+                                className="col-sm-2 col-form-label"
                             >
                                 Filter fields
                             </label>
-                            <div class="col-sm-8 my-2">
-                                <select
-                                    className={` form-control`}
-                                    id="subject-list"
-                                >
-                                    {FILTER_FIELDS.map((data, index) => {
-                                        return <option key={index} value={data} className={` form-control`}>{data}</option>
-                                    })}
-
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <form style={{ padding: "30px" }}>
-                        <h4>Official Details-</h4>
-                        <div class="form-group row">
-                            <label
-                                for="exampleFormControlSelect1"
-                                class="col-sm-2 col-form-label"
-                            >
-                                Academic Year
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <select
-                                    className={` form-control`}
-                                    id="year-list"
-                                >
-                                    {academicYear.map((data) => {
-                                        return <option value={data._id} className={` form-control`}>{data.name}</option>
-                                    })}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">
-                                Employee Number
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                for="exampleFormControlSelect1"
-                                class="col-sm-2 col-form-label"
-                            >
-                                Joining Date
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <input type="date" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                for="exampleFormControlSelect1"
-                                class="col-sm-2 col-form-label"
-                            >
-                                Subject
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <select
-                                    className={` form-control`}
-                                    id="subject-list"
-                                >
-                                    {subjects.map((data) => {
-                                        return <option value={data._id} className={` form-control`}>{data.name}</option>
-                                    })}
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                for="exampleFormControlSelect1"
-                                class="col-sm-2 col-form-label"
-                            >
-                                Category
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <select
-                                    onChange={(e) => {
-                                        setActiveCategory(e.target.value)
-                                    }}
-                                    className={` form-control`}
-                                    id="category-list"
-                                >
-                                    {category.map((data) => {
-                                        return <option value={data._id} className={` form-control`}>{data.name}</option>
-                                    })}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                for="exampleFormControlSelect1"
-                                class="col-sm-2 col-form-label"
-                            >
-                                Position
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <select
-                                    className={` form-control`}
-                                    id="position-list"
-                                >
-                                    {position.map((data) => {
-                                        return <option value={data._id} className={` form-control`}>{data.name}</option>
-                                    })}
-                                </select>
-                            </div>
-                        </div>
-                        <h4>Personal Details-</h4>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">
-                                First Name
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">
-                                Last Name
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <input type="text" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">
-                                Date of Birth
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <input type="date" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                for="exampleFormControlSelect1"
-                                class="col-sm-2 col-form-label"
-                            >
-                                Gender
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <select
-                                    className={` form-control`}
-                                    id="exampleFormControlSelect1"
-                                >
-                                    <option className={` form-control`}>Male</option>
-                                    <option className={` form-control`}>Female</option>
-                                    <option className={` form-control`}>other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">
-                                Aadhar Number
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <input type="number" class="form-control" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label
-                                for="exampleFormControlSelect1"
-                                class="col-sm-2 col-form-label0"
-                            >
-                                Marital Status
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <select
-                                    className={` form-control`}
-                                    id="exampleFormControlSelect10"
-                                >
-                                    <option className={` form-control`}>Married</option>
-                                    <option className={` form-control`}>Unmarried</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">
-                                Nationality
-                            </label>
-                            <div class="col-sm-8 my-2">
-                                <input type="text" class="form-control" placeholder="India" />
+                            <div className="col-sm-8 my-2">
+                                <input onChange={(e) => { setSearchText(e.target.value) }} type="text" className="form-control" />
                             </div>
                         </div>
                         <div className="text-center my-4">
-                            <button style={{ width: "150px" }} className="btn btn-success">
-                                Save
+                            <button
+                                onClick={handleSearch}
+                                style={{ width: "150px" }}
+                                className="btn btn-success"
+                            >
+                                Search
                             </button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
+            <Collapsable heading="Employee List">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Emp Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Active/Inactive</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {employeeList.map((data, index) => {
+                            let active = !data?.userId?.disabled
+                            let btnText = active ? "Active" : "Inactive"
+                            return <tr key={data._id}>
+                                <td>{index + 1}</td>
+                                <td>{data?.employeeNo}</td>
+                                <td>{data?.userId?.firstName} {data?.userId?.lastName}</td>
+                                <td>{data?.position?.name}</td>
+                                <td>
+                                    <button
+                                        className={`btn btn-outline ${active ? 'btn-outline-success' : 'btn-outline-danger'}`}
+                                        onClick={(e) => { handleToggleActive(e, data?._id, active) }}
+                                    >{btnText}</button>
+                                </td>
+                            </tr>
+                        })}
+                    </tbody>
+                </table>
+            </Collapsable>
         </AdminLayout>
     )
 }
