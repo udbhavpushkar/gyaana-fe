@@ -1,10 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 import AdminLayout from "../../../components/Admin"
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import style from "./style.module.css"
+import religion from "../../../assets/constant"
 
 const StudentAdmission = () => {
+	const [castInd, setCastInd] = useState(0)
+	console.log("Religion", religion)
+
+	const handleReligion = (ind) => {
+		console.log("ind")
+		console.log(ind.target.value)
+		let currI = religion.indexOf(ind.target.value)
+		for (let i = 0; i < religion.length; i++) {
+			if (religion[i].name == ind.target.value) {
+				setCastInd(i)
+				break
+			}
+		}
+		console.log(currI)
+		// setCastInd(currI)
+	}
 	return (
 		<AdminLayout>
 			<div className={style.student_admission_box}>
@@ -24,6 +41,7 @@ const StudentAdmission = () => {
 				<div>
 					<form className={style.form_container}>
 						<h4>Official Details-</h4>
+						<hr />
 						<div className="form-group row">
 							<label
 								htmlFor="exampleFormControlSelect1"
@@ -128,6 +146,7 @@ const StudentAdmission = () => {
 						</div>
 
 						<h4>Personal Details-</h4>
+						<hr />
 						<div className="form-group row">
 							<label
 								htmlFor="staticEmail"
@@ -197,14 +216,28 @@ const StudentAdmission = () => {
 								htmlFor="exampleFormControlSelect1"
 								className="col-sm-2 col-md-3 col-form-label"
 							>
-								Caste
+								Religion
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
-								<select className={` form-control`} id="cast_student_04">
-									<option className={` form-control`}>Select Caste</option>
-									<option className={` form-control`}>Cast1</option>
-									<option className={` form-control`}>Cast2</option>
-									<option className={` form-control`}>Cast3</option>
+								<select
+									onChange={(e) => handleReligion(e)}
+									className={` form-control`}
+									id="religion_student_05"
+								>
+									<option className={` form-control`}>
+										-- Select Religion --
+									</option>
+									{religion.map((rel, i) => {
+										return (
+											<option
+												onChange={(e) => handleReligion(e)}
+												key={rel.name + rel.id}
+												className={` form-control`}
+											>
+												{rel.name}
+											</option>
+										)
+									})}
 								</select>
 								<FontAwesomeIcon
 									className={style.selectDownArrow}
@@ -217,14 +250,20 @@ const StudentAdmission = () => {
 								htmlFor="exampleFormControlSelect1"
 								className="col-sm-2 col-md-3 col-form-label"
 							>
-								Religion
+								Caste
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
-								<select className={` form-control`} id="religion_student_05">
-									<option className={` form-control`}>Select Religion</option>
-									<option className={` form-control`}>Religion1</option>
-									<option className={` form-control`}>Religion2</option>
-									<option className={` form-control`}>Religion3</option>
+								<select className={` form-control`} id="cast_student_04">
+									{religion[castInd].castes.map((cast) => {
+										return (
+											<option
+												key={cast.name + cast.id}
+												className={` form-control`}
+											>
+												{cast.name}
+											</option>
+										)
+									})}
 								</select>
 								<FontAwesomeIcon
 									className={style.selectDownArrow}
@@ -232,6 +271,7 @@ const StudentAdmission = () => {
 								/>
 							</div>
 						</div>
+
 						<div className="form-group row">
 							<label
 								htmlFor="staticEmail"
