@@ -1,27 +1,79 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import AdminLayout from "../../../components/Admin"
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import style from "./style.module.css"
-import religion from "../../../assets/constant"
+import { getRequest, postRequest } from "../../../utilities/rest_service"
+import { handleFormData } from "../../../utilities/form_services"
+import { toast } from "react-toastify"
+import religion from "./../../../assets/constant"
 
 const StudentAdmission = () => {
+	const [academicYear, setAcademicYear] = useState([])
+	const [activeYear, setActiveYear] = useState(null)
 	const [castInd, setCastInd] = useState(0)
-	console.log("Religion", religion)
+	const [grades, setGrades] = useState([])
+	const [formData, setFormData] = useState({})
 
 	const handleReligion = (ind) => {
-		console.log("ind")
-		console.log(ind.target.value)
-		let currI = religion.indexOf(ind.target.value)
 		for (let i = 0; i < religion.length; i++) {
 			if (religion[i].name == ind.target.value) {
 				setCastInd(i)
 				break
 			}
 		}
-		console.log(currI)
-		// setCastInd(currI)
 	}
+
+	useEffect(() => {
+		getAcademicYearList()
+	}, [])
+
+	useEffect(() => {
+		getClasses(activeYear)
+	}, [activeYear])
+
+	const getAcademicYearList = async () => {
+		try {
+			let response = await getRequest(`academic-year`)
+			if (response.isSuccess) {
+				setAcademicYear(response.data)
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	const getClasses = async (year) => {
+		try {
+			let response = await getRequest(`grade/?year=${year}`)
+			if (response.isSuccess) {
+				setGrades(response.data)
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	const handleInputChange = (e) => {
+		handleFormData(e, formData, setFormData)
+	}
+
+	const createStudent = async (e) => {
+		e.preventDefault()
+		try {
+			let response = await postRequest(`student/register`, formData)
+			if (response.isSuccess) {
+				console.log("response", response)
+				toast.success("Created Successfully")
+				e.target.reset()
+			} else {
+				toast.error("Something went Wrong")
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
 	return (
 		<AdminLayout>
 			<div className={style.student_admission_box}>
@@ -39,7 +91,7 @@ const StudentAdmission = () => {
 					<hr />
 				</div>
 				<div>
-					<form className={style.form_container}>
+					<form onSubmit={createStudent} className={style.form_container}>
 						<h4>Official Details-</h4>
 						<hr />
 						<div className="form-group row">
@@ -50,16 +102,29 @@ const StudentAdmission = () => {
 								Academic Year
 							</label>
 							<div className="col-sm-8 col-md-6  my-2 position-relative">
-								<select className={` form-control`} id="academic_year_01">
-									<option className={` form-control`}>
+								<select
+									name="academicYear"
+									onChange={(e) => {
+										setActiveYear(e.target.value)
+										handleInputChange(e)
+									}}
+									className={` form-control`}
+									id="academic_year_01"
+								>
+									<option value={null} className={` form-control`}>
 										Select Academic Year
 									</option>
-									<option className={` form-control`}>0</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									{academicYear.map((data, index) => {
+										return (
+											<option
+												key={index}
+												value={data?._id}
+												className="form-control"
+											>
+												{data.name}
+											</option>
+										)
+									})}
 								</select>
 								<FontAwesomeIcon
 									className={style.selectDownArrow}
@@ -75,7 +140,12 @@ const StudentAdmission = () => {
 								Receipt Number
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="text" className="form-control" />
+								<input
+									type="text"
+									name="receiptNo"
+									onChange={handleInputChange}
+									className="form-control"
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -86,7 +156,12 @@ const StudentAdmission = () => {
 								Admission Number
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="text" className="form-control" />
+								<input
+									type="text"
+									name="admissionNo"
+									onChange={handleInputChange}
+									className="form-control"
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -97,7 +172,12 @@ const StudentAdmission = () => {
 								Admission Date
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="date" className="form-control" />
+								<input
+									type="date"
+									onChange={handleInputChange}
+									name="admissionDate"
+									className="form-control"
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -108,13 +188,20 @@ const StudentAdmission = () => {
 								Class
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
-								<select className={` form-control`} id="admission_date_02">
+								<select
+									className={` form-control`}
+									onChange={handleInputChange}
+									name="grade"
+									id="admission_date_02"
+								>
 									<option className={` form-control`}>Select Class</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									{grades.map((data, index) => {
+										return (
+											<option key={`class_${index}`} value={data._id}>
+												{data.name}
+											</option>
+										)
+									})}
 								</select>
 								<FontAwesomeIcon
 									className={style.selectDownArrow}
@@ -130,7 +217,12 @@ const StudentAdmission = () => {
 								Joining Date
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="date" className="form-control" />
+								<input
+									type="date"
+									onChange={handleInputChange}
+									name="joiningDate"
+									className="form-control"
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -141,7 +233,7 @@ const StudentAdmission = () => {
 								Vacanacy
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="text" className="form-control" />
+								<input readOnly type="text" className="form-control" />
 							</div>
 						</div>
 
@@ -155,7 +247,12 @@ const StudentAdmission = () => {
 								First Name
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="text" className="form-control" />
+								<input
+									type="text"
+									onChange={handleInputChange}
+									name="firstName"
+									className="form-control"
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -166,7 +263,12 @@ const StudentAdmission = () => {
 								Last Name
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="text" className="form-control" />
+								<input
+									type="text"
+									onChange={handleInputChange}
+									name="lastName"
+									className="form-control"
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -177,7 +279,12 @@ const StudentAdmission = () => {
 								Date of Birth
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="date" className="form-control" />
+								<input
+									type="date"
+									onChange={handleInputChange}
+									name="dob"
+									className="form-control"
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -188,11 +295,24 @@ const StudentAdmission = () => {
 								Gender
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
-								<select className={` form-control`} id="gender_student_03">
-									<option className={` form-control`}>Select Gender</option>
-									<option className={` form-control`}>Male</option>
-									<option className={` form-control`}>Female</option>
-									<option className={` form-control`}>other</option>
+								<select
+									className={` form-control`}
+									onChange={handleInputChange}
+									name="gender"
+									id="gender_student_03"
+								>
+									<option value={null} className={`form-control`}>
+										Select Gender
+									</option>
+									<option value="male" className={`form-control`}>
+										Male
+									</option>
+									<option value="female" className={`form-control`}>
+										Female
+									</option>
+									<option value="others" className={`form-control`}>
+										other
+									</option>
 								</select>
 								<FontAwesomeIcon
 									className={style.selectDownArrow}
@@ -205,10 +325,31 @@ const StudentAdmission = () => {
 								htmlFor="staticEmail"
 								className="col-sm-2 col-md-3 col-form-label"
 							>
+								Email
+							</label>
+							<div className="col-sm-8 col-md-6 my-2">
+								<input
+									type="email"
+									onChange={handleInputChange}
+									name="email"
+									className="form-control"
+								/>
+							</div>
+						</div>
+						<div className="form-group row">
+							<label
+								htmlFor="staticEmail"
+								className="col-sm-2 col-md-3 col-form-label"
+							>
 								Aadhar Number
 							</label>
 							<div className="col-sm-8 col-md-6 my-2">
-								<input type="number" className="form-control" />
+								<input
+									type="text"
+									onChange={handleInputChange}
+									name="aadhaar"
+									className="form-control"
+								/>
 							</div>
 						</div>
 						<div className="form-group row">
@@ -220,22 +361,20 @@ const StudentAdmission = () => {
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
 								<select
-									onChange={(e) => handleReligion(e)}
 									className={` form-control`}
-									id="religion_student_05"
+									onChange={(e) => {
+										handleInputChange
+										handleReligion(e)
+									}}
+									name="caste"
+									id="cast_student_04"
 								>
-									<option className={` form-control`}>
-										-- Select Religion --
+									<option className={`form-control`}>
+										--Select Religion--
 									</option>
-									{religion.map((rel, i) => {
+									{religion.map((rel) => {
 										return (
-											<option
-												onChange={(e) => handleReligion(e)}
-												key={rel.name + rel.id}
-												className={` form-control`}
-											>
-												{rel.name}
-											</option>
+											<option className={`form-control`}>{rel.name}</option>
 										)
 									})}
 								</select>
@@ -253,15 +392,15 @@ const StudentAdmission = () => {
 								Caste
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
-								<select className={` form-control`} id="cast_student_04">
+								<select
+									className={`form-control`}
+									onChange={handleInputChange}
+									name="religion"
+									id="religion_student_05"
+								>
 									{religion[castInd].castes.map((cast) => {
 										return (
-											<option
-												key={cast.name + cast.id}
-												className={` form-control`}
-											>
-												{cast.name}
-											</option>
+											<option className={`form-control`}>{cast.name}</option>
 										)
 									})}
 								</select>
@@ -283,6 +422,8 @@ const StudentAdmission = () => {
 								<input
 									type="text"
 									className="form-control"
+									onChange={handleInputChange}
+									name="nationality"
 									placeholder="India"
 								/>
 							</div>
@@ -298,7 +439,8 @@ const StudentAdmission = () => {
 								<input
 									type="text"
 									className="form-control"
-									placeholder="India"
+									onChange={handleInputChange}
+									name="identification_mark"
 								/>
 							</div>
 						</div>
@@ -313,12 +455,14 @@ const StudentAdmission = () => {
 								<input
 									type="text"
 									className="form-control"
-									placeholder="India"
+									onChange={handleInputChange}
+									name="blood_group"
 								/>
 							</div>
 						</div>
 						<div className="text-center my-4">
 							<button
+								type="submit"
 								style={{
 									width: "150px",
 									backgroundColor: "purple",
