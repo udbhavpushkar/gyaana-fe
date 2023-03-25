@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import AdminLayout from "../../../components/Admin"
 import style from "./styles.module.css"
 
@@ -56,6 +56,12 @@ const TABLE_DATA = [
 ]
 
 const Student = () => {
+	const [isFilter, setISFiletr] = useState(false)
+
+	const handleFilter = (e) => {
+		e.preventDefault()
+		setISFiletr(true)
+	}
 	return (
 		<AdminLayout>
 			<div style={{ boxShadow: "0px 3px 6px rgba(128, 128, 128, 0.636)" }}>
@@ -85,11 +91,28 @@ const Student = () => {
 						</div>
 					</div>
 					<div className="text-center m-4">
-						<button className="btn btn-success btn-sm">Search</button>
+						<button className="btn btn-success btn-sm" onClick={handleFilter}>
+							Search
+						</button>
 						<button className="btn btn-danger btn-sm mx-4">Clear</button>
 					</div>
 				</form>
 				{/* showing search result in table start   */}
+				{isFilter && (
+					<div style={{ marginLeft: "30px", fontSize: "18px" }}>
+						<span style={{ color: "purple" }}>
+							Filter: Showing <b>10</b> results
+						</span>
+						<span>
+							<button
+								className="btn btn-sm btn-warning mx-2"
+								onClick={() => setISFiletr(false)}
+							>
+								Clear Filter
+							</button>
+						</span>
+					</div>
+				)}
 				<div style={{ padding: "20px" }}>
 					<table class={`table ${style.selectStudent}`}>
 						<thead>
@@ -104,9 +127,9 @@ const Student = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{TABLE_DATA.map((item) => {
+							{TABLE_DATA.map((item, i) => {
 								return (
-									<tr>
+									<tr key={item.name + i}>
 										<td>{item.name}</td>
 										<td>{item.class}</td>
 										<td>{item.section}</td>

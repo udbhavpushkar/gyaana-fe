@@ -4,7 +4,17 @@
     font-weight: 500;
     font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.headerTitleAc{
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    color: red;
+    font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .headerTitle:hover{
     font-size: 17px;
     color: rgb(217, 172, 37);
+}
+.activ{
+    color: green;
 }

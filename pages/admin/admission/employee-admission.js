@@ -124,6 +124,9 @@ const EmployeeAdmission = () => {
 							</label>
 							<div className="col-sm-8 my-2">
 								<select className={` form-control`} id="year-list">
+									<option value="" className={` form-control`}>
+										Select Academic Year
+									</option>
 									{academicYear.map((data) => {
 										return (
 											<option value={data._id} className={` form-control`}>

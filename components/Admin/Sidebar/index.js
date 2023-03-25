@@ -1,7 +1,7 @@
 import { faCaretDown, faCaretRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import styles from "./style.module.css"
 import menu from "./menus"
 
@@ -12,7 +12,7 @@ import menu from "./menus"
 export default function Sidebar(props) {
 	const [isChildOpen, setIsChildOpen] = useState("")
 	const [isSubChildOpen, setIsSubChildOpen] = useState("")
-	// const [currentTab, setCurrentTab] = useState("Dashboard")
+	// const currentTab = useRef("Dashboard")
 
 	const hanldeChilds = (i) => {
 		if (isChildOpen == i) {
@@ -28,6 +28,9 @@ export default function Sidebar(props) {
 			setIsSubChildOpen(i)
 		}
 	}
+	// const handleNavLink = (link) => {
+	// 	currentTab.current = link
+	// }
 	return (
 		<div>
 			{menu.map((item, i) => (
