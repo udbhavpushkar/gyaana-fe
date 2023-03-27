@@ -189,12 +189,12 @@ const StudentAdmission = () => {
 							</label>
 							<div className="col-sm-8 col-md-6 my-2 position-relative">
 								<select
-									className={` form-control`}
+									className={`form-control`}
 									onChange={handleInputChange}
 									name="grade"
 									id="admission_date_02"
 								>
-									<option className={` form-control`}>Select Class</option>
+									<option className={`form-control`}>Select Class</option>
 									{grades.map((data, index) => {
 										return (
 											<option key={`class_${index}`} value={data._id}>

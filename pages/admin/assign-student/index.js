@@ -1,10 +1,121 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import AdminLayout from "../../../components/Admin"
 import style from "./style.module.css"
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { getRequest, patchRequest } from "../../../utilities/rest_service"
+import { toast } from "react-toastify"
 
 const AssignStudent = () => {
+
+	const [academicYear, setAcademicYear] = useState([])
+	const [activeYear, setActiveYear] = useState()
+	const [grades, setGrades] = useState([])
+	const [activeGrades, setActiveGrades] = useState()
+	const [sectionList, setSectionList] = useState([])
+	const [activeSection, setActiveSection] = useState()
+	const [studentList, setStudentList] = useState([])
+	const [selectedStudents, setSelectedStudents] = useState([])
+
+	const resetStates = () => {
+		setActiveYear()
+		setActiveGrades()
+		setActiveSection()
+		setSectionList([])
+		setSelectedStudents([])
+		setStudentList([])
+	}
+
+	useEffect(() => {
+		getAcademicYearList()
+	}, [])
+
+	useEffect(() => {
+		if (activeYear) {
+			getClasses(activeYear)
+		}
+	}, [activeYear])
+
+	useEffect(() => {
+		if (activeGrades) {
+			getSectionList(activeGrades)
+			getStudentList(activeGrades)
+		}
+	}, [activeGrades])
+
+	const getAcademicYearList = async () => {
+		try {
+			let response = await getRequest(`academic-year`)
+			if (response.isSuccess) {
+				setAcademicYear(response.data)
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	const getClasses = async (year) => {
+		try {
+			let response = await getRequest(`grade/?year=${year}`)
+			if (response.isSuccess) {
+				setGrades(response.data)
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	const getSectionList = async (gradeId) => {
+		try {
+			let response = await getRequest(`section/${gradeId}`)
+			if (response.isSuccess) {
+				setSectionList(response.data)
+			} else {
+				toast.success("Something went wrong")
+			}
+		} catch (error) {
+
+		}
+	}
+
+	const getStudentList = async (gradeId) => {
+		try {
+			let response = await getRequest(`student/?grade=${gradeId}&section=null`)
+			if (response.isSuccess) {
+				setStudentList(response.data)
+			}
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	const handleStudentcheck = (e) => {
+		let data = [...selectedStudents]
+		if (e.target.checked) {
+			data.push(e.target.value)
+		} else {
+			let index = data.indexOf(e.target.value)
+			data.splice(index, 1)
+		}
+		setSelectedStudents(data)
+	}
+
+	const handleAssignStudent = async (e) => {
+		e.preventDefault()
+		try {
+			let response = await patchRequest(`section/${activeSection}/`, { students: selectedStudents })
+			if (response.isSuccess) {
+				toast.success("Students added to section successfully.")
+				e.target.reset()
+				resetStates()
+			}
+
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+
 	return (
 		<AdminLayout>
 			<div style={{ boxShadow: "0px 3px 6px rgba(128, 128, 128, 0.636)" }}>
@@ -13,7 +124,7 @@ const AssignStudent = () => {
 					<hr />
 				</div>
 				<div>
-					<form style={{ padding: "30px" }}>
+					<form onSubmit={handleAssignStudent} style={{ padding: "30px" }}>
 						<div className="form-group row">
 							<label
 								htmlFor="exampleFormControlSelect1"
@@ -23,15 +134,28 @@ const AssignStudent = () => {
 							</label>
 							<div className="col-sm-8 my-2 position-relative">
 								<select
-									className={` form-control`}
-									id="exampleFormControlSelect1"
+									name="academicYear"
+									onChange={(e) => {
+										setActiveYear(e.target.value)
+										// handleInputChange(e)
+									}}
+									className={`form-control`}
+									id="academic_year_02"
 								>
-									<option className={` form-control`}>0</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									<option value={null} className={` form-control`}>
+										Select Academic Year
+									</option>
+									{academicYear.map((data, index) => {
+										return (
+											<option
+												key={index}
+												value={data?._id}
+												className="form-control"
+											>
+												{data.name}
+											</option>
+										)
+									})}
 								</select>
 								<FontAwesomeIcon
 									className={style.selectDownArrow}
@@ -49,14 +173,21 @@ const AssignStudent = () => {
 							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
-									id="exampleFormControlSelect1"
+									onChange={(e) => {
+										setActiveGrades(e.target.value)
+										// handleInputChange(e)
+									}}
+									name="grade"
+									id="class_dropdown"
 								>
-									<option className={` form-control`}>0</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									<option className={`form-control`}>Select Class</option>
+									{grades.map((data, index) => {
+										return (
+											<option key={`class_${index}`} value={data._id}>
+												{data.name}
+											</option>
+										)
+									})}
 								</select>
 								<FontAwesomeIcon
 									className={style.selectDownArrow}
@@ -74,14 +205,20 @@ const AssignStudent = () => {
 							<div className="col-sm-8 my-2 position-relative">
 								<select
 									className={` form-control`}
-									id="exampleFormControlSelect1"
+									onChange={(e) => {
+										setActiveSection(e.target.value)
+									}}
+									name="section"
+									id="section_dropdown"
 								>
-									<option className={` form-control`}>0</option>
-									<option className={` form-control`}>1</option>
-									<option className={` form-control`}>2</option>
-									<option className={` form-control`}>3</option>
-									<option className={` form-control`}>4</option>
-									<option className={` form-control`}>5</option>
+									<option className={`form-control`}>Select Section</option>
+									{sectionList.map((data, index) => {
+										return (
+											<option key={`section_${index}`} value={data._id}>
+												{data.name}
+											</option>
+										)
+									})}
 								</select>
 								<FontAwesomeIcon
 									className={style.selectDownArrow}
@@ -91,7 +228,7 @@ const AssignStudent = () => {
 						</div>
 						<h3>Select Students</h3>
 
-						<table class={`table ${style.selectStudent}`}>
+						<table className={`table ${style.selectStudent}`}>
 							<thead>
 								<tr>
 									<th scope="col">
@@ -104,36 +241,23 @@ const AssignStudent = () => {
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>
-										<input className={style.inputCheckbox} type="checkbox" />
-									</td>
+								{studentList.map((data, index) => {
+									return <tr key={`student_${index}`}>
+										<td>
+											<input className={style.inputCheckbox} type="checkbox" onChange={handleStudentcheck} name="students[]" value={data?._id} />
+										</td>
 
-									<td>Mark</td>
-									<td>85</td>
-									<td>01</td>
-								</tr>
-								<tr>
-									<td>
-										<input className={style.inputCheckbox} type="checkbox" />
-									</td>
-									<td>Mark</td>
-									<td>85</td>
-									<td>02</td>
-								</tr>
-								<tr>
-									<td>
-										<input className={style.inputCheckbox} type="checkbox" />
-									</td>
-									<td>Mark</td>
-									<td>85</td>
-									<td>03</td>
-								</tr>
+										<td>{data?.userId?.firstName}</td>
+										<td>85</td>
+										<td>01</td>
+									</tr>
+								})}
+
 							</tbody>
 						</table>
 
 						<div className="text-center my-4">
-							<button style={{ width: "150px" }} className="btn btn-success">
+							<button type="submit" style={{ width: "150px" }} className="btn btn-success">
 								Assign to Section
 							</button>
 						</div>
