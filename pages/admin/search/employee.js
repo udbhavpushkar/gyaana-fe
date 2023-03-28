@@ -7,6 +7,7 @@ import { getRequest, patchRequest } from "../../../utilities/rest_service"
 const EmployeeAdmission = () => {
     const [searchText, setSearchText] = useState("")
     const [employeeList, setEmployeeList] = useState([])
+    const [filterEmployeeList, setFilterEmployeeList] = useState([])
 
     useEffect(() => {
         fetchEmployee()
@@ -25,12 +26,21 @@ const EmployeeAdmission = () => {
 
     const handleSearch = (e) => {
         e.preventDefault()
-        //handle search function 
-        //filter employeeList all data based on serachText
+        let text = e.target.value
+        setSearchText(text)
+        let data = employeeList.filter((d => {
+            let result = d?.category?.name?.includes(text) || d?.position?.name?.includes(text) || d?.gender?.includes(text) || d?.userId?.firstName?.includes(text) || d?.userId?.lastName?.includes(text) || d?.userId?.email?.includes(text) || d?.employeeNo?.includes(text);
+            return result
+        }))
+        if (text) {
+            setFilterEmployeeList(data)
+        } else {
+            setFilterEmployeeList([])
+        }
+
     }
 
     const handleToggleActive = async (e, id, active) => {
-        debugger
         try {
             let response = await patchRequest(`employee/${id}`, { disabled: active })
             if (response.isSuccess) {
@@ -63,18 +73,10 @@ const EmployeeAdmission = () => {
                                 Filter fields
                             </label>
                             <div className="col-sm-8 my-2">
-                                <input onChange={(e) => { setSearchText(e.target.value) }} type="text" className="form-control" />
+                                <input onChange={handleSearch} type="text" className="form-control" />
                             </div>
                         </div>
-                        <div className="text-center my-4">
-                            <button
-                                onClick={handleSearch}
-                                style={{ width: "150px" }}
-                                className="btn btn-success"
-                            >
-                                Search
-                            </button>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -90,7 +92,7 @@ const EmployeeAdmission = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {employeeList.map((data, index) => {
+                        {(searchText ? filterEmployeeList : employeeList).map((data, index) => {
                             let active = !data?.userId?.disabled
                             let btnText = active ? "Active" : "Inactive"
                             return <tr key={data._id}>
