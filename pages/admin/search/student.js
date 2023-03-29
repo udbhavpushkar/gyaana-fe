@@ -40,24 +40,6 @@ const Student = () => {
 		}
 	}
 
-	const handleToggleActive = async (e, id, active) => {
-		try {
-			//requires BE changes, wont work for now
-			let response = await patchRequest(`student/${id}`, { disabled: active })
-			if (response.isSuccess) {
-				let data = [...employeeList]
-				let index = data.findIndex(d => d._id == id)
-				if (data[index]) {
-					data[index] = response.data
-					setEmployeeList(data)
-				}
-			}
-			console.log(e.target.value);
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
 	return (
 		<AdminLayout>
 			<div style={{ boxShadow: "0px 3px 6px rgba(128, 128, 128, 0.636)" }}>
@@ -90,7 +72,6 @@ const Student = () => {
 								<th scope="col">Name</th>
 								<th scope="col">Class</th>
 								<th scope="col">Section</th>
-								<th scope="col">Active/Inactive</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -103,12 +84,6 @@ const Student = () => {
 									<td>{data?.userId?.firstName} {data?.userId?.lastName}</td>
 									<td>{data?.grade?.name}</td>
 									<td>{data?.section?.name}</td>
-									<td>
-										<button
-											className={`btn btn-outline ${active ? 'btn-outline-success' : 'btn-outline-danger'}`}
-											onClick={(e) => { handleToggleActive(e, data?._id, active) }}
-										>{btnText}</button>
-									</td>
 								</tr>
 							})}
 						</tbody>
