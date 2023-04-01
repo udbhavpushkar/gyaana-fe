@@ -98,7 +98,7 @@ const EmployeeAdmission = () => {
                             return <tr key={data._id}>
                                 <td>{index + 1}</td>
                                 <td>{data?.employeeNo}</td>
-                                <td>{data?.userId?.firstName} {data?.userId?.lastName}</td>
+                                <td><a href={`../profile/employee/${data._id}`} target={`_blank`}>{data?.userId?.firstName} {data?.userId?.lastName}</a></td>
                                 <td>{data?.position?.name}</td>
                                 <td>
                                     <button

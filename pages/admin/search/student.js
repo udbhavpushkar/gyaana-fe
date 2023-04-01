@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React, { useEffect, useState } from "react"
 import AdminLayout from "../../../components/Admin"
 import Collapsable from "../../../components/Custom/Collapsable"
@@ -76,12 +77,10 @@ const Student = () => {
 						</thead>
 						<tbody>
 							{(searchText ? filterStudentList : studentList).map((data, index) => {
-								let active = !data?.userId?.disabled
-								let btnText = active ? "Active" : "Inactive"
 								return <tr key={data._id}>
 									<td>{index + 1}</td>
 									<td>{data?.admissionNo}</td>
-									<td>{data?.userId?.firstName} {data?.userId?.lastName}</td>
+									<td><a href={`../profile/student/${data._id}`} target={`_blank`}>{data?.userId?.firstName} {data?.userId?.lastName}</a></td>
 									<td>{data?.grade?.name}</td>
 									<td>{data?.section?.name}</td>
 								</tr>
