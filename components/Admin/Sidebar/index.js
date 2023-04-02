@@ -1,7 +1,7 @@
 import { faCaretDown, faCaretRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import styles from "./style.module.css"
 import menu from "./menus"
 
@@ -12,7 +12,7 @@ import menu from "./menus"
 export default function Sidebar(props) {
 	const [isChildOpen, setIsChildOpen] = useState("")
 	const [isSubChildOpen, setIsSubChildOpen] = useState("")
-	const [currentTab, setCurrentTab] = useState("Dashboard")
+	// const currentTab = useRef("Dashboard")
 
 	const hanldeChilds = (i) => {
 		if (isChildOpen == i) {
@@ -28,62 +28,80 @@ export default function Sidebar(props) {
 			setIsSubChildOpen(i)
 		}
 	}
+	// const handleNavLink = (link) => {
+	// 	currentTab.current = link
+	// }
 	return (
 		<div>
 			{menu.map((item, i) => (
-				<div style={{ marginLeft: "10px" }}>
-					<Link href={item.link}>
-						<span
-							onClick={() => setCurrentTab(item.name)}
-							className={styles.headerTitle}
-						>
-							{item.name}
-						</span>
-					</Link>
-					{item.childs && (
-						<FontAwesomeIcon
-							style={{ marginLeft: "10px", cursor: "pointer" }}
-							onClick={() => hanldeChilds(i)}
-							icon={isChildOpen == i ? faCaretRight : faCaretDown}
-						/>
+				<div key={item + i} style={{ marginLeft: "10px" }}>
+					{item.childs ? (
+						<div style={{ cursor: "pointer" }} onClick={() => hanldeChilds(i)}>
+							<span className={styles.headerTitle}>{item.name}</span>
+							<FontAwesomeIcon
+								style={{ marginLeft: "10px" }}
+								icon={isChildOpen == i ? faCaretRight : faCaretDown}
+							/>
+						</div>
+					) : (
+						<Link href={item.link}>
+							<span className={styles.headerTitle}>{item.name}</span>
+						</Link>
 					)}
+
 					{item.childs &&
 						isChildOpen == i &&
 						item.childs.map((child, index) => (
 							<div
+								key={child + index}
 								style={{
 									marginLeft: "20px",
 									fontStyle: "italic",
 									marginTop: "-0px",
 								}}
 							>
-								<Link href={child.link}>
-									<span
-										className={styles.headerTitle}
-										style={{ marginTop: "-5px" }}
-										onClick={() => setCurrentTab(child.name)}
-									>
-										{child.name}
-									</span>
-								</Link>
-								{child.childs && (
-									<FontAwesomeIcon
+								{child.childs ? (
+									<div
+										style={{ cursor: "pointer" }}
 										onClick={() => hanldeSubChilds(index)}
-										style={{ marginLeft: "10px", cursor: "pointer" }}
-										icon={isSubChildOpen == index ? faCaretRight : faCaretDown}
-									/>
+									>
+										<span className={styles.headerTitle}>{child.name}</span>
+										<FontAwesomeIcon
+											style={{ marginLeft: "10px", cursor: "pointer" }}
+											icon={
+												isSubChildOpen == index ? faCaretRight : faCaretDown
+											}
+										/>
+									</div>
+								) : (
+									<Link href={child.link}>
+										<span
+											className={styles.headerTitle}
+											style={{ marginTop: "-5px" }}
+											// onClick={() => setCurrentTab(child.name)}
+										>
+											{child.name}
+										</span>
+									</Link>
 								)}
+
 								{child.childs &&
 									isSubChildOpen == index &&
-									child.childs.map((subChild) => (
+									child.childs.map((subChild, i) => (
 										<div
+											key={subChild + i}
 											style={{
 												marginLeft: "20px",
 												cursor: "pointer",
 											}}
 										>
 											<Link href={subChild.link}>
-												<p style={{ marginTop: "-5px" }}>{subChild.name}</p>
+												<p
+													style={{ marginTop: "-5px" }}
+													className={styles.headerTitle}
+												>
+													{subChild.name}
+												</p>
 											</Link>
 										</div>
 									))}

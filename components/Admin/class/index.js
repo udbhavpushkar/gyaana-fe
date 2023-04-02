@@ -166,7 +166,7 @@ const Grade = () => {
                                 <tr key={`class-${index}`}>
                                     <th scope="row">{index + 1}</th>
                                     <td>{data.name}</td>
-                                    <td>{data.year.name}</td>
+                                    <td>{data?.year?.name}</td>
                                     <td>{data.maxStudent}</td>
                                     <td>
                                         <FontAwesomeIcon

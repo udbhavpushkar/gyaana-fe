@@ -1,0 +1,39 @@
+.selectStudent{
+    padding: 20px !important;
+    box-shadow: 0px 3px 6px rgba(105, 85, 85, 0.636)
+}
+.selectStudent > thead > tr > th {
+    background-color: rgb(212, 124, 212);
+    border: 1px solid purple;
+    text-align: center;
+}
+.selectStudent > tbody > tr > td {
+    border: 1px solid purple;
+    text-align: center;
+}
+.inputCheckbox{
+    height: 18px;
+    width: 20px;
+    background-color: red;
+    cursor: pointer;
+
+}
+.selectDownArrow{
+    position: absolute;
+    right: 24px;
+    top: 4px;
+    font-size: 28px;
+}
+.search_admissionNo{
+    /* background-color: rgb(192, 179, 192); */
+    /* width: 500px; */
+    padding: 20px 50px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.636) ;
+    margin: 0px 150px;
+}

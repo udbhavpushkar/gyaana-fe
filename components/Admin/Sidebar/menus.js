@@ -49,37 +49,57 @@ const headersData = [
 	},
 	{
 		name: "Enquiry",
-		link: "/admin/student",
+		link: "/admin/enquiry",
 	},
 	{
 		name: "Admission Management",
-		link: "/admin/class",
+		link: "#",
+		childs: [
+			{
+				name: "Student",
+				link: "/admin/admission/student-admission",
+			},
+			{
+				name: "Employees",
+				link: "/admin/admission/employee-admission",
+			},
+		],
 	},
 	{
-		name: "Search",
-		link: "/admin/feedback",
+		name: "Search Employee",
+		link: "/admin/search/employee",
 	},
 	{
+		name: "Search Student",
+		link: "/admin/search/student",
+	},
+	/* {
 		name: "Class/Section Management",
 		link: "/admin/notice",
-	},
-	{
+	}, */
+	/* {
 		name: "Subject Management",
 		link: "/admin/download",
 	},
 	{
 		name: "Syllabus Management",
 		link: "/admin/download",
-	},
+	}, */
 	{
 		name: "Student Management",
-		link: "/admin/download",
+		link: "#",
+		childs: [
+			{
+				name: "Assign students to Section",
+				link: "/admin/assign-student",
+			},
+		],
 	},
-	{
+	/* {
 		name: "Employee Management",
 		link: "/admin/download",
-	},
-	{
+	}, */
+	/* {
 		name: "Attendence Management",
 		link: "/admin/download",
 	},
@@ -106,7 +126,7 @@ const headersData = [
 	{
 		name: "Achievements",
 		link: "/admin/download",
-	},
+	}, */
 ]
 
 export default headersData

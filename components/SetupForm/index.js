@@ -4,8 +4,13 @@ import styles from "../Admin/institute/styles.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons"
 
-const SetupForm = ({ data, existingData, setExistingData, handleSubmitForm, btnName }) => {
-
+const SetupForm = ({
+	data,
+	existingData,
+	setExistingData,
+	handleSubmitForm,
+	btnName,
+}) => {
 	const handleInputChange = (e) => {
 		let data = { ...existingData }
 		data[e.target.name] = e.target.value
@@ -33,10 +38,19 @@ const SetupForm = ({ data, existingData, setExistingData, handleSubmitForm, btnN
 									</label>
 									{item.type === "dropdown" && (
 										<div style={{ position: "relative" }}>
-											<select id={item.name} className={`${styles.input} form-control`} name={item.name} onChange={handleInputChange}>
+											<select
+												id={item.name}
+												className={`${styles.input} form-control`}
+												name={item.name}
+												onChange={handleInputChange}
+											>
 												{item.list.map((opt) => {
 													return (
-														<option key={opt._id} value={opt._id} className={`${styles.input} form-control`}>
+														<option
+															key={opt._id}
+															value={opt._id}
+															className={`${styles.input} form-control`}
+														>
 															{opt.name}
 														</option>
 													)
@@ -73,7 +87,12 @@ const SetupForm = ({ data, existingData, setExistingData, handleSubmitForm, btnN
 							</div> */}
 						</div>
 						<div className="text-center py-3">
-							<button type="submit" className={`${styles.saveBtn} btn btn-success`}>{btnName}</button>
+							<button
+								type="submit"
+								className={`${styles.saveBtn} btn btn-success`}
+							>
+								{btnName}
+							</button>
 						</div>
 					</form>
 				</div>
@@ -83,11 +102,11 @@ const SetupForm = ({ data, existingData, setExistingData, handleSubmitForm, btnN
 }
 
 SetupForm.propTypes = {
-	btnName: PropTypes.string.isRequired
+	btnName: PropTypes.string.isRequired,
 }
 
 SetupForm.defaultProps = {
-	btnName: "Create"
+	btnName: "Create",
 }
 
 export default SetupForm

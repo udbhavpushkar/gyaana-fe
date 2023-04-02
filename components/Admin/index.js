@@ -79,7 +79,7 @@ const AdminLayout = (props) => {
 							Logout
 						</button>
 					</div>
-					<div>{props.children}</div>
+					<div style={{ padding: "25px" }}>{props.children}</div>
 				</div>
 			</div>
 		</div>
