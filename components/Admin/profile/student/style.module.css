@@ -1,0 +1,14 @@
+.wrapper{
+    display: flex;
+    margin: 20px;
+    font-size: 18px;
+}
+
+.label{
+    font-weight: 600;
+}
+
+.text{
+    margin-left: 8px;
+    color: rgb(53, 51, 51);
+}

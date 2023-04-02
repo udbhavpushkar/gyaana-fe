@@ -20,6 +20,7 @@ const EmployeeProfile = () => {
 
     const fetchEmployee = async (employeeId) => {
         try {
+            debugger
             let response = await getRequest(`employee/${employeeId}`)
             if (response.isSuccess) {
                 setEmployeeData(response.data)
@@ -37,7 +38,7 @@ const EmployeeProfile = () => {
                 <hr />
             </div>
             {employeeData && <>
-                <button onClick={() => { setIsEdit(prev => !prev) }} className="btn btn-outline-info">{isEdit ? "Cancel" : "Edit"}</button>
+                <button style={{ marginLeft: "18px" }} onClick={() => { setIsEdit(prev => !prev) }} className="btn btn-outline-info">{isEdit ? "Cancel" : "Edit"}</button>
                 <div>
                     {isEdit ? <EditProfile data={employeeData} /> : <Profile data={employeeData} />}
                 </div>
