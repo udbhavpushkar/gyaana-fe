@@ -44,6 +44,7 @@ const SetupForm = ({
 												name={item.name}
 												onChange={handleInputChange}
 											>
+												<option>--Please Select--</option>
 												{item.list.map((opt) => {
 													return (
 														<option
