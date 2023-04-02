@@ -13,7 +13,7 @@ const FeedbackList = (props) => {
 
 	const handleGetFeedbackList = async () => {
 		try {
-			let response = await getRequest("feedback/")
+			let response = await getRequest("enquiry/?type=admission")
 			if (response.isSuccess) {
 				setFeedbackData(response.data)
 			}
@@ -22,30 +22,12 @@ const FeedbackList = (props) => {
 		}
 	}
 
-	const handleDeleteClass = async (id, index) => {
-		try {
-			let response = await deleteRequest(`grade/${id}`)
-			if (response.isSuccess) {
-				let dataList = [...feedbackData]
-				dataList.splice(index, 1)
-				setFeedbackData(dataList)
-			}
-		} catch (e) {
-			console.log("Error", e)
-		}
-	}
-
-	const handleEditClassClick = (data, index) => {
-		setEditData({ data, index })
-		setMode("edit")
-	}
-
 	return (
 		<div>
 			{mode === "list" && (
 				<>
 					<div className={`d-flex justify-content-between`} style={{ padding: "10px 20px" }}>
-						<p>Feedback List</p>
+						<p>Enquiry List</p>
 					</div>
 					<div>
 						<table className="table">

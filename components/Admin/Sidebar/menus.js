@@ -49,7 +49,7 @@ const headersData = [
 	},
 	{
 		name: "Enquiry",
-		link: "/admin/student",
+		link: "/admin/enquiry",
 	},
 	{
 		name: "Admission Management",
@@ -73,18 +73,18 @@ const headersData = [
 		name: "Search Student",
 		link: "/admin/search/student",
 	},
-	{
+	/* {
 		name: "Class/Section Management",
 		link: "/admin/notice",
-	},
-	{
+	}, */
+	/* {
 		name: "Subject Management",
 		link: "/admin/download",
 	},
 	{
 		name: "Syllabus Management",
 		link: "/admin/download",
-	},
+	}, */
 	{
 		name: "Student Management",
 		link: "#",
@@ -95,11 +95,11 @@ const headersData = [
 			},
 		],
 	},
-	{
+	/* {
 		name: "Employee Management",
 		link: "/admin/download",
-	},
-	{
+	}, */
+	/* {
 		name: "Attendence Management",
 		link: "/admin/download",
 	},
@@ -126,7 +126,7 @@ const headersData = [
 	{
 		name: "Achievements",
 		link: "/admin/download",
-	},
+	}, */
 ]
 
 export default headersData
