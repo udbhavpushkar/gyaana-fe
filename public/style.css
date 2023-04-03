@@ -1,3 +1,8 @@
 .pointer{
     cursor: pointer;
 }
+
+.link{
+    cursor: pointer;
+    text-decoration: underline;
+}

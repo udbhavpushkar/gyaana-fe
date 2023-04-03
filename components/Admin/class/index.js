@@ -186,7 +186,7 @@ const Grade = () => {
                                             icon={faTrashAlt}
                                         />
                                     </td>
-                                    <td><span onClick={() => { handleSectionModalOpen(data) }}>Section</span></td>
+                                    <td><span className="link" onClick={() => { handleSectionModalOpen(data) }}>Section</span></td>
                                 </tr>
                             )
                         })}
