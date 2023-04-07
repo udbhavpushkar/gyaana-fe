@@ -95,6 +95,20 @@ const headersData = [
 			},
 		],
 	},
+	{
+		name: "Events",
+		link: "#",
+		childs: [
+			{
+				name: "Create Event",
+				link: "/admin/event/create",
+			},
+			{
+				name: "Events List",
+				link: "/admin/event/list",
+			},
+		],
+	},
 	/* {
 		name: "Employee Management",
 		link: "/admin/download",
