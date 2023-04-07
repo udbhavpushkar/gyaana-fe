@@ -4,7 +4,7 @@ import Collapsable from "../../../components/Custom/Collapsable"
 import { getRequest, patchRequest } from "../../../utilities/rest_service"
 
 
-const EmployeeAdmission = () => {
+const EmployeeSearch = () => {
     const [searchText, setSearchText] = useState("")
     const [employeeList, setEmployeeList] = useState([])
     const [filterEmployeeList, setFilterEmployeeList] = useState([])
@@ -115,4 +115,4 @@ const EmployeeAdmission = () => {
     )
 }
 
-export default EmployeeAdmission
+export default EmployeeSearch
