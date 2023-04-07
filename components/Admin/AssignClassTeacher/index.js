@@ -81,9 +81,8 @@ const AssignClassTeacher = ({ sectionData, close, fetchSections }) => {
             </thead>
             <tbody>
                 {(searchText ? filterEmployeeList : employeeList).map((data, index) => {
-                    let active = !data?.userId?.disabled
                     return <tr key={data._id}>
-                        <td>{index + 1} {!active && <span class="badge badge-danger">Inactive</span>}</td>
+                        <td>{index + 1} {data?.userId?.disabled && <span class="badge text-white bg-danger">Inactive</span>}</td>
                         <td>{data?.employeeNo}</td>
                         <td><a href={`../profile/employee/${data._id}`} target={`_blank`}>{data?.userId?.firstName} {data?.userId?.lastName}</a></td>
                         <td>{data?.position?.name}</td>
