@@ -123,6 +123,10 @@ const headersData = [
 			},
 		],
 	},
+	{
+		name: "Calender",
+		link: "/admin/calender"
+	}
 	/* {
 		name: "Employee Management",
 		link: "/admin/download",

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react"
 import AdminLayout from "../../../components/Admin"
 import Collapsable from "../../../components/Custom/Collapsable"
-import { getRequest } from "../../../utilities/rest_service"
+import { deleteRequest, getRequest } from "../../../utilities/rest_service"
 import { formatDate, formatDateAndTime } from "../../../utilities/date_services"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import { toast } from "react-toastify"
 
 
 const HolidayList = () => {
@@ -23,6 +26,18 @@ const HolidayList = () => {
         }
     }
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await deleteRequest(`event/${id}`)
+            if (response.isSuccess) {
+                fetchEvents()
+                toast.success("Deleted !")
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <AdminLayout>
 
@@ -35,6 +50,7 @@ const HolidayList = () => {
                             <th scope="col">Start Date</th>
                             <th scope="col">End Date</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +61,7 @@ const HolidayList = () => {
                                 <td>{data?.startDate && formatDate(data?.startDate)}</td>
                                 <td>{data?.endDate && formatDate(data?.endDate)}</td>
                                 <td>{data?.description}</td>
+                                <td><FontAwesomeIcon onClick={() => { handleDelete(data._id) }} className="text-danger pointer" icon={faTrash} /></td>
                             </tr>
                         })}
                     </tbody>
