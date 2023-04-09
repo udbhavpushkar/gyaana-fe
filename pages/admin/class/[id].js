@@ -4,6 +4,7 @@ import AdminLayout from "../../../components/Admin"
 import Collapsable from "../../../components/Custom/Collapsable"
 import { getRequest } from "../../../utilities/rest_service"
 import AssignClassTeacher from "../../../components/Admin/AssignClassTeacher"
+import AssignSubjectTeacher from "../../../components/Admin/AssignSubjectTeacher"
 
 const EmployeeProfile = () => {
     const router = useRouter()
@@ -50,6 +51,11 @@ const EmployeeProfile = () => {
         setTask("assign_class_teacher")
     }
 
+    const handleAssignSubjectTeacherClick = (data) => {
+        setSelectedSection(data)
+        setTask("assign_subject_teacher")
+    }
+
     const handleCloseClick = () => {
         setTask(null)
         setSelectedSection(null)
@@ -67,6 +73,10 @@ const EmployeeProfile = () => {
                 <div onClick={handleCloseClick} className="mb-2 btn btn-outline-danger text-right">Cancel</div>
                 <AssignClassTeacher sectionData={selectedSection} close={handleCloseClick} fetchSections={fetchSections} />
             </div>}
+            {selectedSection && task === "assign_subject_teacher" && <div className="px-3">
+                <div onClick={handleCloseClick} className="mb-2 btn btn-outline-danger text-right">Cancel</div>
+                <AssignSubjectTeacher sectionData={selectedSection} close={handleCloseClick} fetchSections={fetchSections} />
+            </div>}
             {task === null && <Collapsable heading={`Section List`}>
                 <table className="table">
                     <thead>
@@ -75,6 +85,7 @@ const EmployeeProfile = () => {
                             <th scope="col">Name</th>
                             <th scope="col">Class Strength</th>
                             <th scope="col">Class Teacher</th>
+                            <th scope="col">Subject Teacher</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,6 +99,9 @@ const EmployeeProfile = () => {
                                     <td>
                                         {data?.teacher && `${userData?.firstName} ${userData?.lastName} `}
                                         <span className="link text-info" onClick={() => { handleAssignClassTeacherClick(data) }}>{data?.teacher ? "Change" : "Assign"}</span>
+                                    </td>
+                                    <td>
+                                        <span className="link text-info" onClick={() => { handleAssignSubjectTeacherClick(data) }}>Assign</span>
                                     </td>
                                 </tr>
                             )
