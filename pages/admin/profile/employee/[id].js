@@ -20,7 +20,6 @@ const EmployeeProfile = () => {
 
     const fetchEmployee = async (employeeId) => {
         try {
-            debugger
             let response = await getRequest(`employee/${employeeId}`)
             if (response.isSuccess) {
                 setEmployeeData(response.data)
