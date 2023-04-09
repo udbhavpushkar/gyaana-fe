@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import AdminLayout from "../../../components/Admin"
 import { deleteRequest, getRequest } from "../../../utilities/rest_service"
-import { formatDate, formatDateAndTime } from "../../../utilities/date_services"
+import { formatDateAndTime } from "../../../utilities/date_services"
 import { toast } from "react-toastify"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
