@@ -96,6 +96,20 @@ const headersData = [
 		],
 	},
 	{
+		name: "Syllabus",
+		link: "#",
+		childs: [
+			{
+				name: "Create Syllabus",
+				link: "/admin/syllabus/create",
+			},
+			{
+				name: "Syllabus List",
+				link: "/admin/syllabus/list",
+			},
+		],
+	},
+	{
 		name: "Events",
 		link: "#",
 		childs: [
