@@ -62,6 +62,7 @@ const Grade = () => {
             if (response.isSuccess) {
                 getClassList()
                 toast.success("Created Successfully")
+                setFormData(null)
             } else {
                 toast.error("Something went Wrong")
             }
@@ -105,6 +106,7 @@ const Grade = () => {
             if (response.isSuccess) {
                 getSectionList(addSection._id)
                 toast.success("Created Successfully")
+                setSectionFormData(null)
             } else {
                 toast.error("Something went Wrong")
             }

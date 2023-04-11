@@ -372,9 +372,9 @@ const StudentAdmission = () => {
 									<option className={`form-control`}>
 										--Select Religion--
 									</option>
-									{religion.map((rel) => {
+									{religion.map((rel, index) => {
 										return (
-											<option className={`form-control`}>{rel.name}</option>
+											<option key={`rel_${index}`} className={`form-control`}>{rel.name}</option>
 										)
 									})}
 								</select>
@@ -398,9 +398,9 @@ const StudentAdmission = () => {
 									name="religion"
 									id="religion_student_05"
 								>
-									{religion[castInd].castes.map((cast) => {
+									{religion[castInd].castes.map((cast, index) => {
 										return (
-											<option className={`form-control`}>{cast.name}</option>
+											<option key={`caste_${index}`} className={`form-control`}>{cast.name}</option>
 										)
 									})}
 								</select>
