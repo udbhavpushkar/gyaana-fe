@@ -20,6 +20,7 @@ const SetupForm = ({
 	const handleFormSubmit = (e) => {
 		e.preventDefault()
 		handleSubmitForm()
+		e.target.reset()
 	}
 
 	return (

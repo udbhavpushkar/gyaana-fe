@@ -10,7 +10,7 @@ const TeacherDropdown = ({ data, teacherList, handleChange, teacherName }) => {
     }
 
     return <>
-        {teacherName && <div>{teacherName} <span onClick={() => { setIsEdit(prev => !prev) }}>{isEdit ? "Cancel" : "Change"}</span></div>}
+        {teacherName && <div>{teacherName} <span className="link text-info" onClick={() => { setIsEdit(prev => !prev) }}>{isEdit ? "Cancel" : "Change"}</span></div>}
         {(!teacherName || isEdit) && <div className="form-group">
             <select onChange={handleDropdownChange} className="form-control">
                 <option value="">Please select</option>

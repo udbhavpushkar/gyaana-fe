@@ -233,7 +233,7 @@ const AssignStudent = () => {
 								<tr>
 									<th scope="col">
 										<span className="mx-2"> Select All</span>
-										<input className={style.inputCheckbox} type="checkbox" />
+										{/* <input className={style.inputCheckbox} type="checkbox" /> */}
 									</th>
 									<th scope="col">Name</th>
 									<th scope="col">Prev Marks(%)</th>

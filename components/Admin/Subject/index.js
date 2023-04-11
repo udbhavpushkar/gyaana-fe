@@ -54,6 +54,8 @@ const Subject = () => {
             if (response.isSuccess) {
                 getSubjectList()
                 toast.success("Created Successfully")
+                setFormData(null)
+                setFormSetupData(formSetupArray)
             } else {
                 toast.error("Something went Wrong")
             }

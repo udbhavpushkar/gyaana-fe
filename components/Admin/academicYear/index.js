@@ -39,6 +39,7 @@ const AcademicYear = () => {
 			if (response.isSuccess) {
 				getYearList()
 				toast.success("Created Successfully")
+				setFormData(null)
 			} else {
 				toast.error("Something went Wrong")
 			}
@@ -86,7 +87,6 @@ const AcademicYear = () => {
 							<th scope="col">End Date</th>
 							<th scope="col">Edit</th>
 							<th scope="col">Delete</th>
-							<th scope="col">Active/Inactive</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -115,7 +115,6 @@ const AcademicYear = () => {
 											icon={faTrashAlt}
 										/>
 									</td>
-									<td></td>
 								</tr>
 							)
 						})}
