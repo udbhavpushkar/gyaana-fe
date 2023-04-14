@@ -6,16 +6,16 @@ import { postRequest } from "../../utilities/rest_service"
 import { toast } from "react-toastify"
 
 const Enquiry = () => {
-	const initialValues = { name: "", email: "", mobile: "", address: "", messsage: "" }
+	const initialValues = { name: "", email: "", mobile: "", address: "", message: "" }
 	const [formData, setFormData] = useState(initialValues)
 	const [errorData, setErrorData] = useState({})
 
 	const handleAddFeedback = async (e) => {
 		e.preventDefault()
 		setErrorData(validate(formData))
-		if (Object.keys(errorData).length !== 0) {
+		if (formData.message) {
 			try {
-				let response = await postRequest("feedback/", formData)
+				let response = await postRequest("enquiry/", formData)
 				if (response.isSuccess) {
 					toast.success("Enqiry Submitted Successfully")
 					document.getElementById("add-feedback-form").reset()

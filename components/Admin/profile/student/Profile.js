@@ -70,7 +70,7 @@ const Profile = (props) => {
 		// console.log("formData", formData)
 	}
 
-	const createStudent = async (e) => {
+	const updateStudent = async (e) => {
 		e.preventDefault()
 		try {
 			let response = await postRequest(`student/register`, formData)
@@ -98,7 +98,7 @@ const Profile = (props) => {
 			>
 				{isEditable ? "Edit" : "Cancel"}
 			</button>
-			<form onSubmit={createStudent} className={style.form_container}>
+			<form onSubmit={updateStudent} className={style.form_container}>
 				<h4>Official Details-</h4>
 				<hr />
 				<div className="form-group row">
@@ -586,6 +586,7 @@ const Profile = (props) => {
 							color: "white",
 						}}
 						className="btn"
+						disabled={isEditable}
 					>
 						Update Student
 					</button>

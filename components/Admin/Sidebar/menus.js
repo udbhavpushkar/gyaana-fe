@@ -11,45 +11,45 @@ const headersData = [
 				name: "Setup Institution",
 				link: "/admin/institute",
 			},
+		],
+	},
+	{
+		name: "Academic Settings",
+		link: "/admin/teacher",
+		childs: [
 			{
-				name: "Academic Settings",
-				link: "/admin/teacher",
-				childs: [
-					{
-						name: "Academic Year",
-						link: "/admin/academic-year",
-					},
-					{
-						name: "Class",
-						link: "/admin/class",
-					},
-					{
-						name: "Create Subjects",
-						link: "/admin/subject",
-					},
-					{
-						name: "Category",
-						link: "/admin/category",
-					},
-					{
-						name: "Position",
-						link: "/admin/position",
-					},
-					{
-						name: "Upload Details",
-						link: "/admin",
-					},
-					{
-						name: "Employee Settings",
-						link: "/admin",
-					},
-				],
+				name: "Academic Year",
+				link: "/admin/academic-year",
 			},
+			{
+				name: "Class",
+				link: "/admin/class",
+			},
+			{
+				name: "Create Subjects",
+				link: "/admin/subject",
+			},
+			{
+				name: "Category",
+				link: "/admin/category",
+			},
+			{
+				name: "Position",
+				link: "/admin/position",
+			},
+			// {
+			// 	name: "Upload Details",
+			// 	link: "/admin",
+			// },
+			// {
+			// 	name: "Employee Settings",
+			// 	link: "/admin",
+			// },
 		],
 	},
 	{
 		name: "Enquiry",
-		link: "/admin/student",
+		link: "/admin/enquiry",
 	},
 	{
 		name: "Admission Management",
@@ -73,18 +73,18 @@ const headersData = [
 		name: "Search Student",
 		link: "/admin/search/student",
 	},
-	{
+	/* {
 		name: "Class/Section Management",
 		link: "/admin/notice",
-	},
-	{
+	}, */
+	/* {
 		name: "Subject Management",
 		link: "/admin/download",
 	},
 	{
 		name: "Syllabus Management",
 		link: "/admin/download",
-	},
+	}, */
 	{
 		name: "Student Management",
 		link: "#",
@@ -96,10 +96,56 @@ const headersData = [
 		],
 	},
 	{
-		name: "Employee Management",
-		link: "/admin/download",
+		name: "Syllabus",
+		link: "#",
+		childs: [
+			{
+				name: "Create Syllabus",
+				link: "/admin/syllabus/create",
+			},
+			{
+				name: "Syllabus List",
+				link: "/admin/syllabus/list",
+			},
+		],
 	},
 	{
+		name: "Events",
+		link: "#",
+		childs: [
+			{
+				name: "Create Event",
+				link: "/admin/event/create",
+			},
+			{
+				name: "Events List",
+				link: "/admin/event/list",
+			},
+		],
+	},
+	{
+		name: "Holidays",
+		link: "#",
+		childs: [
+			{
+				name: "Create holiday",
+				link: "/admin/holiday/create",
+			},
+			{
+				name: "Holiday List",
+				link: "/admin/holiday/list",
+			},
+		],
+	},
+	{
+		name: "Calender",
+		link: "/admin/calender"
+	}
+	/* {
+		name: "Employee Management",
+		link: "/admin/download",
+	}, */
+	/* {
 		name: "Attendence Management",
 		link: "/admin/download",
 	},
@@ -126,7 +172,7 @@ const headersData = [
 	{
 		name: "Achievements",
 		link: "/admin/download",
-	},
+	}, */
 ]
 
 export default headersData

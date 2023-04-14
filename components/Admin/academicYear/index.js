@@ -3,7 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import { formatDate } from "../../../utilities/date_services"
-import { deleteRequest, getRequest, postRequest } from "../../../utilities/rest_service"
+import {
+	deleteRequest,
+	getRequest,
+	postRequest,
+} from "../../../utilities/rest_service"
 import Collapsable from "../../Custom/Collapsable"
 import SetupForm from "./../../SetupForm/index"
 
@@ -14,7 +18,6 @@ const instituteHeader = [
 ]
 
 const AcademicYear = () => {
-
 	const [yearList, setYearList] = useState([])
 	const [formData, setFormData] = useState(null)
 
@@ -29,7 +32,7 @@ const AcademicYear = () => {
 				setYearList(response.data)
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 	}
 
@@ -39,11 +42,12 @@ const AcademicYear = () => {
 			if (response.isSuccess) {
 				getYearList()
 				toast.success("Created Successfully")
+				setFormData(null)
 			} else {
 				toast.error("Something went Wrong")
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 	}
 
@@ -57,7 +61,7 @@ const AcademicYear = () => {
 				toast.error("Something went Wrong")
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 	}
 
@@ -86,7 +90,6 @@ const AcademicYear = () => {
 							<th scope="col">End Date</th>
 							<th scope="col">Edit</th>
 							<th scope="col">Delete</th>
-							<th scope="col">Active/Inactive</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -115,16 +118,12 @@ const AcademicYear = () => {
 											icon={faTrashAlt}
 										/>
 									</td>
-									<td></td>
 								</tr>
 							)
 						})}
 					</tbody>
 				</table>
 			</Collapsable>
-
-
-
 		</div>
 	)
 }

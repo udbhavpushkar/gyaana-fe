@@ -20,6 +20,7 @@ const SetupForm = ({
 	const handleFormSubmit = (e) => {
 		e.preventDefault()
 		handleSubmitForm()
+		e.target.reset()
 	}
 
 	return (
@@ -44,6 +45,7 @@ const SetupForm = ({
 												name={item.name}
 												onChange={handleInputChange}
 											>
+												<option>--Please Select--</option>
 												{item.list.map((opt) => {
 													return (
 														<option

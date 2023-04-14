@@ -1,3 +1,42 @@
 .pointer{
     cursor: pointer;
 }
+
+.link{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.box-shadow-1{
+    box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.636);
+}
+
+.fc-header-toolbar {
+    margin-bottom: 10px;
+  }
+  
+  .fc-day-header {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .fc-day-top {
+    position: relative;
+  }
+  
+  .fc-day-grid-event {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .fc-day-grid-event:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+
+.fc-event-time{
+ display: none !important;
+}

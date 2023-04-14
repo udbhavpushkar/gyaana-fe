@@ -36,6 +36,7 @@ const Category = () => {
 			if (response.isSuccess) {
 				getCategoryList()
 				toast.success("Created Successfully")
+				setFormData(null)
 			} else {
 				toast.error("Something went Wrong")
 			}

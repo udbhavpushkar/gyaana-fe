@@ -19,7 +19,7 @@ const instituteHeader = [
 	{ label: "State", type: "text", name: "state" },
 	{ label: "District", type: "text", name: "district" },
 	{ label: "Pincode", type: "text", name: "pincode" },
-	{ label: "File", type: "file", name: "logo" },
+	// { label: "File", type: "file", name: "logo" },
 ]
 
 const Institute = () => {

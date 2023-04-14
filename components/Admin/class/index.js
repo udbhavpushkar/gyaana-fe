@@ -62,6 +62,7 @@ const Grade = () => {
             if (response.isSuccess) {
                 getClassList()
                 toast.success("Created Successfully")
+                setFormData(null)
             } else {
                 toast.error("Something went Wrong")
             }
@@ -105,6 +106,7 @@ const Grade = () => {
             if (response.isSuccess) {
                 getSectionList(addSection._id)
                 toast.success("Created Successfully")
+                setSectionFormData(null)
             } else {
                 toast.error("Something went Wrong")
             }
@@ -165,7 +167,7 @@ const Grade = () => {
                             return (
                                 <tr key={`class-${index}`}>
                                     <th scope="row">{index + 1}</th>
-                                    <td>{data.name}</td>
+                                    <td><a href={`./class/${data._id}`} target="_blank">{data.name}</a></td>
                                     <td>{data?.year?.name}</td>
                                     <td>{data.maxStudent}</td>
                                     <td>
@@ -186,7 +188,7 @@ const Grade = () => {
                                             icon={faTrashAlt}
                                         />
                                     </td>
-                                    <td><span onClick={() => { handleSectionModalOpen(data) }}>Section</span></td>
+                                    <td><span className="link" onClick={() => { handleSectionModalOpen(data) }}>Section</span></td>
                                 </tr>
                             )
                         })}

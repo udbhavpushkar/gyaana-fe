@@ -7,6 +7,7 @@ import { toast } from "react-toastify"
 const EmployeeAdmission = () => {
 	const [academicYear, setAcademicYear] = useState([])
 	const [subjects, setSubjects] = useState([])
+	const [subjectsChecked, setSubjectsChecked] = useState(new Set())
 	const [category, setCategory] = useState([])
 	const [position, setPosition] = useState([])
 	const [activeCategory, setActiveCategory] = useState([])
@@ -44,6 +45,16 @@ const EmployeeAdmission = () => {
 		}
 	}
 
+	const handleOnSubjectsChange = (e, id) => {
+		let checkedSet = new Set(JSON.parse(JSON.stringify([...subjectsChecked])))
+		if (e.target.checked) {
+			checkedSet.add(id)
+		} else {
+			checkedSet.delete(id)
+		}
+		setSubjectsChecked(checkedSet)
+	}
+
 	const getCategory = async () => {
 		try {
 			let response = await getRequest(`category`)
@@ -72,10 +83,12 @@ const EmployeeAdmission = () => {
 
 	const createEmployee = async (e) => {
 		e.preventDefault()
+		let payload = { ...formData }
+		let subjectsPayload = Array.from(subjectsChecked)
+		payload["subjects"] = subjectsPayload
 		try {
-			let response = await postRequest(`employee/register`, formData)
+			let response = await postRequest(`employee/register`, payload)
 			if (response.isSuccess) {
-				console.log("response", response)
 				toast.success("Created Successfully")
 				e.target.reset()
 			} else {
@@ -103,10 +116,12 @@ const EmployeeAdmission = () => {
 							<div className="col-sm-8 my-2">
 								<select
 									onChange={handleInputChange}
-									className={` form-control`}
+									className={`form-control`}
 									id="year-list"
 									name="academicYear"
+									required
 								>
+									<option value="">Please Select</option>
 									{academicYear.map((data) => {
 										return (
 											<option value={data._id} className={` form-control`}>
@@ -149,20 +164,18 @@ const EmployeeAdmission = () => {
 								Subject
 							</label>
 							<div className="col-sm-8 my-2">
-								<select
-									onChange={handleInputChange}
-									name="subjects"
-									className={` form-control`}
-									id="subject-list"
-								>
-									{subjects.map((data) => {
-										return (
-											<option value={data._id} className={` form-control`}>
-												{data.name}
-											</option>
-										)
-									})}
-								</select>
+								{subjects.map((data, index) => {
+									return <div key={`subjects_${data._id}`}>
+										<input
+											type="checkbox"
+											id={`custom-checkbox-${index}`}
+											name={data._id}
+											value={data._id}
+											onChange={(e) => handleOnSubjectsChange(e, data._id)}
+										/>
+										<label htmlFor={`custom-checkbox-${index}`}>{data.name}</label>
+									</div>
+								})}
 							</div>
 						</div>
 						<div className="form-group row">
@@ -181,7 +194,9 @@ const EmployeeAdmission = () => {
 									className={`form-control`}
 									id="category-list"
 									name="category"
+									required
 								>
+									<option value="">Please Select</option>
 									{category.map((data) => {
 										return (
 											<option value={data._id} className={`form-control`}>
@@ -205,7 +220,9 @@ const EmployeeAdmission = () => {
 									name="position"
 									className={`form-control`}
 									id="position-list"
+									required
 								>
+									<option value="">Please Select</option>
 									{position.map((data) => {
 										return (
 											<option value={data._id} className={`form-control`}>
@@ -266,7 +283,9 @@ const EmployeeAdmission = () => {
 									className={`form-control`}
 									id="gender-list"
 									name="gender"
+									required
 								>
+									<option value="">Please Select</option>
 									<option value="male" className={`form-control`}>
 										Male
 									</option>
@@ -289,6 +308,35 @@ const EmployeeAdmission = () => {
 									type="email"
 									name="email"
 									className="form-control"
+									required
+								/>
+							</div>
+						</div>
+						<div className="form-group row">
+							<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
+								Address
+							</label>
+							<div className="col-sm-8 my-2">
+								<input
+									onChange={handleInputChange}
+									type="text"
+									name="address"
+									className="form-control"
+									required
+								/>
+							</div>
+						</div>
+						<div className="form-group row">
+							<label htmlFor="staticEmail" className="col-sm-2 col-form-label">
+								PinCode
+							</label>
+							<div className="col-sm-8 my-2">
+								<input
+									onChange={handleInputChange}
+									type="text"
+									name="pincode"
+									className="form-control"
+									required
 								/>
 							</div>
 						</div>
@@ -302,6 +350,7 @@ const EmployeeAdmission = () => {
 									type="text"
 									name="aadhaar"
 									className="form-control"
+									required
 								/>
 							</div>
 						</div>
@@ -318,7 +367,9 @@ const EmployeeAdmission = () => {
 									className={`form-control`}
 									id="married-status"
 									name="maritalStatus"
+									required
 								>
+									<option value="">Please Select</option>
 									<option className={` form-control`}>Married</option>
 									<option className={` form-control`}>Unmarried</option>
 								</select>

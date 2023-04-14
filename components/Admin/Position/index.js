@@ -53,6 +53,7 @@ const Position = () => {
 			if (response.isSuccess) {
 				getPositionList()
 				toast.success("Created Successfully")
+				setFormData(null)
 			} else {
 				toast.error("Something went Wrong")
 			}
