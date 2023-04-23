@@ -96,6 +96,20 @@ const headersData = [
 		],
 	},
 	{
+		name: "Student Attendance",
+		link: "#",
+		childs: [
+			{
+				name: "Create",
+				link: "/admin/attendance/students",
+			},
+			{
+				name: "Previous Attendance",
+				link: "/admin/attendance/students-list",
+			},
+		],
+	},
+	{
 		name: "Syllabus",
 		link: "#",
 		childs: [
