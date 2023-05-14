@@ -37,14 +37,6 @@ const headersData = [
 				name: "Position",
 				link: "/admin/position",
 			},
-			// {
-			// 	name: "Upload Details",
-			// 	link: "/admin",
-			// },
-			// {
-			// 	name: "Employee Settings",
-			// 	link: "/admin",
-			// },
 		],
 	},
 	{
@@ -73,18 +65,6 @@ const headersData = [
 		name: "Search Student",
 		link: "/admin/search/student",
 	},
-	/* {
-		name: "Class/Section Management",
-		link: "/admin/notice",
-	}, */
-	/* {
-		name: "Subject Management",
-		link: "/admin/download",
-	},
-	{
-		name: "Syllabus Management",
-		link: "/admin/download",
-	}, */
 	{
 		name: "Student Management",
 		link: "#",
@@ -123,6 +103,20 @@ const headersData = [
 			},
 		],
 	},
+	/* {
+		name: "Notice",
+		link: "#",
+		childs: [
+			{
+				name: "Send Notice",
+				link: "/admin/notice/create",
+			},
+			{
+				name: "Notice List",
+				link: "/admin/notice/list",
+			},
+		],
+	}, */
 	{
 		name: "Events",
 		link: "#",
@@ -155,38 +149,6 @@ const headersData = [
 		name: "Calender",
 		link: "/admin/calender"
 	}
-	/* {
-		name: "Employee Management",
-		link: "/admin/download",
-	}, */
-	/* {
-		name: "Attendence Management",
-		link: "/admin/download",
-	},
-	{
-		name: "Exam Management",
-		link: "/admin/download",
-	},
-	{
-		name: "Result Management",
-		link: "/admin/download",
-	},
-	{
-		name: "Alumni Details",
-		link: "/admin/download",
-	},
-	{
-		name: "Gallery/Events",
-		link: "/admin/download",
-	},
-	{
-		name: "Noticeboard",
-		link: "/admin/download",
-	},
-	{
-		name: "Achievements",
-		link: "/admin/download",
-	}, */
 ]
 
 export default headersData
