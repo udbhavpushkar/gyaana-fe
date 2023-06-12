@@ -76,7 +76,7 @@ const StudentAttendance = () => {
             if (response.isSuccess) {
                 setSectionList(response.data)
             } else {
-                toast.success("Something went wrong")
+                toast.error("Something went wrong")
             }
         } catch (error) {
 
@@ -117,6 +117,9 @@ const StudentAttendance = () => {
             const response = await postRequest(`attendance-student/`, payload)
             if (response.isSuccess) {
                 console.log(response.data);
+                toast.success("Attendance successful")
+            } else {
+                toast.error("Already done.")
             }
         } catch (error) {
             console.error(error);

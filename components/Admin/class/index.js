@@ -157,7 +157,7 @@ const Grade = () => {
                             <th scope="col">Name</th>
                             <th scope="col">Academic Year</th>
                             <th scope="col">Class Strength</th>
-                            <th scope="col">Edit</th>
+                            {/* <th scope="col">Edit</th> */}
                             <th scope="col">Delete</th>
                             <th scope="col">Section</th>
                         </tr>
@@ -170,15 +170,15 @@ const Grade = () => {
                                     <td><a href={`./class/${data._id}`} target="_blank">{data.name}</a></td>
                                     <td>{data?.year?.name}</td>
                                     <td>{data.maxStudent}</td>
-                                    <td>
+                                    {/* <td>
                                         <FontAwesomeIcon
                                             onClick={(e) => {
-                                                // handleEditClassClick(data, index)
+                                                handleEditClassClick(data, index)
                                             }}
                                             className={`pointer text-info`}
                                             icon={faUserEdit}
                                         />
-                                    </td>
+                                    </td> */}
                                     <td>
                                         <FontAwesomeIcon
                                             onClick={(e) => {
@@ -210,7 +210,7 @@ const Grade = () => {
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Class Strength</th>
-                                    <th scope="col">Edit</th>
+                                    {/* <th scope="col">Edit</th> */}
                                     <th scope="col">Delete</th>
                                 </tr>
                             </thead>
@@ -221,15 +221,15 @@ const Grade = () => {
                                             <th scope="row">{index + 1}</th>
                                             <td>{data.name}</td>
                                             <td>{data.maxStudent}</td>
-                                            <td>
+                                            {/* <td>
                                                 <FontAwesomeIcon
                                                     onClick={(e) => {
-                                                        // handleEditClassClick(data, index)
+                                                        handleEditClassClick(data, index)
                                                     }}
                                                     className={`pointer text-info`}
                                                     icon={faUserEdit}
                                                 />
-                                            </td>
+                                            </td> */}
                                             <td>
                                                 <FontAwesomeIcon
                                                     onClick={(e) => {

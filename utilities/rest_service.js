@@ -18,7 +18,11 @@ const set_response = (data, isSuccess = true) => {
 	if (data?.response?.data?.message?.message == "invalid token") {
 		logout()
 	}
-	let response = { isSuccess, data: data.data }
+	let myData = data.data
+	if (!isSuccess) {
+		myData = data.response.data.error
+	}
+	let response = { isSuccess, data: myData }
 	return response
 }
 

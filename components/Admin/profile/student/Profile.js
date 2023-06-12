@@ -88,7 +88,7 @@ const Profile = (props) => {
 
 	return (
 		<div className={`${style.student_admission_box}  `}>
-			<button
+			{/* <button
 				class={
 					!isEditable
 						? "btn btn-sm btn-secondary mx-4"
@@ -97,7 +97,7 @@ const Profile = (props) => {
 				onClick={() => setIsEditable(!isEditable)}
 			>
 				{isEditable ? "Edit" : "Cancel"}
-			</button>
+			</button> */}
 			<form onSubmit={updateStudent} className={style.form_container}>
 				<h4>Official Details-</h4>
 				<hr />
@@ -262,28 +262,6 @@ const Profile = (props) => {
 								name="joiningDate"
 								className="form-control"
 								value={formData?.joiningDate.slice(0, 10)}
-							/>
-						)}
-					</div>
-				</div>
-				<div className="form-group row">
-					<label
-						htmlFor="exampleFormControlSelect1"
-						className="col-sm-2 col-md-3 col-form-label"
-					>
-						Vacanacy
-					</label>
-					<div className="col-sm-8 col-md-6 my-2">
-						{isEditable ? (
-							<p>{formData?.vacancy}</p>
-						) : (
-							<input
-								readOnly
-								type="text"
-								className="form-control"
-								value={formData?.vacancy}
-								onChange={handleInputChange}
-								name="vacancy"
 							/>
 						)}
 					</div>
@@ -577,7 +555,7 @@ const Profile = (props) => {
 						)}
 					</div>
 				</div>
-				<div className="text-center my-4">
+				{!isEditable && <div className="text-center my-4">
 					<button
 						type="submit"
 						style={{
@@ -586,11 +564,11 @@ const Profile = (props) => {
 							color: "white",
 						}}
 						className="btn"
-						disabled={isEditable}
 					>
 						Update Student
 					</button>
-				</div>
+				</div>}
+
 			</form>
 		</div>
 	)
