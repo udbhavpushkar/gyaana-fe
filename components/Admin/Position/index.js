@@ -98,7 +98,6 @@ const Position = () => {
 							<th scope="col">#</th>
 							<th scope="col">Name</th>
 							<th scope="col">Category</th>
-							{/* <th scope="col">Edit</th> */}
 							<th scope="col">Delete</th>
 						</tr>
 					</thead>
@@ -109,15 +108,6 @@ const Position = () => {
 									<th scope="row">{index + 1}</th>
 									<td>{data.name}</td>
 									<td>{data?.category?.name}</td>
-									{/* <td>
-										<FontAwesomeIcon
-											onClick={(e) => {
-												handleEditClassClick(data, index)
-											}}
-											className={`pointer text-info`}
-											icon={faUserEdit}
-										/>
-									</td> */}
 									<td>
 										<FontAwesomeIcon
 											onClick={(e) => {

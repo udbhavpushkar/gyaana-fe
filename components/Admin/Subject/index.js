@@ -100,7 +100,6 @@ const Subject = () => {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            {/* <th scope="col">Edit</th> */}
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
@@ -115,15 +114,6 @@ const Subject = () => {
                                             return sub.name
                                         })})`}
                                     </td>
-                                    {/* <td>
-                                        <FontAwesomeIcon
-                                            onClick={(e) => {
-                                                handleEditClassClick(data, index)
-                                            }}
-                                            className={`pointer text-info`}
-                                            icon={faUserEdit}
-                                        />
-                                    </td> */}
                                     <td>
                                         <FontAwesomeIcon
                                             onClick={(e) => {

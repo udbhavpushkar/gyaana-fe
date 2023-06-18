@@ -103,20 +103,6 @@ const headersData = [
 			},
 		],
 	},
-	/* {
-		name: "Notice",
-		link: "#",
-		childs: [
-			{
-				name: "Send Notice",
-				link: "/admin/notice/create",
-			},
-			{
-				name: "Notice List",
-				link: "/admin/notice/list",
-			},
-		],
-	}, */
 	{
 		name: "Events",
 		link: "#",
