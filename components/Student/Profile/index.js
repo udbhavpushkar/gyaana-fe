@@ -1,92 +1,75 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import GyaanaImage from "../../../assets/images/pic1.png"
+import { getRequest } from "../../../utilities/rest_service"
+import { USER_ID } from "../../../constants/localStorage"
+import { formatDate } from "../../../utilities/date_services"
 
 const Profile = () => {
+
+  const [detail, setDetail] = useState({})
+
+  useEffect(() => {
+    fetchStudentDetails()
+  }, [])
+
   const studentData = [
     {
-      title: "Student Name :",
-      value: "Akash Gupta",
+      title: "Student Name",
+      value: detail?.userId?.firstName + " " + detail?.userId?.lastName,
     },
     {
-      title: "Class :",
-      value: "III",
+      title: "Class",
+      value: detail?.grade?.name,
     },
     {
-      title: "House :",
-      value: "xyz",
+      title: "Section",
+      value: detail?.section?.name,
     },
     {
-      title: "Contact :",
-      value: "+91 8899776655",
+      title: "Admission No",
+      value: detail?.admissionNo,
     },
     {
-      title: "Father's Name :",
-      value: "Mr. Shailesh Gupta",
+      title: "Admission Date",
+      value: formatDate(detail?.admissionDate),
     },
     {
-      title: "Mother's Name :",
-      value: "Mrs. Savita Gupta",
+      title: "Date Of Birth",
+      value: formatDate(detail?.dob),
     },
     {
-      title: "Student Name :",
-      value: "Akash Gupta",
+      title: "Email",
+      value: detail?.userId?.email,
     },
-    {
-      title: "Student Name :",
-      value: "Akash Gupta",
-    },
-    {
-      title: "Student Name :",
-      value: "Akash Gupta",
-    },
+
   ]
+
+  const fetchStudentDetails = async () => {
+    try {
+      let id = localStorage.getItem(USER_ID)
+      let res = await getRequest(`student/getByUserId/${id}`)
+      if (res.isSuccess) {
+        setDetail(res.data)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div style={{ backgroundColor: "rgb(198, 173, 198)" }}>
       <div className="row w-100 py-4">
         <div className="col-sm-7 mx-5" style={{ fontSize: "22px", fontFamily: "cursive", color: "purple" }}>
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
-            {studentData.map((item, index) => (
-              <div key={`${item.title}${index}`}>
+          <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+            {studentData.map((data, index) => {
+              return <div key={`student_info_${index}`} className="mb-2">
                 <div style={{ borderBottom: "2px dotted purple" }}>
-                  <span style={{ color: "black" }}>{item.title}</span>
-                  <span>{item.value}</span>
+                  <span style={{ color: "black" }}>{data.title} : </span>
+                  <span>{data.value}</span>
                 </div>
               </div>
-            ))}
-            {/*             
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Class :</span>
-              <span>III</span>
-            </div>
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Gender :</span>
-              <span>Male</span>
-            </div>
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Contact :</span>
-              <span>+91 8090606989</span>
-            </div>
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Address :</span>
-              <span>Beniganj, Faizabad</span>
-            </div>
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Mother's Name :</span>
-              <span>Mrs. Savita Gupta</span>
-            </div>
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Father's Name :</span>
-              <span>Mr. Harsh Gupta</span>
-            </div>
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Parent's Contact :</span>
-              <span>+91 8292766782</span>
-            </div>
-            <div style={{ borderBottom: "2px dotted purple" }}>
-              <span>Email :</span>
-              <span>gupta@gmail.com</span>
-            </div> */}
+            })}
           </div>
         </div>
         <div

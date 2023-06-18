@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useRouter } from "next/router"
 import Image from "next/image"
 import GyaanaImage from "../../../assets/images/unnamed.jpg"
 import profileImg from "../../../assets/images/pic1.png"
@@ -6,9 +7,15 @@ import Link from "next/link"
 import styles from "./styles.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
+import { logout } from "../../../utilities/auth_services"
+import { useEffect } from "react"
+import { AUTH_TOKEN, USER_EMAIL, USER_ID, USER_NAME, USER_ROLE } from "../../../constants/localStorage"
+import { getRequest } from "../../../utilities/rest_service"
 
 const Header = () => {
+  const router = useRouter()
   const [isLogout, setIsLogout] = useState(false)
+  const [username, setUsername] = useState("")
   const header = [
     { name: "Student Profile", link: "#" },
     { name: "Timetable", link: "/Timetable" },
@@ -18,10 +25,38 @@ const Header = () => {
     { name: "Progress Reports", link: "#" },
   ]
 
+  useEffect(() => {
+    if (localStorage.getItem(AUTH_TOKEN)) {
+      if (localStorage.getItem(USER_ROLE) !== "student") {
+        router.push("/Login")
+      } else {
+        getUserDetails()
+      }
+    } else {
+      router.push("/Login")
+    }
+
+  }, [])
+
   const handleLogoutBtn = () => {
-    setIsLogout(false)
-    window.location = "/Login?role=Student"
+    logout()
   }
+
+  const getUserDetails = async () => {
+    try {
+      let res = await getRequest("user/getUser/")
+      if (res.isSuccess) {
+        localStorage.setItem(USER_NAME, res.data.firstName)
+        localStorage.setItem(USER_EMAIL, res.data.email)
+        localStorage.setItem(USER_ID, res.data._id)
+        localStorage.setItem(USER_ROLE, res.data.role)
+        setUsername(res.data.firstName)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "purple" }}>
@@ -56,7 +91,7 @@ const Header = () => {
         </div>
         <div className={styles.headerProfileImgContainer}>
           <span className={styles.headerProfileName} style={{ marginBottom: "10px" }}>
-            Akash
+            {username}
           </span>
           <span className={styles.headerProfileImg}>
             <Image src={profileImg} height={30} width={30} />

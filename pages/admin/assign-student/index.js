@@ -248,8 +248,8 @@ const AssignStudent = () => {
 										</td>
 
 										<td>{data?.userId?.firstName}</td>
-										<td>85</td>
-										<td>01</td>
+										<td>{data?.previousSchoolPerc}</td>
+										<td>--</td>
 									</tr>
 								})}
 

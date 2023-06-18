@@ -1,17 +1,19 @@
+import { AUTH_TOKEN, USER_EMAIL, USER_ID, USER_NAME, USER_ROLE } from "../constants/localStorage"
+
 export const logout = () => {
 	let roletype = localStorage.getItem("role")
 
-	localStorage.removeItem("auth_token")
-	localStorage.removeItem("name")
-	localStorage.removeItem("email")
-	localStorage.removeItem("user_id")
-	localStorage.removeItem("role")
+	localStorage.removeItem(AUTH_TOKEN)
+	localStorage.removeItem(USER_NAME)
+	localStorage.removeItem(USER_EMAIL)
+	localStorage.removeItem(USER_ID)
+	localStorage.removeItem(USER_ROLE)
 	console.log("role", roletype)
 	window.location = "/Login"
 }
 
 export const isLoggedIn = () => {
-	if (localStorage.getItem("auth_token")) {
+	if (localStorage.getItem(AUTH_TOKEN)) {
 		return true
 	} else {
 		return false
