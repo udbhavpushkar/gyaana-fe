@@ -1,0 +1,5 @@
+export const USER_EMAIL = "user_email"
+export const USER_ROLE = "user_role"
+export const USER_NAME = "user_name"
+export const USER_ID = "user_id"
+export const AUTH_TOKEN = "auth_token"

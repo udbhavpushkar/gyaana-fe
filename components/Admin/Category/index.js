@@ -80,7 +80,7 @@ const Category = () => {
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Name</th>
-							<th scope="col">Edit</th>
+							{/* <th scope="col">Edit</th> */}
 							<th scope="col">Delete</th>
 						</tr>
 					</thead>
@@ -90,15 +90,15 @@ const Category = () => {
 								<tr key={`year-${index}`}>
 									<th scope="row">{index + 1}</th>
 									<td>{data.name}</td>
-									<td>
+									{/* <td>
 										<FontAwesomeIcon
 											onClick={(e) => {
-												// handleEditClassClick(data, index)
+												handleEditClassClick(data, index)
 											}}
 											className={`pointer text-info`}
 											icon={faUserEdit}
 										/>
-									</td>
+									</td> */}
 									<td>
 										<FontAwesomeIcon
 											onClick={(e) => {

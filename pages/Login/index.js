@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleDown } from "@fortawesome/free-solid-svg-icons"
 import { postRequest } from "../../utilities/rest_service"
 import { toast } from "react-toastify"
+import { AUTH_TOKEN, USER_EMAIL, USER_ID, USER_NAME, USER_ROLE } from "../../constants/localStorage"
 
 const Login = (props) => {
 	const router = useRouter()
@@ -20,21 +21,21 @@ const Login = (props) => {
 	const [formData, setFormData] = useState(initialValues)
 	const [errorData, setErrorData] = useState({})
 
-	const userRole = router.query.role
+	// const userRole = router.query.role
 
 	useEffect(() => {
 		setNum1(Math.floor(Math.random() * 10))
 		setNum2(Math.floor(Math.random() * 10))
 
-		if (localStorage.getItem("auth_token")) {
-			let role = localStorage.getItem("role")
+		if (localStorage.getItem(AUTH_TOKEN)) {
+			let role = localStorage.getItem(USER_ROLE)
 			redirectToDashboard(role)
 		}
 	}, [])
 
 	const redirectToDashboard = (role) => {
 		if (role) {
-			window.location = "/" + role
+			router.push("/" + role)
 		}
 	}
 
@@ -42,17 +43,17 @@ const Login = (props) => {
 		try {
 			//Code to add admin => On first deployment
 			/* let myData = { name: "Admin", role: "admin", password: "12345678", email: "admin@gmail.com", mobile: "8574563835" }
-      let response = await postRequest("user/register/", myData)
-      if (response.isSuccess) {
-        console.log(response.data);
-      } */
+	  let response = await postRequest("user/register/", myData)
+	  if (response.isSuccess) {
+		console.log(response.data);
+	  } */
 			let res = await postRequest("user/login/", formData)
 			if (res.isSuccess) {
-				localStorage.setItem("auth_token", res.data.token)
-				localStorage.setItem("name", res.data.name)
-				localStorage.setItem("email", res.data.email)
-				localStorage.setItem("user_id", res.data._id)
-				localStorage.setItem("role", res.data.role)
+				localStorage.setItem(AUTH_TOKEN, res.data.token)
+				localStorage.setItem(USER_NAME, res.data.firstName)
+				localStorage.setItem(USER_EMAIL, res.data.email)
+				localStorage.setItem(USER_ID, res.data._id)
+				localStorage.setItem(USER_ROLE, res.data.role)
 				redirectToDashboard(res.data.role)
 				toast.success(`Login Successfully`)
 			} else {

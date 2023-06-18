@@ -2,12 +2,13 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_ORIGIN
 
 import axios from "axios"
 import { logout } from "./auth_services"
+import { AUTH_TOKEN } from "../constants/localStorage"
 
 let header = { "Content-Type": "application/json" }
 
 const set_authorization_header = (authorize = true) => {
 	if (authorize) {
-		const token = localStorage.getItem("auth_token")
+		const token = localStorage.getItem(AUTH_TOKEN)
 		if (token) {
 			header["Authorization"] = `Bearer ${token}`
 		}
@@ -18,7 +19,11 @@ const set_response = (data, isSuccess = true) => {
 	if (data?.response?.data?.message?.message == "invalid token") {
 		logout()
 	}
-	let response = { isSuccess, data: data.data }
+	let myData = data.data
+	if (!isSuccess) {
+		myData = data.response.data.error
+	}
+	let response = { isSuccess, data: myData }
 	return response
 }
 

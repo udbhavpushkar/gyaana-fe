@@ -6,6 +6,7 @@ import imageLogo from "../../assets/images/unnamed.jpg"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import Sidebar from "./Sidebar"
+import { USER_ROLE } from "../../constants/localStorage"
 
 const AdminLayout = (props) => {
 	const router = useRouter()
@@ -47,7 +48,7 @@ const AdminLayout = (props) => {
 	]
 
 	useEffect(() => {
-		if (!isLoggedIn() || localStorage.getItem("role") !== "admin") {
+		if (!isLoggedIn() || localStorage.getItem(USER_ROLE) !== "admin") {
 			router.push("/")
 		}
 	}, [])

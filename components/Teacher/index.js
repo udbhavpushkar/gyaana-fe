@@ -5,6 +5,7 @@ import styles from "./style.module.css"
 import imageLogo from "../../assets/images/unnamed.jpg"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { USER_ROLE } from "../../constants/localStorage"
 
 const TeacherLayout = (props) => {
 	const router = useRouter()
@@ -26,7 +27,7 @@ const TeacherLayout = (props) => {
 	]
 
 	useEffect(() => {
-		if (!isLoggedIn() || localStorage.getItem("role") !== "teacher") {
+		if (!isLoggedIn() || localStorage.getItem(USER_ROLE) !== "teacher") {
 			router.push("/")
 		}
 	}, [])

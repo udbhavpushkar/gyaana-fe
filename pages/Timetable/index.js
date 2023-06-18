@@ -1,7 +1,6 @@
 import React from "react"
 import { useEffect } from "react"
 import { useState } from "react"
-import StudentHeader from "../StudentHome/StudentHeader"
 import styles from "./styles.module.css"
 import LoadingSpinner from "./../../components/LoadingSpinner/index"
 

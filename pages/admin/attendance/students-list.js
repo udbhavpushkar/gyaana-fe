@@ -59,7 +59,7 @@ const StudentAttendance = () => {
             if (response.isSuccess) {
                 setSectionList(response.data)
             } else {
-                toast.success("Something went wrong")
+                toast.error("Something went wrong")
             }
         } catch (error) {
 
@@ -71,7 +71,9 @@ const StudentAttendance = () => {
         try {
             let response = await getRequest(`attendance-student/?section=${activeSection}&date=${selectedDate}`)
             if (response.isSuccess) {
-                setStudentList(response.data.attendance)
+                setStudentList(response?.data?.attendance)
+            } else {
+                toast.error(response?.data)
             }
         } catch (error) {
             console.error(error)

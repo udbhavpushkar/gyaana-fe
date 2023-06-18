@@ -88,7 +88,6 @@ const AcademicYear = () => {
 							<th scope="col">Name</th>
 							<th scope="col">Start Date</th>
 							<th scope="col">End Date</th>
-							<th scope="col">Edit</th>
 							<th scope="col">Delete</th>
 						</tr>
 					</thead>
@@ -100,15 +99,6 @@ const AcademicYear = () => {
 									<td>{data.name}</td>
 									<td>{formatDate(data.startDate)}</td>
 									<td>{formatDate(data.endDate)}</td>
-									<td>
-										<FontAwesomeIcon
-											onClick={(e) => {
-												// handleEditClassClick(data, index)
-											}}
-											className={`pointer text-info`}
-											icon={faUserEdit}
-										/>
-									</td>
 									<td>
 										<FontAwesomeIcon
 											onClick={(e) => {
