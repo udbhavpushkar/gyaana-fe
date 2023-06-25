@@ -7,27 +7,27 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { USER_ROLE } from "../../constants/localStorage"
 
-const TeacherLayout = (props) => {
+const EmployeeLayout = (props) => {
 	const router = useRouter()
 	const [isToggle, setIsToggle] = useState(true)
 
 	const headersData = [
 		{
 			name: "Home",
-			link: "/teacher",
+			link: "/employee",
 		},
 		{
 			name: "Timetable",
-			link: "/teacher/timetable",
+			link: "/employee/timetable",
 		},
 		{
 			name: "Notice",
-			link: "/teacher/notice",
+			link: "/employee/notice",
 		},
 	]
 
 	useEffect(() => {
-		if (!isLoggedIn() || localStorage.getItem(USER_ROLE) !== "teacher") {
+		if (!isLoggedIn() || localStorage.getItem(USER_ROLE) !== "employee") {
 			router.push("/")
 		}
 	}, [])
@@ -72,4 +72,4 @@ const TeacherLayout = (props) => {
 	)
 }
 
-export default TeacherLayout
+export default EmployeeLayout
