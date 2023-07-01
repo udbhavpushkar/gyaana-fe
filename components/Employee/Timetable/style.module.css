@@ -10,7 +10,7 @@
 .tableBox{
     
     height: 100px;
-    width: 100px;
+    width: 120px;
     background-color: purple;
     border: 1px solid white;
     color: white;
@@ -22,7 +22,7 @@
 .tableBox3{
     
     height: 100px;
-    width: 100px;
+    /* width: 100px; */
     background-color: rgb(174, 174, 104);
     border: 1px solid white;
     color: purple;
@@ -33,7 +33,6 @@
 }
 .tableBox2{
     height: 100px;
-    width: 130px;
     background-color: rgb(174, 174, 104);
     color: purple;
     border: 1px solid white;

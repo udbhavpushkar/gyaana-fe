@@ -21,6 +21,7 @@ const Timetable = () => {
 
 	const [data, setData] = useState(arr)
 	const [gradeData, setGradeData] = useState(null)
+	const [gradeDetail, setGradeDetail] = useState()
 
 	const [isLoading, setIsloading] = useState(false)
 
@@ -31,7 +32,7 @@ const Timetable = () => {
 	}
 
 	useEffect(() => {
-		fetchGradeDetails()
+		fetchGrade()
 	}, [])
 
 	const handleTimeTableUpdate = async (e) => {
@@ -47,28 +48,25 @@ const Timetable = () => {
 				}
 				toast.success("Timetable Updated Successfully")
 			} else {
-				toast.error("Request Failed")
+
 			}
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	const fetchGradeDetails = async () => {
-		setIsloading(true)
+	const fetchGrade = async () => {
 		try {
-			let response = await getRequest(`grade/my-grade/`)
-			if (response.isSuccess) {
-				setGradeData(response.data)
-				if (response.data.timetable) {
-					let myData = JSON.parse(response.data.timetable)
-					setData(myData)
-				}
+			const res = await getRequest(`employee/getGrade/`)
+			if (res.isSuccess) {
+				console.log(res.data);
+				setGradeDetail(res.data)
+			} else {
+				setError("You are not assigned as a class teacher.")
 			}
 		} catch (error) {
-			console.log(error)
+			console.error(error);
 		}
-		setIsloading(false)
 	}
 
 	return (
@@ -78,40 +76,47 @@ const Timetable = () => {
 			) : (
 				<div style={{ backgroundColor: "rgb(198, 173, 198)" }}>
 					<h4 className="text-center" style={{ backgroundColor: "purple", fontFamily: "cursive", color: "white", padding: "10px" }}>
-						Edit Timetable
+						Edit Timetable {gradeDetail?.grade?.name} {gradeDetail?.name}
 					</h4>
-					<div className={`d-flex justify-content-center`}>
+					<div className={`row`} style={{ marginLeft: "50px" }}>
 						{PERIOD.map((item, index) => {
 							return (
-								<div className={styles.tableBox3} style={{ width: index === 0 ? "130px" : "" }} key={"period_" + index}>
+								<div style={{ width: index == 0 ? "180px" : "120px" }} className={`${styles.tableBox3}`} key={"period_" + index}>
 									{item}
 								</div>
 							)
 						})}
 					</div>
-					{DAY_NAME.map((day, i) => (
-						<div key={`day+${i}`} style={{ marginLeft: "61px" }} className={styles.tableBox2}>
-							{day}
+					<div className="d-flex" style={{ marginLeft: "50px" }}>
+						<div style={{ width: "180px" }} className="flex-column p-0">
+							{DAY_NAME.map((day, i) => (
+								<div key={`day+${i}`} className={styles.tableBox2}>
+									{day}
+								</div>
+							))}
 						</div>
-					))}
-					<div style={{ position: "absolute", top: "232px", left: "211px" }}>
-						{arr.map((item, i) => (
-							<div key={`days+${i}`} style={{ display: "flex", marginLeft: "191px" }}>
-								{item.map((v, ind) => (
-									<div key={`sub+${ind}`} className={styles.tableBox}>
-										<p>
-											<input
-												value={data[i][ind]}
-												onChange={(e) => handleSubject(e, i, ind)}
-												placeholder="Subject"
-												style={{ height: "30px", width: "100%", fontSize: "12px", textAlign: "center", fontWeight: "600" }}
-											/>
-										</p>
-									</div>
-								))}
-							</div>
-						))}
+						<div>
+							{arr.map((item, i) => (
+								<div key={`days+${i}`} className="d-flex" >
+									{item.map((v, ind) => (
+										<div key={`sub+${ind}`} className={`${styles.tableBox}`}>
+											<p>
+												<input
+													value={data[i][ind]}
+													onChange={(e) => handleSubject(e, i, ind)}
+													placeholder="Subject"
+													style={{ height: "30px", width: "100%", fontSize: "12px", textAlign: "center", fontWeight: "600" }}
+												/>
+											</p>
+										</div>
+									))}
+								</div>
+							))}
+
+						</div>
 					</div>
+
+
 
 					{/* {data.map((day, ind) => (
                         <div key={`${day}${ind}`} className={styles.tableBoxContainer}>
