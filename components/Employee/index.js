@@ -17,6 +17,14 @@ const EmployeeLayout = (props) => {
 			link: "/employee",
 		},
 		{
+			name: "Attendance",
+			link: "/employee/student-attendance",
+		},
+		{
+			name: "Previous Attendance",
+			link: "/employee/student-attendance-list",
+		},
+		{
 			name: "Timetable",
 			link: "/employee/timetable",
 		},

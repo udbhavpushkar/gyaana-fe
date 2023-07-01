@@ -1,8 +1,6 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import EmployeeLayout from "../../components/Employee"
 import { getRequest } from "../../utilities/rest_service"
-import { useEffect } from "react"
-import { useState } from "react"
 
 const Teacher = (props) => {
   const [gradeDetail, setGradeDetail] = useState()
